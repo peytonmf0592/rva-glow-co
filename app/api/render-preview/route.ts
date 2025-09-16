@@ -47,9 +47,9 @@ export async function POST(request: NextRequest) {
     // Initialize Gemini AI with the API key
     const genAI = new GoogleGenerativeAI(apiKey)
 
-    // Use Gemini 1.5 Pro for better image generation
+    // Use Gemini 2.0 Flash for faster processing
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-pro",
+      model: "gemini-2.0-flash-exp",
       generationConfig: {
         temperature: 0.9,
         topK: 32,
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
 
     // Use different prompts based on the lighting option
     const prompt = lightingOption === 'roof'
-      ? `Generate a professional, high-resolution photo of this house on a snowy winter night at dusk. Add elegant, warm white holiday lights to the entire perimeter of the roof, specifically on the ridge, rakes, and eaves. Do not add any other decorations to the house or bushes.
+      ? `Analyze this house image and describe exactly where professional Christmas lights should be installed. Add elegant warm white C9 LED holiday lights following the exact architectural lines of THIS specific house's roof. Trace along every roofline edge you can see in the image.
 
       Provide a detailed description of:
       1. Exact placement of warm white C9 LED lights on all rooflines
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
       5. The elegant, classic appearance with roofline lighting only
 
       Focus on creating a sophisticated, minimalist holiday display with warm white lights on the roofline only.`
-      : `Generate a professional, high-resolution photo of this house on a snowy winter night at dusk. Add elegant, warm white holiday lights to the entire perimeter of the roof, specifically on the ridge, rakes, and eaves. Also add warm white lights to the bushes and trees in the landscaping.
+      : `Analyze this house image and describe exactly where professional Christmas lights should be installed. Add elegant warm white C9 LED holiday lights following the exact architectural lines of THIS specific house's roof, PLUS add warm white mini lights wrapped around every bush, shrub, and tree visible in the front yard.
 
       Provide a detailed description of:
       1. Exact placement of warm white C9 LED lights on all rooflines
@@ -95,9 +95,9 @@ export async function POST(request: NextRequest) {
     const response = await result.response
     const description = response.text()
 
-    // Since Gemini 1.5 Pro doesn't generate images directly,
-    // we'll return the description and use it to create an overlay effect
-    // For actual image generation, you'd need to use a different service like Imagen or Stable Diffusion
+    // Since Gemini 2.0 Flash analyzes but doesn't generate images,
+    // we'll return the analysis for where lights should go
+    // To actually add lights to the image, you'll need an image generation service
 
     // Create an enhanced version with overlay effect (simplified)
     // In production, you'd send this to an image generation API
@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
       description: description,
       lightingOption: lightingOption,
       message: 'AI analysis complete',
-      note: 'Gemini provides lighting plan - integrate with image generation API for visual rendering'
+      note: 'Gemini 2.0 Flash analyzed your house - integrate with image generation API to visualize the lights'
     })
 
   } catch (error) {
