@@ -42,9 +42,9 @@ export async function POST(request: NextRequest) {
     // Initialize Gemini AI with the API key
     const genAI = new GoogleGenerativeAI(apiKey)
 
-    // Use Gemini 2.5 Flash Image Preview model for image-to-image generation
+    // Use Gemini 1.5 Flash model (Note: Gemini can only analyze, not generate images)
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash-image-preview",
+      model: "gemini-1.5-flash",
       generationConfig: {
         temperature: 1.0,
         topK: 40,
