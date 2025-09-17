@@ -1,9 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
-import html2canvas from 'html2canvas'
 import Script from 'next/script'
-import HolidayLightsOverlay from './HolidayLightsOverlay'
 
 declare global {
   interface Window {
@@ -21,13 +19,20 @@ export default function HolidayPreview() {
   const [isDragging, setIsDragging] = useState(false)
   const [originalImage, setOriginalImage] = useState<string | null>(null)
   const [renderedImage, setRenderedImage] = useState<string | null>(null)
-  const [lightingDescription, setLightingDescription] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [step, setStep] = useState(1)
   const [lightingOption, setLightingOption] = useState<'roof' | 'full'>('roof')
   const [panorama, setPanorama] = useState<any>(null)
   const [geocoder, setGeocoder] = useState<any>(null)
   const [autocomplete, setAutocomplete] = useState<any>(null)
+
+  // Lead capture form states
+  const [leadName, setLeadName] = useState('')
+  const [leadPhone, setLeadPhone] = useState('')
+  const [leadEmail, setLeadEmail] = useState('')
+  const [isSubmittingLead, setIsSubmittingLead] = useState(false)
+  const [leadSubmitted, setLeadSubmitted] = useState(false)
+  const [leadError, setLeadError] = useState<string | null>(null)
 
   const streetViewRef = useRef<HTMLDivElement>(null)
   const cropOverlayRef = useRef<HTMLDivElement>(null)
@@ -119,12 +124,6 @@ export default function HolidayPreview() {
     }
   }, [])
 
-  // Simplified - autocomplete now handles address search
-  const searchAddress = async () => {
-    // This function is kept for potential manual fallback
-    // but primary functionality is now handled by autocomplete
-  }
-
   const startCropping = () => {
     setIsCropping(true)
     // Disable Street View controls during cropping
@@ -199,7 +198,7 @@ export default function HolidayPreview() {
 
     setIsLoading(true)
     setError(null)
-    setStep(3)  // Changed from 4 to 3 since we combined steps
+    setStep(3)
 
     try {
       // Get the current Street View position and POV
@@ -219,8 +218,7 @@ export default function HolidayPreview() {
         `&fov=${fov}` +
         `&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
 
-      // Simplified approach - just use the full Street View image
-      // Since cropping is complex with CORS, we'll send the full view
+      // Fetch the Street View image
       const response = await fetch(streetViewUrl)
 
       if (!response.ok) {
@@ -255,23 +253,17 @@ export default function HolidayPreview() {
       const data = await apiResponse.json()
 
       if (!apiResponse.ok) {
-        // Use the error message from the API if available
         const errorMessage = data.error || 'Failed to generate preview'
         throw new Error(errorMessage)
       }
+
+      // Set the rendered image - will be the same as original for now
+      // since Gemini can't generate images
       setRenderedImage(data.renderedImage)
-
-      // Store the AI's lighting description if available
-      if (data.description) {
-        setLightingDescription(data.description)
-      }
-
-      setStep(4)  // Changed from 5 to 4
+      setStep(4)
 
     } catch (err) {
-      // Show the actual error message to help users understand what went wrong
       if (err instanceof Error) {
-        // Check for specific error types
         if (err.message.includes('quota')) {
           setError('AI service is busy. Please wait 30 seconds and try again.')
         } else if (err.message.includes('API key')) {
@@ -299,16 +291,59 @@ export default function HolidayPreview() {
     }
   }
 
+  const submitLead = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!leadName || !leadPhone || !leadEmail) {
+      setLeadError('Please fill in all fields')
+      return
+    }
+
+    setIsSubmittingLead(true)
+    setLeadError(null)
+
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: leadName,
+          phone: leadPhone,
+          email: leadEmail,
+          address: address,
+          lightingOption: lightingOption,
+          source: 'holiday-preview-tool',
+          message: `Interested in ${lightingOption === 'roof' ? 'Roofline Only' : 'Complete'} package after using preview tool`
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit quote request')
+      }
+
+      setLeadSubmitted(true)
+    } catch (error) {
+      setLeadError('Failed to submit your request. Please try again.')
+      console.error('Lead submission error:', error)
+    } finally {
+      setIsSubmittingLead(false)
+    }
+  }
+
   const resetPreview = () => {
     setAddress('')
     setOriginalImage(null)
     setRenderedImage(null)
-    setLightingDescription(null)
     setError(null)
     setStep(1)
     setIsCropping(false)
     setCropStart({ x: 0, y: 0 })
     setCropEnd({ x: 0, y: 0 })
+    setLeadName('')
+    setLeadPhone('')
+    setLeadEmail('')
+    setLeadSubmitted(false)
+    setLeadError(null)
   }
 
   const getCropStyle = () => {
@@ -569,9 +604,10 @@ export default function HolidayPreview() {
             </div>
           )}
 
-          {/* Results Display */}
+          {/* Results Display - SIMPLIFIED WITHOUT OVERLAY OR TEXT */}
           {step === 4 && originalImage && renderedImage && (
             <div className="mt-12">
+              {/* Side-by-side comparison */}
               <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-center text-gray-800">Your Home Today</h3>
@@ -583,55 +619,122 @@ export default function HolidayPreview() {
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-center bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
-                    {lightingOption === 'roof' ? 'Roofline Package' : 'Complete Package'}
+                    With Professional Holiday Lights
                   </h3>
-                  <div className="w-full rounded-xl shadow-lg overflow-hidden">
-                    <HolidayLightsOverlay
-                      imageUrl={originalImage}
-                      lightingOption={lightingOption}
-                    />
-                  </div>
+                  <img
+                    src={renderedImage}
+                    alt="Home with holiday lights"
+                    className="w-full rounded-xl shadow-lg"
+                  />
                 </div>
               </div>
 
-              {/* Display AI's lighting plan if available */}
-              {lightingDescription && (
-                <div className="mt-8 max-w-4xl mx-auto">
-                  <div className="bg-gradient-to-br from-blue-50 to-amber-50 rounded-xl p-6 shadow-lg">
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-xl font-bold text-gray-800 flex items-center">
-                        <svg className="w-6 h-6 mr-2 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        Professional Lighting Plan by AI
-                      </h4>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        lightingOption === 'roof'
-                          ? 'bg-blue-100 text-blue-700'
-                          : 'bg-amber-100 text-amber-700'
-                      }`}>
-                        {lightingOption === 'roof' ? 'Roofline Only' : 'Roofline + Landscape'}
-                      </span>
-                    </div>
-                    <div className="prose prose-sm max-w-none text-gray-700 whitespace-pre-wrap">
-                      {lightingDescription}
-                    </div>
-                    <div className="mt-4 p-4 bg-amber-100 rounded-lg">
-                      <p className="text-sm text-amber-800">
-                        <strong>Note:</strong> This AI analysis identifies exactly where holiday lights would be installed on your home. Our professional installers use this plan to create your perfect display.
-                      </p>
-                    </div>
+              {/* Lead Capture Form - NEW */}
+              {!leadSubmitted ? (
+                <div className="mt-12 max-w-2xl mx-auto">
+                  <div className="bg-gradient-to-br from-blue-50 to-amber-50 rounded-xl p-8 shadow-lg">
+                    <h4 className="text-2xl font-bold text-center mb-2 text-gray-800">
+                      Love What You See?
+                    </h4>
+                    <p className="text-center text-gray-600 mb-6">
+                      Get a free quote for this exact lighting design!
+                    </p>
+
+                    <form onSubmit={submitLead} className="space-y-4">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
+                          Your Name
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          value={leadName}
+                          onChange={(e) => setLeadName(e.target.value)}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                          placeholder="John Smith"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-1">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          value={leadPhone}
+                          onChange={(e) => setLeadPhone(e.target.value)}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                          placeholder="(804) 555-0123"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          value={leadEmail}
+                          onChange={(e) => setLeadEmail(e.target.value)}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                          placeholder="john@example.com"
+                          required
+                        />
+                      </div>
+
+                      {leadError && (
+                        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                          <p className="text-red-700 text-sm">{leadError}</p>
+                        </div>
+                      )}
+
+                      <button
+                        type="submit"
+                        disabled={isSubmittingLead}
+                        className="w-full py-4 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transform transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {isSubmittingLead ? 'Sending...' : 'Get My Free Quote →'}
+                      </button>
+                    </form>
+
+                    <p className="text-xs text-gray-500 text-center mt-4">
+                      We'll contact you within 24 hours with your personalized quote
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-12 max-w-2xl mx-auto">
+                  <div className="bg-green-50 border-2 border-green-200 rounded-xl p-8 text-center">
+                    <svg className="w-16 h-16 mx-auto mb-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4 className="text-2xl font-bold text-gray-800 mb-2">
+                      Quote Request Received!
+                    </h4>
+                    <p className="text-gray-600 mb-4">
+                      We'll contact you within 24 hours to schedule your free consultation
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Selected Package: {lightingOption === 'roof' ? 'Roofline Only' : 'Complete (Roofline + Landscape)'}
+                    </p>
                   </div>
                 </div>
               )}
 
+              {/* Action Buttons */}
               <div className="text-center mt-8 space-y-4">
-                <a
-                  href="/booking"
-                  className="inline-block px-10 py-4 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transform transition-all"
-                >
-                  Book This Installation →
-                </a>
+                {!leadSubmitted && (
+                  <a
+                    href="/booking"
+                    className="inline-block px-10 py-4 bg-gray-200 text-gray-700 rounded-full text-lg font-semibold hover:bg-gray-300 transition-all"
+                  >
+                    Or Book Installation Now →
+                  </a>
+                )}
                 <button
                   onClick={resetPreview}
                   className="block mx-auto text-gray-600 hover:text-gray-800 underline"
