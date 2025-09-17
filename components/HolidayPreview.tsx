@@ -21,7 +21,11 @@ export default function HolidayPreview() {
   const [renderedImage, setRenderedImage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [step, setStep] = useState(1)
+  const [isQuotaExceeded, setIsQuotaExceeded] = useState(false)
   const [lightingOption, setLightingOption] = useState<'roof' | 'full'>('roof')
+  const [sliderPosition, setSliderPosition] = useState(50)
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+  const [isDraggingSlider, setIsDraggingSlider] = useState(false)
   const [panorama, setPanorama] = useState<any>(null)
   const [geocoder, setGeocoder] = useState<any>(null)
   const [autocomplete, setAutocomplete] = useState<any>(null)
@@ -41,6 +45,32 @@ export default function HolidayPreview() {
   useEffect(() => {
     window.initMap = initMap
   }, [])
+
+  // Handle mouse events for slider
+  useEffect(() => {
+    const handleMouseUp = () => setIsDraggingSlider(false)
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDraggingSlider) return
+      // Find the slider container
+      const sliderContainer = document.getElementById('before-after-container')
+      if (!sliderContainer) return
+
+      const rect = sliderContainer.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+      setSliderPosition(percentage)
+    }
+
+    if (isDraggingSlider) {
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseUp)
+    }
+  }, [isDraggingSlider])
 
   const initMap = useCallback(() => {
     if (window.google && streetViewRef.current) {
@@ -257,8 +287,11 @@ export default function HolidayPreview() {
         throw new Error(errorMessage)
       }
 
-      // Set the rendered image - will be the same as original for now
-      // since Gemini can't generate images
+      // Check if quota was exceeded
+      if (data.quotaExceeded) {
+        setIsQuotaExceeded(true)
+      }
+
       setRenderedImage(data.renderedImage)
       setStep(4)
 
@@ -336,6 +369,10 @@ export default function HolidayPreview() {
     setRenderedImage(null)
     setError(null)
     setStep(1)
+    setIsQuotaExceeded(false)
+    setSliderPosition(50)
+    setIsLightboxOpen(false)
+    setIsDraggingSlider(false)
     setIsCropping(false)
     setCropStart({ x: 0, y: 0 })
     setCropEnd({ x: 0, y: 0 })
@@ -345,6 +382,24 @@ export default function HolidayPreview() {
     setLeadSubmitted(false)
     setLeadError(null)
   }
+
+  const handleSliderMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDraggingSlider) return
+
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+    setSliderPosition(percentage)
+  }, [isDraggingSlider])
+
+  const handleSliderStart = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDraggingSlider(true)
+    handleSliderMove(e)
+  }, [handleSliderMove])
+
+  const handleSliderEnd = useCallback(() => {
+    setIsDraggingSlider(false)
+  }, [])
 
   const getCropStyle = () => {
     const minX = Math.min(cropStart.x, cropEnd.x)
@@ -363,7 +418,7 @@ export default function HolidayPreview() {
   return (
     <>
       <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMap`}
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMap&loading=async`}
         strategy="lazyOnload"
       />
 
@@ -413,7 +468,8 @@ export default function HolidayPreview() {
               {step === 2 && !isCropping && "Step 2: Adjust the view and crop your home"}
               {step === 2 && isCropping && "Step 2: Draw a box around your house"}
               {step === 3 && "Step 3: Generating your holiday preview..."}
-              {step === 4 && "Step 4: Your home with professional holiday lights!"}
+              {step === 4 && !isQuotaExceeded && "Step 4: Your home with professional holiday lights!"}
+              {step === 4 && isQuotaExceeded && "Step 4: Preview your home with professional holiday lights!"}
             </p>
           </div>
 
@@ -604,40 +660,104 @@ export default function HolidayPreview() {
             </div>
           )}
 
-          {/* Results Display - SIMPLIFIED WITHOUT OVERLAY OR TEXT */}
+          {/* Results Display - Before/After Slider */}
           {step === 4 && originalImage && renderedImage && (
             <div className="mt-12">
-              {/* Side-by-side comparison */}
-              <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-center text-gray-800">Your Home Today</h3>
-                  <img
-                    src={originalImage}
-                    alt="Original home"
-                    className="w-full rounded-xl shadow-lg"
-                  />
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-center bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
-                    With Professional Holiday Lights
-                  </h3>
-                  <img
-                    src={renderedImage}
-                    alt="Home with holiday lights"
-                    className="w-full rounded-xl shadow-lg"
-                  />
+              {/* Before/After Slider */}
+              <div className="max-w-4xl mx-auto">
+                <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
+                  Your Holiday Lighting Transformation
+                </h3>
+                <p className="text-center text-gray-600 mb-6">
+                  Drag the slider to see the before and after • Click the after image to view full size
+                </p>
+
+                <div
+                  id="before-after-container"
+                  className="relative overflow-hidden rounded-xl shadow-2xl cursor-col-resize select-none"
+                  style={{ aspectRatio: 'auto' }}
+                  onMouseDown={handleSliderStart}
+                  onMouseMove={handleSliderMove}
+                  onMouseUp={handleSliderEnd}
+                >
+                  {/* After Image (Background) */}
+                  <div className="relative">
+                    <img
+                      src={renderedImage}
+                      alt="Home with holiday lights"
+                      className="w-full h-auto block"
+                      onClick={() => setIsLightboxOpen(true)}
+                      style={{ cursor: 'zoom-in' }}
+                    />
+
+                    {/* Before Image (Clipped) */}
+                    <div
+                      className="absolute top-0 left-0 w-full h-full overflow-hidden"
+                      style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+                    >
+                      <img
+                        src={originalImage}
+                        alt="Original home"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    {/* Slider Handle */}
+                    <div
+                      className="absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-col-resize z-10"
+                      style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+                    >
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
+                        <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-amber-500 rounded-full"></div>
+                      </div>
+                    </div>
+
+                    {/* Labels */}
+                    <div className="absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      Before
+                    </div>
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      After
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              {/* Quota Exceeded Notice */}
+              {isQuotaExceeded && (
+                <div className="mt-8 max-w-4xl mx-auto">
+                  <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-400 rounded-lg p-6 shadow-md">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0">
+                        <svg className="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div className="ml-3">
+                        <h4 className="text-lg font-semibold text-amber-800">AI Preview Temporarily Unavailable</h4>
+                        <p className="text-amber-700 mt-1">
+                          Our AI image generation service has reached its daily quota. The image above shows your home as captured -
+                          our professional designers will create a custom lighting design just for you!
+                          <span className="font-semibold"> Contact us below for a personalized consultation and free quote.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Lead Capture Form - NEW */}
               {!leadSubmitted ? (
                 <div className="mt-12 max-w-2xl mx-auto">
                   <div className="bg-gradient-to-br from-blue-50 to-amber-50 rounded-xl p-8 shadow-lg">
                     <h4 className="text-2xl font-bold text-center mb-2 text-gray-800">
-                      Love What You See?
+                      {isQuotaExceeded ? "Get Your Custom Design!" : "Love What You See?"}
                     </h4>
                     <p className="text-center text-gray-600 mb-6">
-                      Get a free quote for this exact lighting design!
+                      {isQuotaExceeded
+                        ? "Our professional designers will create a custom holiday lighting plan specifically for your home!"
+                        : "Get a free quote for this exact lighting design!"
+                      }
                     </p>
 
                     <form onSubmit={submitLead} className="space-y-4">
@@ -741,6 +861,34 @@ export default function HolidayPreview() {
                 >
                   Try Another Address
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* Lightbox */}
+          {isLightboxOpen && renderedImage && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+              onClick={() => setIsLightboxOpen(false)}
+            >
+              <div className="relative max-w-full max-h-full">
+                <button
+                  onClick={() => setIsLightboxOpen(false)}
+                  className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-all z-10"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <img
+                  src={renderedImage}
+                  alt="Home with holiday lights - Full size"
+                  className="max-w-full max-h-full rounded-lg shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                />
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-4 py-2 rounded-full text-sm">
+                  Your Home with Professional Holiday Lights
+                </div>
               </div>
             </div>
           )}

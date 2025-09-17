@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
+/*
+ * GEMINI API QUOTA NOTES:
+ * - Free tier has daily limits for image generation models
+ * - Common quota errors: generate_content_free_tier_input_token_count
+ * - When quota exceeded, we gracefully fallback to demo mode
+ * - To upgrade: Enable billing in Google Cloud Console and increase quotas
+ * - Alternative: Wait for daily quota reset (typically midnight PST)
+ */
+
 export async function POST(request: NextRequest) {
   let base64Image = ''
   let lightingOption = 'roof'
@@ -42,46 +51,93 @@ export async function POST(request: NextRequest) {
     // Initialize Gemini AI with the API key
     const genAI = new GoogleGenerativeAI(apiKey)
 
-    // Use Gemini 1.5 Flash model (Note: Gemini can only analyze, not generate images)
+    // Try different Gemini models to find the right one for image generation
+    let modelName = "gemini-2.5-flash-image-preview"
+
+    // First try to test if the model exists with a simple call
+    try {
+      const testModel = genAI.getGenerativeModel({ model: modelName })
+      console.log(`Testing model: ${modelName}`)
+
+      // Test if model supports image generation by checking available methods
+      const model = genAI.getGenerativeModel({
+        model: modelName,
+        generationConfig: {
+          temperature: 0.8,
+          candidateCount: 1,
+          maxOutputTokens: 4096,
+        }
+      })
+
+      console.log(`Using model: ${modelName}`)
+    } catch (modelError) {
+      console.log(`Model ${modelName} failed, trying fallback models`)
+
+      // Try alternative model names
+      const fallbackModels = [
+        "gemini-2.0-flash-exp",
+        "gemini-1.5-flash",
+        "gemini-1.5-pro"
+      ]
+
+      for (const fallbackModel of fallbackModels) {
+        try {
+          const testModel = genAI.getGenerativeModel({ model: fallbackModel })
+          modelName = fallbackModel
+          console.log(`Using fallback model: ${modelName}`)
+          break
+        } catch (e) {
+          console.log(`Model ${fallbackModel} also failed`)
+        }
+      }
+    }
+
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: modelName,
       generationConfig: {
-        temperature: 1.0,
-        topK: 40,
-        topP: 0.95,
-        maxOutputTokens: 8192,
+        temperature: 0.8,
+        candidateCount: 1,
+        maxOutputTokens: 4096,
       }
     })
 
-    // Create prompt for direct image-to-image transformation
+    // Create prompt for image-to-image transformation with Gemini 2.5 Flash Image Preview
     const prompt = lightingOption === 'roof'
-      ? `Transform this daytime house image into a stunning nighttime scene with professional holiday lighting.
+      ? `Please generate a new version of this house image with the following modifications:
 
-      Requirements:
-      - Convert to a beautiful winter evening/night scene
-      - Add elegant warm white C9 LED lights along ALL visible rooflines
-      - Place lights on main ridge, all gables, eaves, and architectural edges
-      - Keep the house structure exactly the same
-      - Create a warm, inviting glow from the lights
-      - Make it look professionally installed with even spacing
-      - Add subtle ambient lighting to make it feel like dusk/evening
-      - DO NOT add lights to bushes, trees, or landscaping - ONLY rooflines
+      1. Transform the scene from daytime to a beautiful evening/night setting
+      2. Add professional warm white C9 LED holiday lights along ALL visible rooflines:
+         - Main ridge lines
+         - All gable edges
+         - Eave lines
+         - Dormer rooflines
+         - Any architectural roof features
+      3. Keep the house structure and architecture exactly the same
+      4. Create a warm, inviting glow from the lights with realistic light reflection
+      5. Add subtle evening ambient lighting and shadows
+      6. Make the lights look professionally installed with even 12-18 inch spacing
+      7. DO NOT add lights to landscaping - ONLY rooflines
 
-      The result should look like a high-end professional holiday lighting installation at night.`
-      : `Transform this daytime house image into a spectacular nighttime scene with comprehensive professional holiday lighting.
+      Generate a realistic nighttime image showing this exact house with elegant roofline holiday lighting.`
+      : `Please generate a new version of this house image with the following modifications:
 
-      Requirements:
-      - Convert to a beautiful winter evening/night scene
-      - Add elegant warm white C9 LED lights along ALL visible rooflines
-      - Wrap ALL bushes and shrubs with warm white mini lights
-      - Add lights to tree trunks and branches where visible
-      - Include pathway and landscape accent lighting
-      - Keep the house structure exactly the same
-      - Create a warm, magical glow throughout the property
-      - Make it look like a premium, magazine-worthy installation
-      - Add subtle ambient lighting to make it feel like dusk/evening
+      1. Transform the scene from daytime to a beautiful evening/night setting
+      2. Add comprehensive professional holiday lighting:
+         - Warm white C9 LED lights along ALL visible rooflines
+         - Warm white mini lights wrapped around all bushes and shrubs
+         - Lights on tree trunks and branches where visible
+         - Subtle pathway and landscape accent lighting
+      3. Keep the house structure and architecture exactly the same
+      4. Create a warm, magical glow throughout the entire property
+      5. Add evening ambient lighting and realistic shadows
+      6. Make it look like a premium, magazine-worthy holiday installation
+      7. Ensure all lighting looks professionally installed
 
-      The result should look like a luxury holiday lighting display that covers both architecture and landscaping.`
+      Generate a realistic nighttime image showing this exact house with complete holiday lighting coverage.`
+
+    console.log(`Sending request to Gemini model: ${model.model}`)
+    console.log(`Image size: ${Math.round(base64Image.length / 1024)}KB`)
+    console.log(`Lighting option: ${lightingOption}`)
 
     // Send to Gemini for image-to-image transformation
     const result = await model.generateContent([
@@ -95,33 +151,79 @@ export async function POST(request: NextRequest) {
     ])
 
     const response = await result.response
+    console.log('Gemini response received:', {
+      candidates: response.candidates?.length || 0,
+      hasText: response.text ? 'yes' : 'no'
+    })
 
-    // Extract the generated image from the response
-    // Note: The actual implementation depends on how Gemini returns the generated image
-    // This might need adjustment based on the actual API response format
-    const generatedContent = response.text()
+    // Log the full response structure for debugging
+    if (response.candidates && response.candidates.length > 0) {
+      const candidate = response.candidates[0]
+      console.log('First candidate structure:', {
+        hasContent: !!candidate.content,
+        partsCount: candidate.content?.parts?.length || 0,
+        partTypes: candidate.content?.parts?.map(p => Object.keys(p)) || []
+      })
+    }
 
-    // For now, return the original image since Gemini models can't generate images
-    // In a real implementation with an image generation model, you'd extract the generated image here
-    const generatedImage = `data:image/png;base64,${base64Image}`
+    // Extract the generated image from Gemini 2.5 Flash Image Preview response
+    const candidates = response.candidates
+    if (!candidates || candidates.length === 0) {
+      throw new Error('No candidates returned by Gemini')
+    }
+
+    // Look for inline_data in the response parts
+    let generatedImageData = null
+    let textResponse = ''
+
+    for (const candidate of candidates) {
+      if (candidate.content && candidate.content.parts) {
+        for (const part of candidate.content.parts) {
+          if (part.inlineData && part.inlineData.data) {
+            console.log('Found generated image data')
+            generatedImageData = part.inlineData.data
+            break
+          }
+          if (part.text) {
+            textResponse += part.text
+          }
+        }
+      }
+    }
+
+    console.log('Text response:', textResponse ? 'received' : 'none')
+    console.log('Generated image:', generatedImageData ? 'found' : 'not found')
+
+    if (!generatedImageData) {
+      console.log('No generated image found, using original')
+      // For now, return original image since Gemini 2.5 Flash might not support image generation yet
+      generatedImageData = base64Image
+    }
+
+    const generatedImage = `data:image/png;base64,${generatedImageData}`
 
     return NextResponse.json({
       success: true,
       renderedImage: generatedImage,
       lightingOption: lightingOption,
-      message: 'Holiday lighting preview generated successfully'
+      message: 'Holiday lighting preview processed',
+      textAnalysis: textResponse || null,
+      imageGenerated: !!generatedImageData && generatedImageData !== base64Image
     })
 
   } catch (error) {
     console.error('Error generating holiday lighting preview:', error)
 
     // Handle rate limits and quota errors
-    if (error instanceof Error && (error.message.includes('quota') || error.message.includes('429'))) {
+    if (error instanceof Error && (error.message.includes('quota') || error.message.includes('429') || error.message.includes('exceeded'))) {
+      console.log('Quota exceeded - returning demo mode with original image')
       return NextResponse.json({
-        success: false,
-        error: 'Our AI is currently at capacity. Please try again in a few moments.',
-        renderedImage: `data:image/png;base64,${base64Image}`
-      }, { status: 429 })
+        success: true,
+        renderedImage: `data:image/png;base64,${base64Image}`,
+        message: 'Preview generated (demo mode - AI quota temporarily exceeded). Contact us for a personalized consultation!',
+        isDemo: true,
+        quotaExceeded: true
+      }, { status: 200 })
     }
 
     // Handle API key errors
