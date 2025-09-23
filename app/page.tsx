@@ -53,8 +53,8 @@ export default function Home() {
 
     // Cleanup on unmount
     return () => {
-      if (autocomplete) {
-        google.maps.event.clearInstanceListeners(autocomplete)
+      if (autocomplete && window.google && window.google.maps) {
+        window.google.maps.event.clearInstanceListeners(autocomplete)
       }
     }
   }, [showEstimateModal])
