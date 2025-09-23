@@ -1,14 +1,46 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Script from 'next/script'
 import HolidayPreview from '@/components/HolidayPreview'
+
+declare global {
+  interface Window {
+    google: any
+    initAutocomplete: () => void
+  }
+}
 
 export default function Home() {
   const [showEstimateModal, setShowEstimateModal] = useState(false)
   const [estimateAddress, setEstimateAddress] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const addressInputRef = useRef<HTMLInputElement>(null)
+  const [autocomplete, setAutocomplete] = useState<any>(null)
+
+  useEffect(() => {
+    if (showEstimateModal && window.google && addressInputRef.current && !autocomplete) {
+      const newAutocomplete = new window.google.maps.places.Autocomplete(
+        addressInputRef.current,
+        {
+          types: ['address'],
+          componentRestrictions: { country: 'us' },
+          fields: ['formatted_address']
+        }
+      )
+
+      newAutocomplete.addListener('place_changed', () => {
+        const place = newAutocomplete.getPlace()
+        if (place.formatted_address) {
+          setEstimateAddress(place.formatted_address)
+        }
+      })
+
+      setAutocomplete(newAutocomplete)
+    }
+  }, [showEstimateModal, autocomplete])
 
   const handleEstimateSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,6 +67,7 @@ export default function Home() {
           setShowEstimateModal(false)
           setSubmitSuccess(false)
           setEstimateAddress('')
+          setAutocomplete(null)
         }, 3000)
       }
     } catch (error) {
@@ -543,6 +576,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Google Maps Script for Autocomplete */}
+      {showEstimateModal && (
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          strategy="lazyOnload"
+        />
+      )}
+
       {/* Instant Estimate Modal */}
       {showEstimateModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -562,7 +603,11 @@ export default function Home() {
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-2xl font-bold text-gray-900">Get Your Instant Estimate</h3>
                   <button
-                    onClick={() => setShowEstimateModal(false)}
+                    onClick={() => {
+                      setShowEstimateModal(false)
+                      setEstimateAddress('')
+                      setAutocomplete(null)
+                    }}
                     className="text-gray-400 hover:text-gray-600 transition-colors"
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -581,12 +626,13 @@ export default function Home() {
                       Property Address
                     </label>
                     <input
+                      ref={addressInputRef}
                       type="text"
                       id="address"
                       value={estimateAddress}
                       onChange={(e) => setEstimateAddress(e.target.value)}
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
-                      placeholder="123 Main St, Richmond, VA 23220"
+                      placeholder="Start typing your address..."
                       required
                     />
                     <p className="text-xs text-gray-500 mt-2">
