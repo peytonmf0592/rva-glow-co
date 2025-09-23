@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
     const response = await result.response
     console.log('Gemini response received:', {
       candidates: response.candidates?.length || 0,
-      hasText: response.text ? 'yes' : 'no'
+      hasText: typeof response.text === 'function' ? 'yes' : 'no'
     })
 
     // Log the full response structure for debugging
