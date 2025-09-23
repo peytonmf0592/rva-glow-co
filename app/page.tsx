@@ -5,6 +5,45 @@ import Link from 'next/link'
 import HolidayPreview from '@/components/HolidayPreview'
 
 export default function Home() {
+  const [showEstimateModal, setShowEstimateModal] = useState(false)
+  const [estimateAddress, setEstimateAddress] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+
+  const handleEstimateSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      // Send to your API endpoint for quote requests
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          address: estimateAddress,
+          source: 'instant-estimate',
+          message: `Customer requested instant estimate for address: ${estimateAddress} (for Google Earth lookup)`,
+          name: 'Instant Estimate Request',
+          email: 'pending@rvaglowco.com',
+          phone: 'pending'
+        })
+      })
+
+      if (response.ok) {
+        setSubmitSuccess(true)
+        setTimeout(() => {
+          setShowEstimateModal(false)
+          setSubmitSuccess(false)
+          setEstimateAddress('')
+        }, 3000)
+      }
+    } catch (error) {
+      console.error('Error submitting estimate request:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       {/* Hero Section */}
@@ -241,12 +280,12 @@ export default function Home() {
             >
               Book a Free Design Consult →
             </Link>
-            <Link
-              href="/contact"
+            <button
+              onClick={() => setShowEstimateModal(true)}
               className="inline-block bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transform transition-all duration-300"
             >
               Request Instant Estimate
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -503,6 +542,75 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Instant Estimate Modal */}
+      {showEstimateModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-8 transform transition-all animate-fade-in">
+            {submitSuccess ? (
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Address Received!</h3>
+                <p className="text-gray-600">We'll prepare your instant estimate and get back to you shortly.</p>
+              </div>
+            ) : (
+              <>
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-2xl font-bold text-gray-900">Get Your Instant Estimate</h3>
+                  <button
+                    onClick={() => setShowEstimateModal(false)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <p className="text-gray-600 mb-6">
+                  Enter your address and we'll use Google Earth to provide you with a quick estimate for your holiday lighting installation.
+                </p>
+
+                <form onSubmit={handleEstimateSubmit}>
+                  <div className="mb-6">
+                    <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Property Address
+                    </label>
+                    <input
+                      type="text"
+                      id="address"
+                      value={estimateAddress}
+                      onChange={(e) => setEstimateAddress(e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
+                      placeholder="123 Main St, Richmond, VA 23220"
+                      required
+                    />
+                    <p className="text-xs text-gray-500 mt-2">
+                      We'll look up your property on Google Earth to estimate lighting requirements
+                    </p>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !estimateAddress}
+                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Get My Estimate →'}
+                  </button>
+
+                  <p className="text-center text-xs text-gray-500 mt-4">
+                    For a detailed quote, <Link href="/booking" className="text-blue-600 hover:underline">book a free consultation</Link>
+                  </p>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </>
   )
 }
