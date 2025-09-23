@@ -1,5 +1,3 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import Image from 'next/image'
 
 const services = [
@@ -64,7 +62,6 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-blue-600 to-amber-500 text-white py-20">
@@ -201,7 +198,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

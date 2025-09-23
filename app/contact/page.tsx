@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -53,7 +51,6 @@ export default function ContactPage() {
   if (submitted) {
     return (
       <>
-        <Header />
         <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-20">
           <div className="max-w-2xl mx-auto px-4 text-center">
             <div className="bg-green-50 border-2 border-green-200 rounded-xl p-12">
@@ -73,14 +70,12 @@ export default function ContactPage() {
             </div>
           </div>
         </main>
-        <Footer />
       </>
     )
   }
 
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-blue-600 to-amber-500 text-white py-20">
@@ -304,7 +299,6 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }
