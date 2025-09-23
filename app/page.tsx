@@ -21,26 +21,43 @@ export default function Home() {
   const [autocomplete, setAutocomplete] = useState<any>(null)
 
   useEffect(() => {
-    if (showEstimateModal && window.google && addressInputRef.current && !autocomplete) {
-      const newAutocomplete = new window.google.maps.places.Autocomplete(
-        addressInputRef.current,
-        {
-          types: ['address'],
-          componentRestrictions: { country: 'us' },
-          fields: ['formatted_address']
-        }
-      )
+    if (showEstimateModal && addressInputRef.current) {
+      // Check if Google Maps is loaded
+      const initializeAutocomplete = () => {
+        if (window.google && window.google.maps && window.google.maps.places && addressInputRef.current) {
+          const newAutocomplete = new window.google.maps.places.Autocomplete(
+            addressInputRef.current,
+            {
+              types: ['address'],
+              componentRestrictions: { country: 'us' },
+              fields: ['formatted_address']
+            }
+          )
 
-      newAutocomplete.addListener('place_changed', () => {
-        const place = newAutocomplete.getPlace()
-        if (place.formatted_address) {
-          setEstimateAddress(place.formatted_address)
-        }
-      })
+          newAutocomplete.addListener('place_changed', () => {
+            const place = newAutocomplete.getPlace()
+            if (place.formatted_address) {
+              setEstimateAddress(place.formatted_address)
+            }
+          })
 
-      setAutocomplete(newAutocomplete)
+          setAutocomplete(newAutocomplete)
+        } else {
+          // Try again in 100ms if Google Maps isn't loaded yet
+          setTimeout(initializeAutocomplete, 100)
+        }
+      }
+
+      initializeAutocomplete()
     }
-  }, [showEstimateModal, autocomplete])
+
+    // Cleanup on unmount
+    return () => {
+      if (autocomplete) {
+        google.maps.event.clearInstanceListeners(autocomplete)
+      }
+    }
+  }, [showEstimateModal])
 
   const handleEstimateSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -314,7 +331,11 @@ export default function Home() {
               Book a Free Design Consult →
             </Link>
             <button
-              onClick={() => setShowEstimateModal(true)}
+              onClick={() => {
+                setEstimateAddress('') // Clear any previous address
+                setSubmitSuccess(false) // Reset success state
+                setShowEstimateModal(true)
+              }}
               className="inline-block bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transform transition-all duration-300"
             >
               Request Instant Estimate
@@ -577,12 +598,10 @@ export default function Home() {
       </section>
 
       {/* Google Maps Script for Autocomplete */}
-      {showEstimateModal && (
-        <Script
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-          strategy="lazyOnload"
-        />
-      )}
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+        strategy="afterInteractive"
+      />
 
       {/* Instant Estimate Modal */}
       {showEstimateModal && (
