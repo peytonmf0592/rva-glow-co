@@ -228,16 +228,26 @@ export default function Home() {
               Light Up Your Holidays
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-100 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            Professional Holiday Light Installation in Richmond, VA
+          <p className="text-xl md:text-2xl mb-4 text-gray-100 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            RVA Glow Co turns your home into a seasonal showstopper — full-service, fully custom, and completely hands-off for you.
           </p>
-          <Link
-            href="/booking"
-            className="inline-block bg-gradient-to-r from-blue-500 to-amber-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transform transition-all duration-300 shadow-lg animate-fade-in"
-            style={{ animationDelay: '1s' }}
-          >
-            Book Your Lights Now →
-          </Link>
+          <p className="text-lg md:text-xl mb-8 text-gray-200 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+            From crisp roofline accents to elegant tree and shrub highlights, we design, install, maintain, remove, and securely store your lights — all included.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
+            <Link
+              href="/booking"
+              className="inline-block bg-gradient-to-r from-blue-500 to-amber-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transform transition-all duration-300 shadow-lg"
+            >
+              Book a Free Design Consult →
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-block bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transform transition-all duration-300"
+            >
+              Request Instant Estimate
+            </Link>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
@@ -258,17 +268,8 @@ export default function Home() {
 
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg mx-auto text-center">
-              <p className="text-xl text-gray-800 mb-6 leading-relaxed">
-                Welcome to RVA Glow Co — where holiday lighting becomes an investment in joy, comfort, and curb appeal.
-              </p>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                We&apos;re not just installing lights — we&apos;re helping you transform your property into a show-stopping celebration of the season. Our design-forward approach and white-glove service make your home the envy of the neighborhood without lifting a finger.
-              </p>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Whether it&apos;s a classic, elegant roofline or a full-scale winter wonderland, we tailor every install to match your vision and maximize your home&apos;s beauty. From consultation to takedown, every step is handled with care, precision, and professionalism.
-              </p>
-              <p className="text-lg text-gray-800 mb-12 font-medium">
-                Let RVA Glow Co handle the work — so you can focus on what matters most this holiday season. Your home deserves it.
+              <p className="text-lg text-gray-700 leading-relaxed">
+                At RVA Glow Co we make holiday lighting simple and beautiful. Tell us the look you want — classic warm white, bold color palettes, or a refined accent treatment — and we'll place lights exactly where you want them: eaves, gutters, ridgelines, dormers, trees, and landscape features. Our team handles professional design, expert installation with fall-safe practices, seasonal maintenance, careful takedown, and secure year-round storage. Choose to lease or own your lights; every plan includes install, on-season servicing, takedown, and storage. Any house is in our wheelhouse — no roof is too steep.
               </p>
             </div>
 
@@ -291,78 +292,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Preview */}
+      {/* Quick Features */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose RVA Glow Co</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-amber-500 mx-auto mb-8"></div>
-            <p className="text-xl text-gray-600">Professional installation from rooflines to trees</p>
+            <p className="text-xl text-gray-600">Full-service holiday lighting that's truly hands-off for you</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Service 1 - Roofline Lighting */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 transform">
-              <div className="h-48 relative overflow-hidden">
-                <img
-                  src="/images/roofline-lighting.png"
-                  alt="Professional roofline lighting installation"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature 1 - True Full Service */}
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-2xl">✨</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Roofline Lighting</h3>
-                <p className="text-gray-600">Classic C9 or mini lights along your roofline for that perfect holiday glow</p>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">True Full Service</h3>
+              <p className="text-gray-600">Design → Install → Seasonal maintenance → Takedown → Storage. We handle everything from start to finish and beyond.</p>
             </div>
 
-            {/* Service 2 - Tree Wrapping */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 transform">
-              <div className="h-48 relative overflow-hidden">
-                <img
-                  src="/images/tree-wrapping.png"
-                  alt="Professional tree wrapping with lights"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600"></div>
+            {/* Feature 2 - Precise Placement */}
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-2xl">🎯</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Tree Wrapping</h3>
-                <p className="text-gray-600">Transform your trees into magical pillars of light with our wrapping service</p>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Precise Placement</h3>
+              <p className="text-gray-600">Rooflines, eaves, gutters, dormers, trees, shrubs, and accent features — we light exactly where you want them.</p>
             </div>
 
-            {/* Service 3 - Custom Designs */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 transform">
-              <div className="h-48 relative overflow-hidden">
-                <img
-                  src="/images/custom-designs.png"
-                  alt="Custom holiday light designs"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+            {/* Feature 3 - Color Options */}
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-2xl">🎨</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Custom Designs</h3>
-                <p className="text-gray-600">Unique displays tailored to your home&apos;s architecture and style</p>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Color Options Without Automation</h3>
+              <p className="text-gray-600">Pick the color palette you want — warm white, multicolor, or custom themes (no synchronized effects).</p>
             </div>
 
-            {/* Service 4 - Holiday Decor */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 transform">
-              <div className="h-48 relative overflow-hidden">
-                <img
-                  src="/images/holiday-decor.png"
-                  alt="Holiday wreaths and decorations"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600"></div>
+            {/* Feature 4 - Flexible Ownership */}
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-2xl">💎</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Holiday Decor</h3>
-                <p className="text-gray-600">Wreaths, garlands, and festive decorations to complete your display</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Flexible Ownership</h3>
+              <p className="text-gray-600">Lease or buy — transparent pricing with core services included in every package.</p>
+            </div>
+
+            {/* Feature 5 - Safety & Quality */}
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-2xl">🛡️</span>
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Safety & Quality</h3>
+              <p className="text-gray-600">Fall protection, weather-rated bulbs & wiring, and industry-grade termination caps for lasting beauty.</p>
+            </div>
+
+            {/* Feature 6 - Estate & Upgrade Options */}
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-2xl">🏰</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Estate & Upgrade Options</h3>
+              <p className="text-gray-600">Larger-scale installs and smart controls for manual on/off and scheduling available.</p>
             </div>
           </div>
 
@@ -494,20 +485,20 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-slate-800 to-blue-900 text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Ready to Make Your Home Shine?</h2>
-          <p className="text-xl mb-8 text-blue-100">Book early and save 20% on your holiday light installation!</p>
+          <h2 className="text-4xl font-bold mb-6">Ready to glow?</h2>
+          <p className="text-xl mb-8 text-blue-100">Book a free design consult or request an instant estimate and we'll show you exactly how your home will look.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/booking"
               className="bg-white text-slate-800 px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             >
-              Book Now
+              Book Free Design Consult
             </Link>
             <Link
               href="/contact"
               className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-slate-800 transition-all duration-200"
             >
-              Get Free Quote
+              Request Instant Estimate
             </Link>
           </div>
         </div>
