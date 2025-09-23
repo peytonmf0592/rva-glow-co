@@ -77,16 +77,12 @@ export default function ContactPage() {
   return (
     <>
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-br from-blue-600 to-amber-500 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-4">Contact Us</h1>
-            <p className="text-xl opacity-90">We're here to help make your holidays magical</p>
-          </div>
-        </div>
-
         {/* Contact Section */}
         <div className="max-w-7xl mx-auto px-4 py-16">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">Contact Us</h1>
+            <p className="text-xl text-gray-600">We're here to help make your holidays magical</p>
+          </div>
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-white rounded-2xl shadow-xl p-8">

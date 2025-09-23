@@ -78,18 +78,15 @@ export default function BookingPage() {
   return (
     <>
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-br from-blue-600 to-amber-500 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-4">Book Your Installation</h1>
-            <p className="text-xl opacity-90">Transform your home with professional holiday lighting</p>
-          </div>
-        </div>
-
         {/* Booking Form */}
         <div className="max-w-3xl mx-auto px-4 py-12">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">Book Your Installation</h1>
+            <p className="text-xl text-gray-600">Transform your home with professional holiday lighting</p>
+          </div>
+
           <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">
               Schedule Your Free Consultation
             </h2>
 

@@ -63,16 +63,12 @@ export default function ServicesPage() {
   return (
     <>
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-br from-blue-600 to-amber-500 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-4">Our Services</h1>
-            <p className="text-xl opacity-90">Professional holiday lighting tailored to your vision and budget</p>
-          </div>
-        </div>
-
         {/* Services Grid */}
         <div className="max-w-7xl mx-auto px-4 py-16">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">Our Services</h1>
+            <p className="text-xl text-gray-600">Professional holiday lighting tailored to your vision and budget</p>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
