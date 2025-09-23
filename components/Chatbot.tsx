@@ -63,7 +63,7 @@ export default function Chatbot() {
 
     // Safety/Insurance
     if (lowerMessage.includes('insur') || lowerMessage.includes('safe') || lowerMessage.includes('licens')) {
-      return "Absolutely! We're fully licensed and insured. Our team is trained in ladder safety and electrical work. Your home and our team are completely protected."
+      return "Absolutely! We're fully insured. Our team is trained in ladder safety and electrical work. Your home and our team are completely protected."
     }
 
     // Greeting

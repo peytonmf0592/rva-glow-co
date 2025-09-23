@@ -246,7 +246,7 @@ export default function BookingPage() {
                     </svg>
                   </div>
                   <h3 className="font-semibold text-gray-800 mb-1">Professional Service</h3>
-                  <p className="text-sm text-gray-600">Licensed & insured experts</p>
+                  <p className="text-sm text-gray-600">Fully insured experts</p>
                 </div>
               </div>
             </div>

@@ -276,7 +276,7 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-8 mt-12">
               <div className="flex items-center space-x-2 bg-gray-50 px-6 py-3 rounded-full animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 <span className="text-green-500 text-xl">✓</span>
-                <span className="text-gray-800 font-medium">Licensed & Insured</span>
+                <span className="text-gray-800 font-medium">Fully Insured</span>
               </div>
               <div className="flex items-center space-x-2 bg-gray-50 px-6 py-3 rounded-full animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <span className="text-green-500 text-xl">✓</span>
