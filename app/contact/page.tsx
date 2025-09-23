@@ -164,7 +164,7 @@ export default function ContactPage() {
                     <option value="quote">Request a Quote</option>
                     <option value="booking">Schedule Installation</option>
                     <option value="support">Customer Support</option>
-                    <option value="commercial">Commercial Services</option>
+                    <option value="service">Service Call</option>
                   </select>
                 </div>
 
