@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Script from 'next/script'
+import { useRouter } from 'next/navigation'
 import HolidayPreview from '@/components/HolidayPreview'
 
 declare global {
@@ -13,6 +14,7 @@ declare global {
 }
 
 export default function Home() {
+  const router = useRouter()
   const [showEstimateModal, setShowEstimateModal] = useState(false)
   const [estimateAddress, setEstimateAddress] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -59,39 +61,36 @@ export default function Home() {
     }
   }, [showEstimateModal])
 
-  const handleEstimateSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleEstimateSubmit = (e: React.FormEvent) => {
+    console.log('=== handleEstimateSubmit called ===')
+    console.log('Current address:', estimateAddress)
 
-    try {
-      // Send to your API endpoint for quote requests
-      const response = await fetch('/api/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          address: estimateAddress,
-          source: 'instant-estimate',
-          message: `Customer requested instant estimate for address: ${estimateAddress} (for Google Earth lookup)`,
-          name: 'Instant Estimate Request',
-          email: 'pending@rvaglowco.com',
-          phone: 'pending'
-        })
-      })
-
-      if (response.ok) {
-        setSubmitSuccess(true)
-        setTimeout(() => {
-          setShowEstimateModal(false)
-          setSubmitSuccess(false)
-          setEstimateAddress('')
-          setAutocomplete(null)
-        }, 3000)
-      }
-    } catch (error) {
-      console.error('Error submitting estimate request:', error)
-    } finally {
-      setIsSubmitting(false)
+    if (!estimateAddress || !estimateAddress.trim()) {
+      console.log('No address entered, returning')
+      return
     }
+
+    // Store the address before any state changes
+    const addressToPass = estimateAddress
+    console.log('Address to pass:', addressToPass)
+
+    // Show submitting state
+    setIsSubmitting(true)
+    setSubmitSuccess(true)
+    console.log('States updated - showing success message')
+
+    // Direct navigation after a short delay
+    const timeoutId = window.setTimeout(() => {
+      console.log('Timeout executed - navigating now!')
+      const encodedAddress = encodeURIComponent(addressToPass)
+      const bookingUrl = `/booking?address=${encodedAddress}`
+      console.log('Final URL:', bookingUrl)
+
+      // Force navigation using location.replace
+      window.location.replace(bookingUrl)
+    }, 1500)
+
+    console.log('Timeout scheduled with ID:', timeoutId)
   }
 
   return (
@@ -635,42 +634,85 @@ export default function Home() {
                   </button>
                 </div>
 
-                <p className="text-gray-600 mb-6">
-                  Enter your address and we'll use Google Earth to provide you with a quick estimate for your holiday lighting installation.
-                </p>
-
-                <form onSubmit={handleEstimateSubmit}>
-                  <div className="mb-6">
-                    <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Property Address
-                    </label>
-                    <input
-                      ref={addressInputRef}
-                      type="text"
-                      id="address"
-                      value={estimateAddress}
-                      onChange={(e) => setEstimateAddress(e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
-                      placeholder="Start typing your address..."
-                      required
-                    />
-                    <p className="text-xs text-gray-500 mt-2">
-                      We'll look up your property on Google Earth to estimate lighting requirements
-                    </p>
+                {submitSuccess ? (
+                  <div className="text-center py-8">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+                      <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Success! Preparing your estimate...</h3>
+                    <p className="text-gray-600">Redirecting you to complete your booking...</p>
                   </div>
+                ) : (
+                  <>
+                    <p className="text-gray-600 mb-6">
+                      Enter your address and we'll use Google Earth to provide you with a quick estimate for your holiday lighting installation.
+                    </p>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting || !estimateAddress}
-                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                  >
-                    {isSubmitting ? 'Submitting...' : 'Get My Estimate →'}
-                  </button>
+                    <div>
+                      <div className="mb-6">
+                        <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-2">
+                          Property Address
+                        </label>
+                        <input
+                          ref={addressInputRef}
+                          type="text"
+                          id="address"
+                          value={estimateAddress}
+                          onChange={(e) => setEstimateAddress(e.target.value)}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter' && estimateAddress.trim()) {
+                              e.preventDefault()
+                              handleEstimateSubmit(e)
+                            }
+                          }}
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
+                          placeholder="Start typing your address..."
+                        />
+                        <p className="text-xs text-gray-500 mt-2">
+                          We'll look up your property on Google Earth to estimate lighting requirements
+                        </p>
+                      </div>
 
-                  <p className="text-center text-xs text-gray-500 mt-4">
-                    For a detailed quote, <Link href="/booking" className="text-blue-600 hover:underline">book a free consultation</Link>
-                  </p>
-                </form>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          // Immediate test
+                          alert(`Button clicked! Address: ${estimateAddress}`)
+                          console.log('BUTTON CLICKED!', estimateAddress)
+
+                          if (!estimateAddress || estimateAddress.trim() === '') {
+                            alert('Please enter an address')
+                            return
+                          }
+
+                          // Direct navigation without any state changes
+                          const encodedAddress = encodeURIComponent(estimateAddress)
+                          const url = `/booking?address=${encodedAddress}`
+                          console.log('Navigating to:', url)
+                          window.location.href = url
+                        }}
+                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
+                      >
+                        Get My Estimate →
+                      </button>
+
+                      <p className="text-center text-xs text-gray-500 mt-4">
+                        For a detailed quote, <Link href="/booking" className="text-blue-600 hover:underline">book a free consultation</Link>
+                      </p>
+
+                      {/* Debug button */}
+                      <button
+                        type="button"
+                        onClick={() => alert('Test button works!')}
+                        className="w-full mt-4 py-2 bg-gray-500 text-white rounded"
+                      >
+                        Test Button (Debug)
+                      </button>
+                    </div>
+                  </>
+                )}
               </>
             )}
           </div>

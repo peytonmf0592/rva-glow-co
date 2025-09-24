@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 export default function BookingPage() {
+  const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +17,17 @@ export default function BookingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
+
+  // Pre-fill address from URL parameter if present
+  useEffect(() => {
+    const addressFromUrl = searchParams.get('address')
+    if (addressFromUrl) {
+      setFormData(prev => ({
+        ...prev,
+        address: decodeURIComponent(addressFromUrl)
+      }))
+    }
+  }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
