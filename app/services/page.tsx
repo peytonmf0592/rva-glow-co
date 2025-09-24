@@ -3,7 +3,7 @@ import Image from 'next/image'
 const services = [
   {
     title: 'Roofline Lighting',
-    price: 'Starting at $499',
+    price: '',
     image: '/images/roofline-lighting.png',
     features: [
       'Professional-grade C9 LED bulbs',
@@ -17,7 +17,7 @@ const services = [
   },
   {
     title: 'Complete Package',
-    price: 'Custom Quote',
+    price: '',
     image: '/images/tree-wrapping.png',
     features: [
       'Full roofline coverage',
@@ -58,9 +58,8 @@ export default function ServicesPage() {
                   />
                 </div>
                 <div className="p-8">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="mb-4">
                     <h3 className="text-2xl font-bold text-gray-800">{service.title}</h3>
-                    <span className="text-lg font-semibold text-blue-600">{service.price}</span>
                   </div>
                   <p className="text-gray-600 mb-6">{service.description}</p>
                   <ul className="space-y-3 mb-6">
