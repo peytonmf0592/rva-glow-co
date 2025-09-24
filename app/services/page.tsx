@@ -28,34 +28,6 @@ const services = [
     ],
     description: 'Our most popular package combines architectural and landscape lighting for a truly magical display.',
     popular: true
-  },
-  {
-    title: 'Premium Collection',
-    price: '$15+ per linear foot',
-    image: '/images/custom-designs.png',
-    features: [
-      'Custom design consultation',
-      'Premium LED technology',
-      'Animated light sequences',
-      'Color-changing options',
-      'Priority maintenance service'
-    ],
-    description: 'For those who want the absolute best - featuring cutting-edge technology and exclusive designs.',
-    popular: false
-  },
-  {
-    title: 'Commercial Services',
-    price: 'Custom Quote',
-    image: '/images/holiday-decor.png',
-    features: [
-      'Large-scale installations',
-      'Custom branding integration',
-      'Scheduled maintenance',
-      'Liability insurance included',
-      'Multi-location support'
-    ],
-    description: 'Professional holiday lighting solutions for businesses, HOAs, and commercial properties.',
-    popular: false
   }
 ]
 
