@@ -590,7 +590,7 @@ export default function Home() {
               href="/contact"
               className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-slate-800 transition-all duration-200"
             >
-              Request Instant Estimate
+              Get Free Quote
             </Link>
           </div>
         </div>

@@ -72,10 +72,10 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   <a
-                    href="/booking"
+                    href={`/contact?service=${service.title.toLowerCase().replace(' ', '-')}`}
                     className="block text-center px-6 py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
                   >
-                    Get Started →
+                    Get Quote →
                   </a>
                 </div>
               </div>
