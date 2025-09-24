@@ -181,9 +181,8 @@ export default function BookingPage() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
                 >
-                  <option value="roofline">Roofline Only ($7-10 per ft)</option>
-                  <option value="complete">Complete Package - Roofline + Landscape ($10-15 per ft)</option>
-                  <option value="premium">Premium Package - Full Property Coverage ($15+ per ft)</option>
+                  <option value="roofline">Roofline Only</option>
+                  <option value="complete">Complete Package - Roofline + Landscape</option>
                   <option value="custom">Custom Design - Let's Discuss</option>
                 </select>
               </div>

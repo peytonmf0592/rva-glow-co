@@ -38,7 +38,7 @@ export default function Chatbot() {
 
     // Pricing questions
     if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
-      return "Our packages start at $499 for the Classic Glow package! We offer three tiers to fit every budget and home size. Would you like me to tell you more about our packages?"
+      return "Our pricing ranges from $8-$15 per linear foot, depending on the height and steepness of your roofline. Some parts of your house may cost more than others due to accessibility challenges. Steeper roofs and higher peaks require specialized equipment and additional safety measures. Would you like a free consultation to get an exact quote for your home?"
     }
 
     // Booking questions

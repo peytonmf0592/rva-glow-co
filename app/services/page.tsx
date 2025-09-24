@@ -3,7 +3,7 @@ import Image from 'next/image'
 const services = [
   {
     title: 'Roofline Lighting',
-    price: '$7-10 per linear foot',
+    price: 'Starting at $499',
     image: '/images/roofline-lighting.png',
     features: [
       'Professional-grade C9 LED bulbs',
@@ -17,7 +17,7 @@ const services = [
   },
   {
     title: 'Complete Package',
-    price: '$10-15 per linear foot',
+    price: 'Custom Quote',
     image: '/images/tree-wrapping.png',
     features: [
       'Full roofline coverage',
