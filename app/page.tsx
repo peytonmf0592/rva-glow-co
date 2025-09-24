@@ -403,13 +403,13 @@ export default function Home() {
               <p className="text-gray-600">Design → Install → Seasonal maintenance → Takedown → Storage. We handle everything from start to finish and beyond.</p>
             </div>
 
-            {/* Feature 2 - Precise Placement */}
+            {/* Feature 2 - Safe Installation */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🎯</span>
+                <span className="text-white text-2xl">🛡️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Precise Placement</h3>
-              <p className="text-gray-600">Rooflines, eaves, gutters, dormers, trees, shrubs, and accent features — we light exactly where you want them.</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Damage-Free Installation</h3>
+              <p className="text-gray-600">Installation uses removable clips that attach securely without damaging your roof, gutters, or shingles. No holes, no nails, no worries.</p>
             </div>
 
             {/* Feature 3 - Color Options */}
@@ -418,7 +418,7 @@ export default function Home() {
                 <span className="text-white text-2xl">🎨</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Color Options Without Automation</h3>
-              <p className="text-gray-600">Pick the color palette you want — warm white, multicolor, or custom themes (no synchronized effects).</p>
+              <p className="text-gray-600">Pick the color palette you want — warm white, multicolor, or custom themes.</p>
             </div>
 
             {/* Feature 4 - Flexible Ownership */}
