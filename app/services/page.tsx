@@ -23,8 +23,7 @@ const services = [
       'Full roofline coverage',
       'Tree and shrub wrapping',
       'Landscape accent lighting',
-      'Pathway illumination',
-      'Premium timer system'
+      'Pathway illumination'
     ],
     description: 'Our most popular package combines architectural and landscape lighting for a truly magical display.',
     popular: true
