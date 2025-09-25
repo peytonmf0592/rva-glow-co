@@ -463,57 +463,6 @@ export default function Home() {
       {/* Holiday Preview Section */}
       <HolidayPreview />
 
-      {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-amber-500 mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 border border-gray-200">
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-amber-400 text-xl">⭐</span>
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4 italic">
-                &quot;RVA Glow Co transformed our home into the best-looking house on the block! Professional, efficient, and the results were stunning.&quot;
-              </p>
-              <div className="font-semibold text-gray-900">- Sarah M., Short Pump</div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gradient-to-br from-gray-50 to-amber-50 rounded-xl p-6 border border-gray-200">
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-amber-400 text-xl">⭐</span>
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4 italic">
-                &quot;Best decision we made this holiday season! The team was professional, the installation was flawless, and removal was included!&quot;
-              </p>
-              <div className="font-semibold text-gray-900">- Mike T., Richmond</div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 border border-gray-200">
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-amber-400 text-xl">⭐</span>
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4 italic">
-                &quot;The custom design they created for our business was absolutely perfect. Increased our holiday traffic significantly!&quot;
-              </p>
-              <div className="font-semibold text-gray-900">- Lisa R., Midlothian</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Your Vision Our Precision Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
