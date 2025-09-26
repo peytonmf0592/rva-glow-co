@@ -118,37 +118,81 @@ export default function Chatbot() {
     <>
       {/* Chatbot Toggle Button */}
       <style jsx>{`
-        @keyframes shimmerRing {
+        @keyframes sparkle {
           0% {
-            transform: rotate(0deg);
+            transform: scale(0) rotate(0deg);
+            opacity: 0;
+          }
+          50% {
+            transform: scale(1) rotate(180deg);
+            opacity: 1;
           }
           100% {
-            transform: rotate(360deg);
+            transform: scale(0) rotate(360deg);
+            opacity: 0;
           }
         }
 
-        .chat-button-shimmer {
-          position: absolute;
-          inset: -2px;
-          background: conic-gradient(
-            from var(--angle, 0deg),
-            transparent 0deg,
-            #FFD700 10deg,
-            transparent 60deg,
-            transparent 360deg
-          );
-          border-radius: 50%;
-          animation: shimmerRing 4s linear infinite;
-          opacity: 0.7;
+        @keyframes shine {
+          0% {
+            background-position: -200% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
         }
 
-        .chat-button-shimmer::before {
-          content: '';
+        .chat-button-sparkle {
           position: absolute;
-          inset: 2px;
-          background: inherit;
+          width: 4px;
+          height: 4px;
+          background: #FFD700;
           border-radius: 50%;
-          background-color: white;
+          animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .chat-button-sparkle:nth-child(1) {
+          top: 10%;
+          left: 10%;
+          animation-delay: 0s;
+        }
+
+        .chat-button-sparkle:nth-child(2) {
+          top: 20%;
+          right: 15%;
+          animation-delay: 0.4s;
+        }
+
+        .chat-button-sparkle:nth-child(3) {
+          bottom: 15%;
+          left: 20%;
+          animation-delay: 0.8s;
+        }
+
+        .chat-button-sparkle:nth-child(4) {
+          bottom: 20%;
+          right: 10%;
+          animation-delay: 1.2s;
+        }
+
+        .chat-button-sparkle:nth-child(5) {
+          top: 50%;
+          left: 5%;
+          animation-delay: 1.6s;
+        }
+
+        .chat-button-shine {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          background: linear-gradient(
+            105deg,
+            transparent 40%,
+            rgba(255, 215, 0, 0.3) 50%,
+            transparent 60%
+          );
+          background-size: 200% 200%;
+          animation: shine 3s ease-in-out infinite;
         }
       `}</style>
 
@@ -160,7 +204,12 @@ export default function Chatbot() {
         aria-label="Open chat"
       >
         <div className="relative">
-          <div className="chat-button-shimmer" />
+          <div className="chat-button-shine" />
+          <div className="chat-button-sparkle"></div>
+          <div className="chat-button-sparkle"></div>
+          <div className="chat-button-sparkle"></div>
+          <div className="chat-button-sparkle"></div>
+          <div className="chat-button-sparkle"></div>
           <svg className="w-8 h-8 relative z-10" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.41 0-2.73-.36-3.88-.99l-.28-.15-2.9.49.49-2.9-.15-.28C4.36 14.73 4 13.41 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
             <circle cx="12" cy="12" r="1.5"/>

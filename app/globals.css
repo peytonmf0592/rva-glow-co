@@ -71,3 +71,53 @@ body {
 .neon-text {
   text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
 }
+
+/* Gold Glow Animation for ALL Buttons and Links */
+@keyframes goldGlowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3),
+                0 0 10px rgba(255, 215, 0, 0.2),
+                0 0 15px rgba(255, 215, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6),
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 30px rgba(255, 215, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3),
+                0 0 10px rgba(255, 215, 0, 0.2),
+                0 0 15px rgba(255, 215, 0, 0.1);
+  }
+}
+
+/* Apply gold glow to all interactive elements */
+button:not(.no-glow),
+a[href]:not(.no-glow),
+input[type="submit"]:not(.no-glow),
+input[type="button"]:not(.no-glow),
+.button:not(.no-glow),
+.btn:not(.no-glow),
+[role="button"]:not(.no-glow) {
+  position: relative;
+  transition: all 250ms ease;
+}
+
+button:not(.no-glow):hover,
+button:not(.no-glow):focus,
+a[href]:not(.no-glow):hover,
+a[href]:not(.no-glow):focus,
+input[type="submit"]:not(.no-glow):hover,
+input[type="submit"]:not(.no-glow):focus,
+input[type="button"]:not(.no-glow):hover,
+input[type="button"]:not(.no-glow):focus,
+.button:not(.no-glow):hover,
+.button:not(.no-glow):focus,
+.btn:not(.no-glow):hover,
+.btn:not(.no-glow):focus,
+[role="button"]:not(.no-glow):hover,
+[role="button"]:not(.no-glow):focus {
+  animation: goldGlowPulse 1.5s ease-in-out infinite;
+  transform: scale(1.02);
+  z-index: 10;
+}

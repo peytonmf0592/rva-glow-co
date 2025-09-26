@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RVA Glow Co - Brand Token Sheet</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafa;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 {
+            color: #314143;
+            font-size: 36px;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            color: #147878;
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* Color Palette Section */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .section-title {
+            font-size: 20px;
+            color: #314143;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .color-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .color-card:hover { transform: translateY(-4px); }
+        .color-display {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .color-info {
+            padding: 12px;
+            background: white;
+        }
+        .color-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .color-hex {
+            color: #666;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        .color-desc {
+            color: #888;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        /* Typography Section */
+        .type-samples {
+            display: grid;
+            gap: 24px;
+        }
+        .type-sample {
+            padding: 20px;
+            background: #f8fafa;
+            border-radius: 8px;
+        }
+        .type-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Component Examples */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #147878 0%, #eb834f 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .btn-primary:hover { transform: scale(1.05); }
+
+        .btn-secondary {
+            background: white;
+            color: #147878;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+            border: 2px solid #147878;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            background: #147878;
+            color: white;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Usage Guidelines */
+        .guideline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .guideline-card {
+            background: #f8fafa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #147878;
+        }
+        .guideline-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #314143;
+        }
+        .guideline-text {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Visual Examples */
+        .visual-example {
+            background: linear-gradient(180deg, #314143 0%, #147878 100%);
+            border-radius: 16px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .visual-title {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        .visual-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RVA Glow Co</h1>
+        <div class="subtitle">Brand Token Sheet & Design System</div>
+
+        <!-- Color Palette -->
+        <div class="section">
+            <h2 class="section-title">Primary Color Palette</h2>
+            <div class="palette-grid">
+                <div class="color-card">
+                    <div class="color-display" style="background: #314143; color: white;">
+                        Primary
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Forest</div>
+                        <div class="color-hex">#314143</div>
+                        <div class="color-desc">Headers, body text</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-display" style="background: #147878; color: white;">
+                        Accent
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Holiday Teal</div>
+                        <div class="color-hex">#147878</div>
+                        <div class="color-desc">CTAs, links, accents</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-display" style="background: #e7f5f6; color: #314143;">
+                        Light
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Winter Sky</div>
+                        <div class="color-hex">#e7f5f6</div>
+                        <div class="color-desc">Backgrounds, cards</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-display" style="background: #eb834f; color: white;">
+                        Warm
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Glow Orange</div>
+                        <div class="color-hex">#eb834f</div>
+                        <div class="color-desc">Highlights, badges</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-display" style="background: #db4009; color: white;">
+                        Alert
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Festive Red</div>
+                        <div class="color-hex">#db4009</div>
+                        <div class="color-desc">Urgent CTAs, alerts</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">Extended Palette</h3>
+            <div class="palette-grid">
+                <div class="color-card">
+                    <div class="color-display" style="background: #1a2426; color: white;">
+                        Dark
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Midnight</div>
+                        <div class="color-hex">#1a2426</div>
+                        <div class="color-desc">Dark mode base</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-display" style="background: #0f5c5c; color: white;">
+                        Deep Teal
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Pine Shadow</div>
+                        <div class="color-hex">#0f5c5c</div>
+                        <div class="color-desc">Hover states</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-display" style="background: #f9fcfc; color: #314143;">
+                        White
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Snow White</div>
+                        <div class="color-hex">#f9fcfc</div>
+                        <div class="color-desc">Pure backgrounds</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-display" style="background: #ffd4c1; color: #314143;">
+                        Peach
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Warm Light</div>
+                        <div class="color-hex">#ffd4c1</div>
+                        <div class="color-desc">Soft highlights</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2 class="section-title">Typography</h2>
+            <div class="type-samples">
+                <div class="type-sample">
+                    <div class="type-label">Display / Hero</div>
+                    <div style="font-size: 48px; font-weight: 700; color: #314143; line-height: 1.2;">
+                        Light Up Your Holidays
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">Heading 1</div>
+                    <div style="font-size: 36px; font-weight: 600; color: #314143;">
+                        Professional Installation
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">Heading 2</div>
+                    <div style="font-size: 28px; font-weight: 600; color: #147878;">
+                        Transform Your Home
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">Body Text</div>
+                    <div style="font-size: 16px; color: #666; line-height: 1.6;">
+                        We provide professional holiday lighting services throughout Richmond, offering custom designs that highlight your home's unique architecture. Our expert team handles everything from consultation to takedown.
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">Button Text</div>
+                    <div style="font-size: 16px; font-weight: 600; color: #147878; text-transform: uppercase; letter-spacing: 1px;">
+                        Get Free Quote →
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Components -->
+        <div class="section">
+            <h2 class="section-title">Component Examples</h2>
+            <div class="component-grid">
+                <div>
+                    <div class="type-label">Primary Button</div>
+                    <a href="#" class="btn-primary">Get Free Quote</a>
+                </div>
+
+                <div>
+                    <div class="type-label">Secondary Button</div>
+                    <a href="#" class="btn-secondary">View Services</a>
+                </div>
+
+                <div>
+                    <div class="type-label">Card Component</div>
+                    <div class="card">
+                        <h3 style="color: #314143; margin-bottom: 8px;">Roofline Lighting</h3>
+                        <p style="color: #666; font-size: 14px;">Professional C9 LED installation custom-fit to your home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guidelines -->
+        <div class="section">
+            <h2 class="section-title">Brand Guidelines</h2>
+            <div class="guideline-grid">
+                <div class="guideline-card">
+                    <div class="guideline-title">Primary Actions</div>
+                    <div class="guideline-text">
+                        Use the teal-to-orange gradient for primary CTAs. This creates visual hierarchy and draws attention to conversion points.
+                    </div>
+                </div>
+
+                <div class="guideline-card">
+                    <div class="guideline-title">Color Balance</div>
+                    <div class="guideline-text">
+                        60% neutral (whites/grays), 30% primary teal, 10% accent orange. This creates a professional yet festive appearance.
+                    </div>
+                </div>
+
+                <div class="guideline-card">
+                    <div class="guideline-title">Typography Hierarchy</div>
+                    <div class="guideline-text">
+                        Maintain clear visual hierarchy with consistent font weights. Headlines bold (600-700), body regular (400), CTAs semi-bold (600).
+                    </div>
+                </div>
+
+                <div class="guideline-card">
+                    <div class="guideline-title">Seasonal Flexibility</div>
+                    <div class="guideline-text">
+                        Colors work year-round but emphasize warm tones (orange/red) during holiday season for festive feeling.
+                    </div>
+                </div>
+
+                <div class="guideline-card">
+                    <div class="guideline-title">Accessibility</div>
+                    <div class="guideline-text">
+                        Ensure WCAG AA compliance. Teal (#147878) on white provides 4.5:1 contrast ratio. Use darker shades for body text.
+                    </div>
+                </div>
+
+                <div class="guideline-card">
+                    <div class="guideline-title">White Space</div>
+                    <div class="guideline-text">
+                        Generous padding creates premium feel. Use minimum 16px padding on mobile, 24px on desktop for breathing room.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Example -->
+        <div class="visual-example">
+            <div class="visual-title">✨ RVA Glow Co ✨</div>
+            <div class="visual-subtitle">Richmond's Premier Holiday Lighting Service</div>
+            <div style="margin-top: 24px;">
+                <a href="#" class="btn-primary" style="margin-right: 12px;">Get Free Quote</a>
+                <a href="#" class="btn-secondary" style="background: transparent; border-color: white; color: white;">View Gallery</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
