@@ -14,7 +14,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm Lumi, your holiday lighting assistant! ✨ How can I help brighten your day?",
+      text: "Hi! I'm Lumi, your holiday lighting assistant! How can I help brighten your day?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -311,19 +311,19 @@ export default function Chatbot() {
               onClick={() => setInputText("What are your prices?")}
               className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
             >
-              💰 Pricing
+              Pricing
             </button>
             <button
               onClick={() => setInputText("How do I book?")}
               className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
             >
-              📅 Book Now
+              Book Now
             </button>
             <button
               onClick={() => setInputText("What areas do you serve?")}
               className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
             >
-              📍 Service Areas
+              Service Areas
             </button>
           </div>
         </div>

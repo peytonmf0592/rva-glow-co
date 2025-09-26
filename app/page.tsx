@@ -590,57 +590,111 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature 1 - True Full Service */}
-            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-xl font-bold">FS</span>
+            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
+              }}>
+                <img src="/icons/tree-service.svg" alt="Full Service" className="w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">True Full Service</h3>
               <p className="text-gray-600">Design → Install → Seasonal maintenance → Takedown → Storage. We handle everything from start to finish and beyond.</p>
             </div>
 
-            {/* Feature 2 - Safe Installation */}
-            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-xl font-bold">DF</span>
+            {/* Feature 2 - Damage-Free Installation */}
+            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
+              }}>
+                <img src="/icons/damage-free.svg" alt="Damage-Free" className="w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Damage-Free Installation</h3>
               <p className="text-gray-600">Installation uses removable clips that attach securely without damaging your roof, gutters, or shingles. No holes, no nails, no worries.</p>
             </div>
 
             {/* Feature 3 - Color Options */}
-            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-xl font-bold">CO</span>
+            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
+              }}>
+                <img src="/icons/color-options.svg" alt="Color Options" className="w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Color Options Without Automation</h3>
               <p className="text-gray-600">Pick the color palette you want — warm white, multicolor, or custom themes.</p>
             </div>
 
             {/* Feature 4 - Flexible Ownership */}
-            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-xl font-bold">FO</span>
+            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
+              }}>
+                <img src="/icons/flexible-ownership.svg" alt="Flexible Ownership" className="w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Flexible Ownership</h3>
               <p className="text-gray-600">Lease or buy — transparent pricing with core services included in every package.</p>
             </div>
 
             {/* Feature 5 - Safety & Quality */}
-            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-xl font-bold">DF</span>
+            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
+              }}>
+                <img src="/icons/safety-quality.svg" alt="Safety & Quality" className="w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Safety & Quality</h3>
               <p className="text-gray-600">Fall protection, weather-rated bulbs & wiring, and industry-grade termination caps for lasting beauty.</p>
             </div>
 
-            {/* Feature 6 - Estate & Upgrade Options */}
-            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-xl font-bold">EU</span>
+            {/* Feature 6 - Commercial */}
+            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
+              }}>
+                <img src="/icons/commercial.svg" alt="Commercial" className="w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Estate & Upgrade Options</h3>
-              <p className="text-gray-600">Larger-scale installs and smart controls for manual on/off and scheduling available.</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Commercial</h3>
+              <p className="text-gray-600">Professional holiday lighting solutions for businesses, storefronts, and office buildings.</p>
             </div>
           </div>
 
