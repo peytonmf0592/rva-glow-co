@@ -93,6 +93,18 @@ export default function Home() {
     console.log('Timeout scheduled with ID:', timeoutId)
   }
 
+  // Parallax effect for SVG accent
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const parallaxElement = document.documentElement
+      parallaxElement.style.setProperty('--parallax-y', `${scrollY * 0.05}px`)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <>
       {/* Hero Section */}
@@ -105,6 +117,102 @@ export default function Home() {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+        </div>
+
+        {/* Abstract SVG Accent Line */}
+        <div
+          className="absolute inset-0 pointer-events-none z-[5]"
+          style={{
+            transform: 'translateY(var(--parallax-y, 0px))',
+          }}
+        >
+          <svg
+            className="absolute w-full h-full"
+            viewBox="0 0 1920 1080"
+            preserveAspectRatio="xMidYMid slice"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#FFD700" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#FFD700" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#FFD700" stopOpacity="0.3" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Desktop: Double swooping curves */}
+            <g className="hidden md:block">
+              <path
+                d="M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400"
+                stroke="url(#goldGradient)"
+                strokeWidth="2"
+                fill="none"
+                filter="url(#glow)"
+                opacity="0.8"
+              >
+                <animate
+                  attributeName="d"
+                  values="M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400;
+                          M -100 400 Q 400 370, 700 400 T 1400 400 Q 1700 380, 2020 400;
+                          M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400"
+                  dur="8s"
+                  repeatCount="indefinite"/>
+              </path>
+              <path
+                d="M -100 420 Q 500 450, 900 420 T 1600 440 Q 1800 420, 2020 440"
+                stroke="url(#goldGradient)"
+                strokeWidth="1.5"
+                fill="none"
+                filter="url(#glow)"
+                opacity="0.5"
+              >
+                <animate
+                  attributeName="d"
+                  values="M -100 420 Q 500 450, 900 420 T 1600 440 Q 1800 420, 2020 440;
+                          M -100 420 Q 500 430, 900 420 T 1600 420 Q 1800 440, 2020 420;
+                          M -100 420 Q 500 450, 900 420 T 1600 440 Q 1800 420, 2020 440"
+                  dur="10s"
+                  repeatCount="indefinite"/>
+              </path>
+
+              {/* Shimmer effect along the crest */}
+              <circle r="20" fill="#FFD700" opacity="0">
+                <animateMotion
+                  path="M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400"
+                  dur="6s"
+                  repeatCount="indefinite"/>
+                <animate
+                  attributeName="opacity"
+                  values="0;0.8;0"
+                  dur="6s"
+                  repeatCount="indefinite"/>
+                <animate
+                  attributeName="r"
+                  values="5;15;5"
+                  dur="6s"
+                  repeatCount="indefinite"/>
+              </circle>
+            </g>
+
+            {/* Mobile: Simple single curve */}
+            <g className="block md:hidden">
+              <path
+                d="M -50 500 Q 480 450, 970 500"
+                stroke="url(#goldGradient)"
+                strokeWidth="2"
+                fill="none"
+                filter="url(#glow)"
+                opacity="0.7"
+              />
+            </g>
+          </svg>
         </div>
 
         {/* Light Glow Overlay - matches actual light positions in photo */}
@@ -312,7 +420,7 @@ export default function Home() {
         {/* Hero Content */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
-            <span className="bg-gradient-to-r from-amber-300 via-white to-blue-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#eb834f] via-white to-[#147878] bg-clip-text text-transparent">
               Light Up Your Holidays
             </span>
           </h1>
@@ -325,7 +433,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
             <Link
               href="/booking"
-              className="inline-block bg-gradient-to-r from-blue-500 to-amber-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transform transition-all duration-300 shadow-lg"
+              className="inline-block bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transform transition-all duration-300 shadow-lg"
             >
               Book a Free Design Consult →
             </Link>
@@ -350,36 +458,200 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Us Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Welcome to RVA Glow Co</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-amber-500 mx-auto"></div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">About Us</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#147878] to-[#eb834f] mx-auto"></div>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg mx-auto text-center">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                At RVA Glow Co we make holiday lighting simple and beautiful. Tell us the look you want — classic warm white, bold color palettes, or a refined accent treatment — and we'll place lights exactly where you want them: eaves, gutters, ridgelines, dormers, trees, and landscape features. Our team handles professional design, expert installation with fall-safe practices, seasonal maintenance, careful takedown, and secure year-round storage. Choose to lease or own your lights; every plan includes install, on-season servicing, takedown, and storage. Any house is in our wheelhouse — no roof is too steep.
-              </p>
+          {/* Two Column Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            {/* Left Column - Professional Portrait */}
+            <div className="flex items-center justify-center">
+              <div className="bg-gradient-to-br from-[#e7f5f6] to-[#ffd4c1]/30 rounded-2xl p-4 w-full max-w-md">
+                <div className="relative rounded-xl overflow-hidden shadow-xl">
+                  <img
+                    src="/images/peyton-fowlkes.jpg"
+                    alt="Peyton Fowlkes - Founder of RVA Glow Co"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="text-center mt-4">
+                  <h3 className="text-xl font-bold text-gray-900">Peyton Fowlkes</h3>
+                  <p className="text-gray-600">Founder & Lead Designer</p>
+                </div>
+              </div>
             </div>
 
-            {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center gap-8 mt-12">
-              <div className="flex items-center space-x-2 bg-gray-50 px-6 py-3 rounded-full animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <span className="text-green-500 text-xl">✓</span>
-                <span className="text-gray-800 font-medium">Fully Insured</span>
-              </div>
-              <div className="flex items-center space-x-2 bg-gray-50 px-6 py-3 rounded-full animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <span className="text-green-500 text-xl">✓</span>
-                <span className="text-gray-800 font-medium">100% Satisfaction</span>
-              </div>
-              <div className="flex items-center space-x-2 bg-gray-50 px-6 py-3 rounded-full animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                <span className="text-green-500 text-xl">✓</span>
-                <span className="text-gray-800 font-medium">Free Estimates</span>
+            {/* Right Column - Company Description */}
+            <div className="flex flex-col justify-center">
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                RVA Glow Co. designs, installs, and cares for premium residential and commercial holiday lighting. We pair thoughtful design with commercial-grade materials and white-glove service — from custom consultation through installation, seasonal maintenance, takedown, and secure storage. Our team handles every detail so your property looks spectacular without you lifting a finger.
+              </p>
+
+              {/* Core Services List */}
+              <div className="bg-[#e7f5f6]/30 rounded-xl p-6">
+                <h3 className="font-bold text-gray-900 mb-4">Core Services</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-gray-700">Custom Design Consultation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-gray-700">Professional Installation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-gray-700">Seasonal Maintenance</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-gray-700">Takedown & Secure Storage</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-gray-700">Flexible Lease or Own Options</span>
+                  </li>
+                </ul>
               </div>
             </div>
+          </div>
+
+          {/* Free Quote Form */}
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#e7f5f6]/50 to-white rounded-2xl shadow-xl p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Get Your Free Quote</h3>
+            <form className="space-y-6" onSubmit={(e) => {
+              e.preventDefault()
+              const formData = new FormData(e.currentTarget)
+              const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                service: formData.get('service'),
+                preferredDate: formData.get('preferredDate'),
+                message: formData.get('message'),
+                source: 'homepage-about-section'
+              }
+
+              fetch('/api/quote', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+              }).then(() => {
+                alert('Quote request submitted! We\'ll be in touch within 24 hours.')
+                e.currentTarget.reset()
+              })
+            }}>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="quote-name" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="quote-name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quote-email" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="quote-email"
+                    name="email"
+                    required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quote-phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Phone *
+                  </label>
+                  <input
+                    type="tel"
+                    id="quote-phone"
+                    name="phone"
+                    required
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    placeholder="804-555-0123"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quote-address" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Service Address *
+                  </label>
+                  <input
+                    type="text"
+                    id="quote-address"
+                    name="address"
+                    required
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    placeholder="123 Main St, Richmond, VA"
+                  />
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="quote-service" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Select Package *
+                  </label>
+                  <select
+                    id="quote-service"
+                    name="service"
+                    required
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                  >
+                    <option value="">Choose a package</option>
+                    <option value="roofline">Roofline Lighting</option>
+                    <option value="complete">Complete Package</option>
+                    <option value="custom">Custom Design</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="quote-date" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Preferred Install Window
+                  </label>
+                  <input
+                    type="date"
+                    id="quote-date"
+                    name="preferredDate"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="quote-message" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Additional Notes
+                </label>
+                <textarea
+                  id="quote-message"
+                  name="message"
+                  rows={4}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                  placeholder="Tell us about your vision, special requests, or any specific areas you'd like lit..."
+                />
+              </div>
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="cta-button bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-250"
+                >
+                  Request Quote →
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
@@ -389,15 +661,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose RVA Glow Co</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-amber-500 mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#147878] to-[#eb834f] mx-auto mb-8"></div>
             <p className="text-xl text-gray-600">Full-service holiday lighting that's truly hands-off for you</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature 1 - True Full Service */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">✨</span>
+              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-xl font-bold">FS</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">True Full Service</h3>
               <p className="text-gray-600">Design → Install → Seasonal maintenance → Takedown → Storage. We handle everything from start to finish and beyond.</p>
@@ -405,8 +677,8 @@ export default function Home() {
 
             {/* Feature 2 - Safe Installation */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🛡️</span>
+              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-xl font-bold">DF</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Damage-Free Installation</h3>
               <p className="text-gray-600">Installation uses removable clips that attach securely without damaging your roof, gutters, or shingles. No holes, no nails, no worries.</p>
@@ -414,8 +686,8 @@ export default function Home() {
 
             {/* Feature 3 - Color Options */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🎨</span>
+              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-xl font-bold">CO</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Color Options Without Automation</h3>
               <p className="text-gray-600">Pick the color palette you want — warm white, multicolor, or custom themes.</p>
@@ -423,8 +695,8 @@ export default function Home() {
 
             {/* Feature 4 - Flexible Ownership */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">💎</span>
+              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-xl font-bold">FO</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Flexible Ownership</h3>
               <p className="text-gray-600">Lease or buy — transparent pricing with core services included in every package.</p>
@@ -432,8 +704,8 @@ export default function Home() {
 
             {/* Feature 5 - Safety & Quality */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🛡️</span>
+              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-xl font-bold">DF</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Safety & Quality</h3>
               <p className="text-gray-600">Fall protection, weather-rated bulbs & wiring, and industry-grade termination caps for lasting beauty.</p>
@@ -441,8 +713,8 @@ export default function Home() {
 
             {/* Feature 6 - Estate & Upgrade Options */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-amber-500 rounded-full flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🏰</span>
+              <div className="w-16 h-16 bg-gradient-to-br from-[#147878] to-[#eb834f] rounded-full flex items-center justify-center mb-4">
+                <span className="text-white text-xl font-bold">EU</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Estate & Upgrade Options</h3>
               <p className="text-gray-600">Larger-scale installs and smart controls for manual on/off and scheduling available.</p>
@@ -452,7 +724,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/services"
-              className="inline-block bg-gradient-to-r from-blue-500 to-amber-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="inline-block bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             >
               View All Services →
             </Link>
@@ -479,7 +751,7 @@ export default function Home() {
                 <p className="text-lg leading-relaxed">
                   You choose the colors. You choose exactly where the lights go — from rooflines to ridges, peaks to dormers. The image below is exactly what you can expect: crisp, professional, customized lighting that transforms your home.
                 </p>
-                <div className="bg-gradient-to-r from-blue-50 to-amber-50 rounded-xl p-6 my-6">
+                <div className="bg-gradient-to-r from-[#e7f5f6] to-[#ffd4c1] rounded-xl p-6 my-6">
                   <p className="font-semibold text-gray-900 mb-4">Every quote you receive includes:</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
@@ -509,7 +781,7 @@ export default function Home() {
             {/* Image Placeholder */}
             <div className="order-1 lg:order-2">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-amber-500/20 blur-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#147878]/20 to-[#eb834f]/20 blur-3xl"></div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <img
                     src="/images/showcase-home.png"
@@ -524,20 +796,20 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-slate-800 to-blue-900 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#3d4547] to-[#147878] text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Ready to glow?</h2>
-          <p className="text-xl mb-8 text-blue-100">Book a free design consult or request an instant estimate and we'll show you exactly how your home will look.</p>
+          <p className="text-xl mb-8 text-[#e7f5f6]">Book a free design consult or request an instant estimate and we'll show you exactly how your home will look.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/booking"
-              className="bg-white text-slate-800 px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="bg-white text-[#3d4547] px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             >
               Book Free Design Consult
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-slate-800 transition-all duration-200"
+              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#3d4547] transition-all duration-200"
             >
               Get Free Quote
             </Link>
@@ -616,7 +888,7 @@ export default function Home() {
                               handleEstimateSubmit(e)
                             }
                           }}
-                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
                           placeholder="Start typing your address..."
                         />
                         <p className="text-xs text-gray-500 mt-2">
@@ -642,13 +914,13 @@ export default function Home() {
                           console.log('Navigating to:', url)
                           window.location.href = url
                         }}
-                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
+                        className="w-full py-3 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
                       >
                         Get My Estimate →
                       </button>
 
                       <p className="text-center text-xs text-gray-500 mt-4">
-                        For a detailed quote, <Link href="/booking" className="text-blue-600 hover:underline">book a free consultation</Link>
+                        For a detailed quote, <Link href="/booking" className="text-[#147878] hover:underline">book a free consultation</Link>
                       </p>
 
                       {/* Debug button */}

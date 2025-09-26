@@ -117,23 +117,56 @@ export default function Chatbot() {
   return (
     <>
       {/* Chatbot Toggle Button */}
+      <style jsx>{`
+        @keyframes shimmerRing {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .chat-button-shimmer {
+          position: absolute;
+          inset: -2px;
+          background: conic-gradient(
+            from var(--angle, 0deg),
+            transparent 0deg,
+            #FFD700 10deg,
+            transparent 60deg,
+            transparent 360deg
+          );
+          border-radius: 50%;
+          animation: shimmerRing 4s linear infinite;
+          opacity: 0.7;
+        }
+
+        .chat-button-shimmer::before {
+          content: '';
+          position: absolute;
+          inset: 2px;
+          background: inherit;
+          border-radius: 50%;
+          background-color: white;
+        }
+      `}</style>
+
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full p-4 shadow-2xl hover:scale-110 transform transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full p-4 shadow-2xl hover:scale-110 transform transition-all duration-300 ${
           isOpen ? 'scale-0' : 'scale-100'
         }`}
         aria-label="Open chat"
       >
         <div className="relative">
-          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <div className="chat-button-shimmer" />
+          <svg className="w-8 h-8 relative z-10" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.41 0-2.73-.36-3.88-.99l-.28-.15-2.9.49.49-2.9-.15-.28C4.36 14.73 4 13.41 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
             <circle cx="12" cy="12" r="1.5"/>
             <circle cx="16" cy="12" r="1.5"/>
             <circle cx="8" cy="12" r="1.5"/>
           </svg>
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center animate-pulse">
-            ✨
-          </span>
         </div>
       </button>
 
@@ -145,14 +178,14 @@ export default function Chatbot() {
         style={{ width: '380px', height: '600px', maxHeight: '80vh' }}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-t-2xl p-4 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-t-2xl p-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="bg-white/20 rounded-full p-2">
-              <span className="text-2xl">🌟</span>
+            <div className="bg-white/20 rounded-full p-2 flex items-center justify-center">
+              <span className="text-lg font-bold">L</span>
             </div>
             <div>
               <h3 className="font-bold text-lg">Lumi</h3>
-              <p className="text-xs text-blue-100">Holiday Lighting Assistant</p>
+              <p className="text-xs text-[#e7f5f6]">Holiday Lighting Assistant</p>
             </div>
           </div>
           <button
@@ -176,8 +209,8 @@ export default function Chatbot() {
               <div
                 className={`max-w-[70%] rounded-2xl px-4 py-2 ${
                   message.sender === 'user'
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-800'
+                    ? 'bg-gradient-to-r from-[#147878] to-[#3d4547] text-white'
+                    : 'bg-[#e7f5f6] text-[#3d4547]'
                 }`}
               >
                 <p className="text-sm">{message.text}</p>
@@ -210,11 +243,11 @@ export default function Chatbot() {
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Type your message..."
-              className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:border-blue-500 text-gray-800"
+              className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:border-[#147878] text-gray-800"
             />
             <button
               onClick={handleSendMessage}
-              className="bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full p-2 hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full p-2 hover:shadow-lg transform hover:scale-105 transition-all duration-200"
               aria-label="Send message"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,19 +260,19 @@ export default function Chatbot() {
           <div className="flex flex-wrap gap-2 mt-3">
             <button
               onClick={() => setInputText("What are your prices?")}
-              className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors"
+              className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
             >
               💰 Pricing
             </button>
             <button
               onClick={() => setInputText("How do I book?")}
-              className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors"
+              className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
             >
               📅 Book Now
             </button>
             <button
               onClick={() => setInputText("What areas do you serve?")}
-              className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors"
+              className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
             >
               📍 Service Areas
             </button>
