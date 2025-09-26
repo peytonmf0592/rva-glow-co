@@ -121,15 +121,15 @@ export default function Chatbot() {
         @keyframes ripple {
           0% {
             transform: scale(1);
-            box-shadow: rgba(212, 175, 55, 0.3) 0 10px 10px 0;
+            box-shadow: rgba(255, 248, 220, 0.3) 0 4px 8px 0;
           }
           50% {
-            transform: scale(1.3);
-            box-shadow: rgba(212, 175, 55, 0.3) 0 30px 20px 0;
+            transform: scale(1.15);
+            box-shadow: rgba(255, 248, 220, 0.4) 0 6px 12px 0;
           }
           100% {
             transform: scale(1);
-            box-shadow: rgba(212, 175, 55, 0.3) 0 10px 10px 0;
+            box-shadow: rgba(255, 248, 220, 0.3) 0 4px 8px 0;
           }
         }
 
@@ -144,9 +144,9 @@ export default function Chatbot() {
 
         .ripple-box {
           position: absolute;
-          background: linear-gradient(0deg, rgba(255, 250, 240, 0.12) 0%, rgba(255, 248, 220, 0.12) 100%);
+          background: rgba(255, 248, 220, 0.12);
           border-radius: 50%;
-          border-top: 1px solid rgba(255, 248, 220, 0.4);
+          border: 1px solid rgba(255, 248, 220, 0.4);
           box-shadow: rgba(255, 248, 220, 0.3) 0 4px 8px 0;
           backdrop-filter: blur(3px);
           animation: ripple 2s infinite ease-in-out;
