@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RVA Glow Co - Hero Curved Bottom Edge
+  Asymmetrical curve with gold highlight
+  Designed to tilt toward the right with elegant single-sweep
+-->
+<svg
+  viewBox="0 0 1920 200"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <!-- Drop shadow for curve separation -->
+    <filter id="curveDropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main curve shape - asymmetrical sweep to right -->
+  <!-- Control points labeled:
+       Start: (0, 50) - Left edge, gentle rise
+       Q1: (480, 120) - Deep dip in center
+       Mid: (960, 80) - Center control point
+       Q2: (1920, 20) - Right edge, soft taper upward
+  -->
+  <path
+    id="main-curve"
+    d="M 0 50 Q 480 120, 960 80 T 1920 20 L 1920 200 L 0 200 Z"
+    fill="white"
+    filter="url(#curveDropShadow)"
+  />
+
+  <!-- Gold highlight along the crest -->
+  <!-- Hairline stroke with subtle glow -->
+  <path
+    id="gold-highlight"
+    d="M 0 50 Q 480 120, 960 80 T 1920 20"
+    stroke="rgba(212, 175, 55, 0.6)"
+    stroke-width="2"
+    fill="none"
+    style="filter: drop-shadow(0 -1px 2px rgba(212, 175, 55, 0.4))"
+  />
+</svg>
