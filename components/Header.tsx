@@ -21,12 +21,14 @@ export default function Header() {
 
         .nav-pill {
           position: relative;
-          background: rgba(255, 255, 255, 0.9);
+          background: rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 24px;
           padding: 8px 16px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
           transition: all 250ms ease;
           overflow: hidden;
+          backdrop-filter: blur(8px);
         }
 
         .nav-pill::before {
@@ -50,12 +52,14 @@ export default function Header() {
         .nav-pill:hover,
         .nav-pill:focus-within {
           transform: scale(1.02);
-          box-shadow: 0 0 20px 2px rgba(255, 215, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.1);
+          border-color: rgba(212, 175, 55, 0.6);
+          box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .nav-pill.active {
-          background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.95) 100%);
-          box-shadow: 0 0 15px 1px rgba(255, 215, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+          background: rgba(255, 255, 255, 0.25);
+          border-color: rgba(212, 175, 55, 0.5);
+          box-shadow: 0 0 12px 1px rgba(212, 175, 55, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .cta-button {
@@ -100,12 +104,16 @@ export default function Header() {
         }
       `}</style>
 
-      <header className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+      <header className="sticky top-0 z-50 shadow-lg" style={{
+        background: 'linear-gradient(90deg, rgba(49, 65, 67, 0.85) 0%, rgba(20, 120, 120, 0.85) 30%, rgba(235, 131, 79, 0.85) 100%)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)'
+      }}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#147878] to-[#eb834f] bg-clip-text text-transparent">
+              <span className="text-2xl font-bold text-white drop-shadow-lg">
                 RVA Glow Co
               </span>
             </Link>
@@ -116,9 +124,7 @@ export default function Header() {
                 href="/"
                 className={`nav-pill ${isActive('/') ? 'active' : ''}`}
               >
-                <span className={`relative z-10 font-medium ${
-                  isActive('/') ? 'text-[#147878]' : 'text-gray-700'
-                }`}>
+                <span className="relative z-10 font-medium text-white">
                   Home
                 </span>
               </Link>
@@ -126,9 +132,7 @@ export default function Header() {
                 href="/services"
                 className={`nav-pill ${isActive('/services') ? 'active' : ''}`}
               >
-                <span className={`relative z-10 font-medium ${
-                  isActive('/services') ? 'text-[#147878]' : 'text-gray-700'
-                }`}>
+                <span className="relative z-10 font-medium text-white">
                   Services
                 </span>
               </Link>
@@ -136,9 +140,7 @@ export default function Header() {
                 href="/faq"
                 className={`nav-pill ${isActive('/faq') ? 'active' : ''}`}
               >
-                <span className={`relative z-10 font-medium ${
-                  isActive('/faq') ? 'text-[#147878]' : 'text-gray-700'
-                }`}>
+                <span className="relative z-10 font-medium text-white">
                   FAQ
                 </span>
               </Link>
@@ -146,9 +148,7 @@ export default function Header() {
                 href="/about"
                 className={`nav-pill ${isActive('/about') ? 'active' : ''}`}
               >
-                <span className={`relative z-10 font-medium ${
-                  isActive('/about') ? 'text-[#147878]' : 'text-gray-700'
-                }`}>
+                <span className="relative z-10 font-medium text-white">
                   About
                 </span>
               </Link>
@@ -156,9 +156,7 @@ export default function Header() {
                 href="/contact"
                 className={`nav-pill ${isActive('/contact') ? 'active' : ''}`}
               >
-                <span className={`relative z-10 font-medium ${
-                  isActive('/contact') ? 'text-[#147878]' : 'text-gray-700'
-                }`}>
+                <span className="relative z-10 font-medium text-white">
                   Contact
                 </span>
               </Link>
@@ -168,7 +166,12 @@ export default function Header() {
             <div className="hidden md:block">
               <Link
                 href="/booking"
-                className="cta-button bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-6 py-3 rounded-full font-semibold shadow-lg"
+                className="cta-button text-white px-6 py-3 rounded-full font-semibold shadow-lg"
+                style={{
+                  background: 'linear-gradient(90deg, #147878 0%, #eb834f 100%)',
+                  border: '2px solid rgba(212, 175, 55, 0.6)',
+                  boxShadow: '0 0 0 1px rgba(212, 175, 55, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3)'
+                }}
               >
                 Book Now →
               </Link>
@@ -177,7 +180,7 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 focus:bg-gray-100 transition-colors"
+              className="md:hidden text-white p-2 rounded-lg hover:bg-white/20 focus:bg-white/20 transition-colors"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMenuOpen ? (
@@ -196,10 +199,8 @@ export default function Header() {
                 <Link
                   href="/"
                   className={`mobile-nav-item ${
-                    isActive('/') ? 'bg-gradient-to-r from-[#FFD700]/10 to-transparent' : ''
-                  } block px-4 py-3 rounded-xl text-base font-medium ${
-                    isActive('/') ? 'text-[#147878]' : 'text-gray-700'
-                  }`}
+                    isActive('/') ? 'bg-gradient-to-r from-white/30 to-transparent' : ''
+                  } block px-4 py-3 rounded-xl text-base font-medium text-white`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
@@ -207,10 +208,8 @@ export default function Header() {
                 <Link
                   href="/services"
                   className={`mobile-nav-item ${
-                    isActive('/services') ? 'bg-gradient-to-r from-[#FFD700]/10 to-transparent' : ''
-                  } block px-4 py-3 rounded-xl text-base font-medium ${
-                    isActive('/services') ? 'text-[#147878]' : 'text-gray-700'
-                  }`}
+                    isActive('/services') ? 'bg-gradient-to-r from-white/30 to-transparent' : ''
+                  } block px-4 py-3 rounded-xl text-base font-medium text-white`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Services
@@ -218,10 +217,8 @@ export default function Header() {
                 <Link
                   href="/faq"
                   className={`mobile-nav-item ${
-                    isActive('/faq') ? 'bg-gradient-to-r from-[#FFD700]/10 to-transparent' : ''
-                  } block px-4 py-3 rounded-xl text-base font-medium ${
-                    isActive('/faq') ? 'text-[#147878]' : 'text-gray-700'
-                  }`}
+                    isActive('/faq') ? 'bg-gradient-to-r from-white/30 to-transparent' : ''
+                  } block px-4 py-3 rounded-xl text-base font-medium text-white`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   FAQ
@@ -229,10 +226,8 @@ export default function Header() {
                 <Link
                   href="/about"
                   className={`mobile-nav-item ${
-                    isActive('/about') ? 'bg-gradient-to-r from-[#FFD700]/10 to-transparent' : ''
-                  } block px-4 py-3 rounded-xl text-base font-medium ${
-                    isActive('/about') ? 'text-[#147878]' : 'text-gray-700'
-                  }`}
+                    isActive('/about') ? 'bg-gradient-to-r from-white/30 to-transparent' : ''
+                  } block px-4 py-3 rounded-xl text-base font-medium text-white`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About
@@ -240,17 +235,20 @@ export default function Header() {
                 <Link
                   href="/contact"
                   className={`mobile-nav-item ${
-                    isActive('/contact') ? 'bg-gradient-to-r from-[#FFD700]/10 to-transparent' : ''
-                  } block px-4 py-3 rounded-xl text-base font-medium ${
-                    isActive('/contact') ? 'text-[#147878]' : 'text-gray-700'
-                  }`}
+                    isActive('/contact') ? 'bg-gradient-to-r from-white/30 to-transparent' : ''
+                  } block px-4 py-3 rounded-xl text-base font-medium text-white`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
                 </Link>
                 <Link
                   href="/booking"
-                  className="cta-button bg-gradient-to-r from-[#147878] to-[#eb834f] text-white block px-4 py-3 rounded-full text-center font-semibold mt-4"
+                  className="cta-button text-white block px-4 py-3 rounded-full text-center font-semibold mt-4"
+                  style={{
+                    background: 'linear-gradient(90deg, #147878 0%, #eb834f 100%)',
+                    border: '2px solid rgba(212, 175, 55, 0.6)',
+                    boxShadow: '0 0 0 1px rgba(212, 175, 55, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3)'
+                  }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Book Now →

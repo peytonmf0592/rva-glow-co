@@ -193,7 +193,12 @@ export default function Home() {
             alt="Holiday lights on home"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+          {/* Matching gradient overlay that continues header colors */}
+          <div className="absolute inset-0" style={{
+            background: 'linear-gradient(90deg, rgba(49, 65, 67, 0.5) 0%, rgba(20, 120, 120, 0.45) 20%, rgba(235, 131, 79, 0.4) 60%, rgba(212, 175, 55, 0.35) 100%)'
+          }}></div>
+          {/* Bottom darkening for text contrast */}
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
 
 
@@ -415,7 +420,12 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
             <Link
               href="/booking"
-              className="inline-block bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transform transition-all duration-300 shadow-lg"
+              className="inline-block text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-300"
+              style={{
+                background: 'linear-gradient(90deg, #147878 0%, #eb834f 100%)',
+                border: '2px solid rgba(212, 175, 55, 0.6)',
+                boxShadow: '0 0 0 1px rgba(212, 175, 55, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4)'
+              }}
             >
               Book a Free Design Consult →
             </Link>
@@ -425,7 +435,11 @@ export default function Home() {
                 setSubmitSuccess(false) // Reset success state
                 setShowEstimateModal(true)
               }}
-              className="inline-block bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transform transition-all duration-300"
+              className="inline-block bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transform transition-all duration-300"
+              style={{
+                border: '2px solid rgba(255, 255, 255, 0.8)',
+                boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3)'
+              }}
             >
               Request Instant Estimate
             </button>
@@ -436,6 +450,91 @@ export default function Home() {
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <svg className="w-6 h-6 text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+
+        {/* Curved Bottom Edge with Gold Highlight */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+          <svg
+            className="w-full h-auto hero-curve-desktop"
+            viewBox="0 0 1920 200"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ display: 'block' }}
+          >
+            <defs>
+              <filter id="curveDropShadow">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                <feOffset dx="0" dy="4" result="offsetblur"/>
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.3"/>
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Main curve shape - asymmetrical sweep to right */}
+            <path
+              d="M 0 50 Q 480 120, 960 80 T 1920 20 L 1920 200 L 0 200 Z"
+              fill="white"
+              filter="url(#curveDropShadow)"
+            />
+
+            {/* Gold highlight along the crest */}
+            <path
+              d="M 0 50 Q 480 120, 960 80 T 1920 20"
+              stroke="rgba(212, 175, 55, 0.6)"
+              strokeWidth="2"
+              fill="none"
+              style={{
+                filter: 'drop-shadow(0 -1px 2px rgba(212, 175, 55, 0.4))'
+              }}
+            />
+          </svg>
+
+          {/* Tablet curve - reduced depth */}
+          <svg
+            className="w-full h-auto hero-curve-tablet"
+            viewBox="0 0 1024 120"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ display: 'none' }}
+          >
+            <path
+              d="M 0 40 Q 256 80, 512 60 T 1024 20 L 1024 120 L 0 120 Z"
+              fill="white"
+              filter="url(#curveDropShadow)"
+            />
+            <path
+              d="M 0 40 Q 256 80, 512 60 T 1024 20"
+              stroke="rgba(212, 175, 55, 0.6)"
+              strokeWidth="1.5"
+              fill="none"
+            />
+          </svg>
+
+          {/* Mobile curve - gentle diagonal */}
+          <svg
+            className="w-full h-auto hero-curve-mobile"
+            viewBox="0 0 375 80"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ display: 'none' }}
+          >
+            <path
+              d="M 0 35 Q 187 55, 375 25 L 375 80 L 0 80 Z"
+              fill="white"
+              filter="url(#curveDropShadow)"
+            />
+            <path
+              d="M 0 35 Q 187 55, 375 25"
+              stroke="rgba(212, 175, 55, 0.5)"
+              strokeWidth="1"
+              fill="none"
+            />
           </svg>
         </div>
       </section>

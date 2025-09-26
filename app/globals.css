@@ -121,3 +121,31 @@ input[type="button"]:not(.no-glow):focus,
   transform: scale(1.02);
   z-index: 10;
 }
+
+/* Hero curve responsive visibility */
+.hero-curve-desktop {
+  display: block;
+}
+
+.hero-curve-tablet,
+.hero-curve-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .hero-curve-desktop {
+    display: none;
+  }
+  .hero-curve-tablet {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-curve-tablet {
+    display: none;
+  }
+  .hero-curve-mobile {
+    display: block;
+  }
+}
