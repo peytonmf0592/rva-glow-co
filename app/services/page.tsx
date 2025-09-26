@@ -162,7 +162,7 @@ export default function ServicesPage() {
                   border: '2px solid rgba(212, 175, 55, 0.2)'
                 }}>
                   <Image
-                    src="/Screen Shots/C9_OptiCore_LED_Warm_White_Faceted_Green_Wire.jpg"
+                    src="/images/c9-installed.jpg"
                     alt="Faceted C9 LED bulbs illuminated on roofline - diamond-cut brilliance"
                     fill
                     className="object-cover"
