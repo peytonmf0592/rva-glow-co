@@ -4,7 +4,7 @@ const services = [
   {
     title: 'Roofline Lighting',
     price: '',
-    image: '/images/roofline-lighting.png',
+    image: '/Screen Shots/C9_OptiCore_LED_Warm_White_Faceted_Green_Wire.jpg',
     features: [
       'Professional-grade C9 LED bulbs',
       'Custom-fit to your roofline',
@@ -151,62 +151,89 @@ export default function ServicesPage() {
             </div>
 
             {/* Showcase: Installed Lights */}
-            <div className="mt-16 rounded-2xl overflow-hidden shadow-2xl" style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            <div className="mt-16 rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_12px_48px_rgba(47,126,128,0.2)] transition-all duration-500" style={{
+              background: 'rgba(255, 255, 255, 0.80)',
+              backdropFilter: 'blur(14px) saturate(190%)',
+              border: '1.5px solid rgba(212, 175, 55, 0.25)',
+              boxShadow: '0 12px 40px rgba(47, 126, 128, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(212, 175, 55, 0.1)'
             }}>
-              <div className="aspect-[16/9] relative">
-                <Image
-                  src="/images/hero-home.png"
-                  alt="Professional holiday lighting installation showcase"
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative p-6">
+                <div className="aspect-video relative rounded-xl overflow-hidden shadow-lg" style={{
+                  border: '2px solid rgba(212, 175, 55, 0.2)'
+                }}>
+                  <Image
+                    src="/images/hero-home.png"
+                    alt="Professional holiday lighting installation showcase - complete home display"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-              <div className="p-6 text-center">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Premium Holiday Lighting in Action</h4>
-                <p className="text-gray-700">See the stunning results our professional installation delivers</p>
+              <div className="px-8 pb-8 text-center">
+                <h4 className="text-2xl font-bold mb-3" style={{
+                  background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>Premium Holiday Lighting in Action</h4>
+                <p className="text-gray-700 text-lg">See the stunning results our professional installation delivers</p>
               </div>
             </div>
 
-            {/* C9 LED Bulb Options */}
-            <div className="mt-12 rounded-xl p-8" style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            {/* C9 LED Bulb Specifications */}
+            <div className="mt-12 rounded-2xl p-8" style={{
+              background: 'rgba(255, 255, 255, 0.80)',
+              backdropFilter: 'blur(14px) saturate(190%)',
+              border: '1.5px solid rgba(212, 175, 55, 0.25)',
+              boxShadow: '0 12px 40px rgba(47, 126, 128, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25)'
             }}>
-              <h4 className="text-2xl font-bold text-center mb-6 text-gray-900">C9 LED Bulb Options</h4>
-              <div className="max-w-md mx-auto">
-                <div className="rounded-lg p-6 text-center shadow-lg" style={{
-                  background: 'rgba(255, 255, 255, 0.85)',
-                  backdropFilter: 'blur(8px)',
-                  border: '1.5px solid rgba(212, 175, 55, 0.3)'
+              <h4 className="text-3xl font-bold text-center mb-3" style={{
+                background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>Premium Faceted C9 LED Bulbs</h4>
+              <p className="text-center text-gray-600 mb-8 text-lg">The only choice for professional-grade holiday lighting</p>
+
+              <div className="max-w-2xl mx-auto grid md:grid-cols-3 gap-6">
+                <div className="text-center p-4 rounded-xl" style={{
+                  background: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid rgba(212, 175, 55, 0.2)'
                 }}>
-                  <div className="aspect-square relative mb-4 rounded-lg overflow-hidden" style={{
-                    maxWidth: '300px',
-                    margin: '0 auto'
-                  }}>
-                    <Image
-                      src="/images/c9-faceted-bulb.jpg"
-                      alt="Faceted C9 LED bulbs with diamond-cut brilliance"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <h5 className="text-xl font-bold text-gray-900 mb-2">Faceted C9 LED Bulbs</h5>
-                  <p className="text-gray-700 mb-3">Diamond-cut brilliance for maximum sparkle and elegance</p>
-                  <div className="inline-block px-4 py-2 rounded-full" style={{
-                    background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.15) 0%, rgba(235, 132, 79, 0.15) 100%)',
-                    border: '1px solid rgba(212, 175, 55, 0.3)'
-                  }}>
-                    <span className="text-sm font-semibold text-gray-800">Commercial-Grade LED</span>
-                  </div>
+                  <div className="text-3xl font-bold mb-1" style={{ color: '#2F7E80' }}>50,000+</div>
+                  <div className="text-sm text-gray-700">Hour Lifespan</div>
+                </div>
+                <div className="text-center p-4 rounded-xl" style={{
+                  background: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid rgba(212, 175, 55, 0.2)'
+                }}>
+                  <div className="text-3xl font-bold mb-1" style={{ color: '#EB834F' }}>90%</div>
+                  <div className="text-sm text-gray-700">Energy Savings</div>
+                </div>
+                <div className="text-center p-4 rounded-xl" style={{
+                  background: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid rgba(212, 175, 55, 0.2)'
+                }}>
+                  <div className="text-3xl font-bold mb-1" style={{ color: '#D69C7A' }}>100%</div>
+                  <div className="text-sm text-gray-700">Commercial Grade</div>
                 </div>
               </div>
-              <p className="text-center text-sm text-gray-600 mt-6">Maximum durability and energy efficiency for professional installations</p>
+
+              <div className="mt-8 text-center">
+                <div className="inline-block px-6 py-3 rounded-full" style={{
+                  background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.2) 0%, rgba(235, 132, 79, 0.2) 100%)',
+                  border: '1.5px solid rgba(212, 175, 55, 0.4)',
+                  boxShadow: '0 4px 12px rgba(47, 126, 128, 0.15)'
+                }}>
+                  <span className="text-base font-bold" style={{
+                    background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}>Diamond-Cut Faceted Design</span>
+                </div>
+                <p className="text-sm text-gray-600 mt-4 max-w-xl mx-auto">Our faceted bulbs feature precision-cut surfaces that refract light into brilliant sparkles, creating an elegant, high-end display that stands out from standard bulbs</p>
+              </div>
             </div>
             <div className="text-center mt-6">
               <p className="text-sm text-gray-600 italic">For specific model numbers and supplier information: <span className="font-semibold">CALL SUPPLIER</span></p>
