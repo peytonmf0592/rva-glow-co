@@ -149,33 +149,64 @@ export default function ServicesPage() {
                 <p className="text-xs text-gray-500 mt-1">Connectors</p>
               </div>
             </div>
+
+            {/* Showcase: Installed Lights */}
+            <div className="mt-16 rounded-2xl overflow-hidden shadow-2xl" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <div className="aspect-[16/9] relative">
+                <Image
+                  src="/images/hero-home.png"
+                  alt="Professional holiday lighting installation showcase"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <h4 className="text-xl font-bold text-gray-900 mb-2">Premium Holiday Lighting in Action</h4>
+                <p className="text-gray-700">See the stunning results our professional installation delivers</p>
+              </div>
+            </div>
+
             {/* C9 LED Bulb Options */}
-            <div className="mt-8 bg-gradient-to-br from-[#e7f5f6]/30 to-white rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-center mb-4 text-gray-900">C9 LED Bulb Options</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-white rounded-lg p-4 text-center shadow-sm">
-                  <div className="w-10 h-10 bg-[#147878]/10 rounded-full mx-auto mb-2 flex items-center justify-center">
-                    <span className="text-[#147878] font-bold text-sm">F</span>
+            <div className="mt-12 rounded-xl p-8" style={{
+              background: 'rgba(255, 255, 255, 0.75)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(212, 175, 55, 0.2)',
+              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}>
+              <h4 className="text-2xl font-bold text-center mb-6 text-gray-900">C9 LED Bulb Options</h4>
+              <div className="max-w-md mx-auto">
+                <div className="rounded-lg p-6 text-center shadow-lg" style={{
+                  background: 'rgba(255, 255, 255, 0.85)',
+                  backdropFilter: 'blur(8px)',
+                  border: '1.5px solid rgba(212, 175, 55, 0.3)'
+                }}>
+                  <div className="aspect-square relative mb-4 rounded-lg overflow-hidden" style={{
+                    maxWidth: '300px',
+                    margin: '0 auto'
+                  }}>
+                    <Image
+                      src="/images/c9-faceted-bulb.jpg"
+                      alt="Faceted C9 LED bulbs with diamond-cut brilliance"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-                  <p className="text-sm font-medium text-gray-800">Faceted</p>
-                  <p className="text-xs text-gray-500 mt-1">Diamond-cut brilliance</p>
-                </div>
-                <div className="bg-white rounded-lg p-4 text-center shadow-sm">
-                  <div className="w-10 h-10 bg-[#147878]/10 rounded-full mx-auto mb-2 flex items-center justify-center">
-                    <span className="text-[#147878] font-bold text-sm">S</span>
+                  <h5 className="text-xl font-bold text-gray-900 mb-2">Faceted C9 LED Bulbs</h5>
+                  <p className="text-gray-700 mb-3">Diamond-cut brilliance for maximum sparkle and elegance</p>
+                  <div className="inline-block px-4 py-2 rounded-full" style={{
+                    background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.15) 0%, rgba(235, 132, 79, 0.15) 100%)',
+                    border: '1px solid rgba(212, 175, 55, 0.3)'
+                  }}>
+                    <span className="text-sm font-semibold text-gray-800">Commercial-Grade LED</span>
                   </div>
-                  <p className="text-sm font-medium text-gray-800">Smooth</p>
-                  <p className="text-xs text-gray-500 mt-1">Classic uniform glow</p>
-                </div>
-                <div className="bg-white rounded-lg p-4 text-center shadow-sm">
-                  <div className="w-10 h-10 bg-[#147878]/10 rounded-full mx-auto mb-2 flex items-center justify-center">
-                    <span className="text-[#147878] font-bold text-sm">O</span>
-                  </div>
-                  <p className="text-sm font-medium text-gray-800">Opaque</p>
-                  <p className="text-xs text-gray-500 mt-1">Soft diffused light</p>
                 </div>
               </div>
-              <p className="text-center text-sm text-gray-600 mt-4">All C9 bulbs are commercial-grade LED for maximum durability and energy efficiency</p>
+              <p className="text-center text-sm text-gray-600 mt-6">Maximum durability and energy efficiency for professional installations</p>
             </div>
             <div className="text-center mt-6">
               <p className="text-sm text-gray-600 italic">For specific model numbers and supplier information: <span className="font-semibold">CALL SUPPLIER</span></p>
