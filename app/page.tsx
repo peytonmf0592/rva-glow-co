@@ -119,17 +119,17 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
-        {/* Abstract SVG Accent Line */}
+        {/* Abstract SVG Accent Line - Positioned at Top */}
         <div
-          className="absolute inset-0 pointer-events-none z-[5]"
+          className="absolute top-0 left-0 right-0 h-48 pointer-events-none z-[15]"
           style={{
             transform: 'translateY(var(--parallax-y, 0px))',
           }}
         >
           <svg
             className="absolute w-full h-full"
-            viewBox="0 0 1920 1080"
-            preserveAspectRatio="xMidYMid slice"
+            viewBox="0 0 1920 200"
+            preserveAspectRatio="xMidYMin meet"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -147,37 +147,37 @@ export default function Home() {
               </filter>
             </defs>
 
-            {/* Desktop: Double swooping curves */}
+            {/* Desktop: Double swooping curves at top */}
             <g className="hidden md:block">
               <path
-                d="M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400"
+                d="M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100"
                 stroke="url(#goldGradient)"
-                strokeWidth="2"
+                strokeWidth="3"
                 fill="none"
                 filter="url(#glow)"
-                opacity="0.8"
+                opacity="0.9"
               >
                 <animate
                   attributeName="d"
-                  values="M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400;
-                          M -100 400 Q 400 370, 700 400 T 1400 400 Q 1700 380, 2020 400;
-                          M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400"
+                  values="M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100;
+                          M -100 100 Q 400 70, 700 100 T 1400 100 Q 1700 80, 2020 100;
+                          M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100"
                   dur="8s"
                   repeatCount="indefinite"/>
               </path>
               <path
-                d="M -100 420 Q 500 450, 900 420 T 1600 440 Q 1800 420, 2020 440"
+                d="M -100 120 Q 500 150, 900 120 T 1600 140 Q 1800 120, 2020 140"
                 stroke="url(#goldGradient)"
-                strokeWidth="1.5"
+                strokeWidth="2"
                 fill="none"
                 filter="url(#glow)"
-                opacity="0.5"
+                opacity="0.6"
               >
                 <animate
                   attributeName="d"
-                  values="M -100 420 Q 500 450, 900 420 T 1600 440 Q 1800 420, 2020 440;
-                          M -100 420 Q 500 430, 900 420 T 1600 420 Q 1800 440, 2020 420;
-                          M -100 420 Q 500 450, 900 420 T 1600 440 Q 1800 420, 2020 440"
+                  values="M -100 120 Q 500 150, 900 120 T 1600 140 Q 1800 120, 2020 140;
+                          M -100 120 Q 500 130, 900 120 T 1600 120 Q 1800 140, 2020 120;
+                          M -100 120 Q 500 150, 900 120 T 1600 140 Q 1800 120, 2020 140"
                   dur="10s"
                   repeatCount="indefinite"/>
               </path>
@@ -185,7 +185,7 @@ export default function Home() {
               {/* Shimmer effect along the crest */}
               <circle r="20" fill="#FFD700" opacity="0">
                 <animateMotion
-                  path="M -100 400 Q 400 350, 700 400 T 1400 380 Q 1700 360, 2020 400"
+                  path="M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100"
                   dur="6s"
                   repeatCount="indefinite"/>
                 <animate
@@ -201,15 +201,15 @@ export default function Home() {
               </circle>
             </g>
 
-            {/* Mobile: Simple single curve */}
+            {/* Mobile: Simple single curve at top */}
             <g className="block md:hidden">
               <path
-                d="M -50 500 Q 480 450, 970 500"
+                d="M -50 100 Q 480 50, 970 100"
                 stroke="url(#goldGradient)"
-                strokeWidth="2"
+                strokeWidth="3"
                 fill="none"
                 filter="url(#glow)"
-                opacity="0.7"
+                opacity="0.8"
               />
             </g>
           </svg>
