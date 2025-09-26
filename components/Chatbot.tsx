@@ -135,7 +135,7 @@ export default function Chatbot() {
 
         .ripple-container {
           position: absolute;
-          inset: -20px;
+          inset: -10px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -147,8 +147,8 @@ export default function Chatbot() {
           background: linear-gradient(0deg, rgba(255, 250, 240, 0.12) 0%, rgba(255, 248, 220, 0.12) 100%);
           border-radius: 50%;
           border-top: 1px solid rgba(255, 248, 220, 0.4);
-          box-shadow: rgba(255, 248, 220, 0.3) 0 6px 12px 0;
-          backdrop-filter: blur(4px);
+          box-shadow: rgba(255, 248, 220, 0.3) 0 4px 8px 0;
+          backdrop-filter: blur(3px);
           animation: ripple 2s infinite ease-in-out;
         }
 
@@ -159,32 +159,32 @@ export default function Chatbot() {
         }
 
         .ripple-box:nth-child(2) {
-          width: 80px;
-          height: 80px;
+          width: 72px;
+          height: 72px;
           z-index: 4;
           border-color: rgba(255, 248, 220, 0.35);
           animation-delay: 0.2s;
         }
 
         .ripple-box:nth-child(3) {
-          width: 96px;
-          height: 96px;
+          width: 80px;
+          height: 80px;
           z-index: 3;
           border-color: rgba(255, 248, 220, 0.3);
           animation-delay: 0.4s;
         }
 
         .ripple-box:nth-child(4) {
-          width: 112px;
-          height: 112px;
+          width: 88px;
+          height: 88px;
           z-index: 2;
           border-color: rgba(255, 248, 220, 0.25);
           animation-delay: 0.6s;
         }
 
         .ripple-box:nth-child(5) {
-          width: 128px;
-          height: 128px;
+          width: 96px;
+          height: 96px;
           z-index: 1;
           border-color: rgba(255, 248, 220, 0.2);
           animation-delay: 0.8s;
