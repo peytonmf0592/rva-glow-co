@@ -143,6 +143,16 @@ export default function Header() {
                 </span>
               </Link>
               <Link
+                href="/about"
+                className={`nav-pill ${isActive('/about') ? 'active' : ''}`}
+              >
+                <span className={`relative z-10 font-medium ${
+                  isActive('/about') ? 'text-[#147878]' : 'text-gray-700'
+                }`}>
+                  About
+                </span>
+              </Link>
+              <Link
                 href="/contact"
                 className={`nav-pill ${isActive('/contact') ? 'active' : ''}`}
               >
@@ -215,6 +225,17 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   FAQ
+                </Link>
+                <Link
+                  href="/about"
+                  className={`mobile-nav-item ${
+                    isActive('/about') ? 'bg-gradient-to-r from-[#FFD700]/10 to-transparent' : ''
+                  } block px-4 py-3 rounded-xl text-base font-medium ${
+                    isActive('/about') ? 'text-[#147878]' : 'text-gray-700'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  About
                 </Link>
                 <Link
                   href="/contact"
