@@ -162,3 +162,121 @@ input[type="button"]:not(.no-glow):focus,
     display: block;
   }
 }
+
+/* Glowing Card Effect */
+.glowing-card {
+  --glow-sens: 30;
+  --color-sens: calc(var(--glow-sens) + 20);
+  --pointer-deg: 45deg;
+  --pointer-d: 0;
+
+  position: relative;
+  isolation: isolate;
+  transform: translate3d(0, 0, 0.01px);
+}
+
+.glowing-card::before,
+.glowing-card::after,
+.glowing-card > .glow-effect {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: opacity 0.25s ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glowing-card:not(:hover)::before,
+.glowing-card:not(:hover)::after,
+.glowing-card:not(:hover) > .glow-effect {
+  opacity: 0;
+  transition: opacity 0.75s ease-in-out;
+}
+
+/* Colored mesh gradient border */
+.glowing-card::before {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.75) 0 100%) padding-box,
+    linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+    radial-gradient(at 80% 55%, hsla(180,60%,65%,1) 0px, transparent 50%) border-box,
+    radial-gradient(at 69% 34%, hsla(25,80%,65%,1) 0px, transparent 50%) border-box,
+    radial-gradient(at 8% 6%, hsla(174,70%,70%,1) 0px, transparent 50%) border-box,
+    radial-gradient(at 41% 38%, hsla(180,60%,60%,1) 0px, transparent 50%) border-box,
+    radial-gradient(at 86% 85%, hsla(174,70%,68%,1) 0px, transparent 50%) border-box,
+    radial-gradient(at 82% 18%, hsla(40,85%,60%,1) 0px, transparent 50%) border-box,
+    radial-gradient(at 51% 4%, hsla(25,80%,65%,1) 0px, transparent 50%) border-box,
+    linear-gradient(#2F7E80 0 100%) border-box;
+
+  opacity: calc((var(--pointer-d) - var(--color-sens)) / (100 - var(--color-sens)));
+  mask-image: conic-gradient(
+    from var(--pointer-deg) at center,
+    black 25%, transparent 40%, transparent 60%, black 75%
+  );
+}
+
+/* Colored mesh gradient background */
+.glowing-card::after {
+  border: 1px solid transparent;
+  background:
+    radial-gradient(at 80% 55%, hsla(180,60%,65%,1) 0px, transparent 50%) padding-box,
+    radial-gradient(at 69% 34%, hsla(25,80%,65%,1) 0px, transparent 50%) padding-box,
+    radial-gradient(at 8% 6%, hsla(174,70%,70%,1) 0px, transparent 50%) padding-box,
+    radial-gradient(at 41% 38%, hsla(180,60%,60%,1) 0px, transparent 50%) padding-box,
+    radial-gradient(at 86% 85%, hsla(174,70%,68%,1) 0px, transparent 50%) padding-box,
+    radial-gradient(at 82% 18%, hsla(40,85%,60%,1) 0px, transparent 50%) padding-box,
+    radial-gradient(at 51% 4%, hsla(25,80%,65%,1) 0px, transparent 50%) padding-box,
+    linear-gradient(#2F7E80 0 100%) padding-box;
+
+  mask-image:
+    linear-gradient( to bottom, black, black ),
+    radial-gradient( ellipse at 50% 50%, black 40%, transparent 65% ),
+    radial-gradient( ellipse at 66% 66%, black 5%, transparent 40% ),
+    radial-gradient( ellipse at 33% 33%, black 5%, transparent 40% ),
+    radial-gradient( ellipse at 66% 33%, black 5%, transparent 40% ),
+    radial-gradient( ellipse at 33% 66%, black 5%, transparent 40% ),
+    conic-gradient( from var(--pointer-deg) at center, transparent 5%, black 15%, black 85%, transparent 95% );
+  mask-composite: subtract, add, add, add, add, add;
+
+  opacity: calc((var(--pointer-d) - var(--color-sens)) / (100 - var(--color-sens)));
+  mix-blend-mode: soft-light;
+}
+
+/* Glowing border edges */
+.glowing-card > .glow-effect {
+  inset: -20px;
+  z-index: 1;
+  mask-image: conic-gradient(
+    from var(--pointer-deg) at center,
+    black 2.5%, transparent 10%, transparent 90%, black 97.5%
+  );
+  opacity: calc((var(--pointer-d) - var(--glow-sens)) / (100 - var(--glow-sens)));
+  mix-blend-mode: plus-lighter;
+}
+
+.glowing-card > .glow-effect::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px hsl(180 70% 75% / 100%),
+    inset 0 0 1px 0 hsl(180 70% 75% / 80%),
+    inset 0 0 3px 0 hsl(180 70% 75% / 70%),
+    inset 0 0 6px 0 hsl(180 70% 75% / 60%),
+    inset 0 0 15px 0 hsl(180 70% 75% / 50%),
+    inset 0 0 25px 2px hsl(180 70% 75% / 40%),
+    inset 0 0 50px 2px hsl(180 70% 75% / 30%),
+    0 0 1px 0 hsl(180 70% 75% / 80%),
+    0 0 3px 0 hsl(180 70% 75% / 70%),
+    0 0 6px 0 hsl(180 70% 75% / 60%),
+    0 0 15px 0 hsl(180 70% 75% / 50%),
+    0 0 25px 2px hsl(180 70% 75% / 40%),
+    0 0 50px 2px hsl(180 70% 75% / 30%);
+}
+
+.glowing-card > .card-inner {
+  position: relative;
+  z-index: 1;
+}

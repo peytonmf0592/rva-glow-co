@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { useRouter } from 'next/navigation'
 import HolidayPreview from '@/components/HolidayPreview'
+import GlowingCard from '@/components/GlowingCard'
 
 declare global {
   interface Window {
@@ -590,12 +591,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature 1 - True Full Service */}
-            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-            }}>
+            <GlowingCard
+              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                background: 'rgba(255, 255, 255, 0.75)',
+                backdropFilter: 'blur(10px) saturate(180%)',
+                border: '1px solid rgba(212, 175, 55, 0.2)',
+                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+              }}
+            >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 border: '1.5px solid #D4AF37',
@@ -605,15 +609,18 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">True Full Service</h3>
               <p className="text-gray-600">Design → Install → Seasonal maintenance → Takedown → Storage. We handle everything from start to finish and beyond.</p>
-            </div>
+            </GlowingCard>
 
             {/* Feature 2 - Damage-Free Installation */}
-            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-            }}>
+            <GlowingCard
+              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                background: 'rgba(255, 255, 255, 0.75)',
+                backdropFilter: 'blur(10px) saturate(180%)',
+                border: '1px solid rgba(212, 175, 55, 0.2)',
+                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+              }}
+            >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 border: '1.5px solid #D4AF37',
@@ -623,15 +630,18 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Damage-Free Installation</h3>
               <p className="text-gray-600">Installation uses removable clips that attach securely without damaging your roof, gutters, or shingles. No holes, no nails, no worries.</p>
-            </div>
+            </GlowingCard>
 
             {/* Feature 3 - Color Options */}
-            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-            }}>
+            <GlowingCard
+              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                background: 'rgba(255, 255, 255, 0.75)',
+                backdropFilter: 'blur(10px) saturate(180%)',
+                border: '1px solid rgba(212, 175, 55, 0.2)',
+                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+              }}
+            >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 border: '1.5px solid #D4AF37',
@@ -641,15 +651,18 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Color Options Without Automation</h3>
               <p className="text-gray-600">Pick the color palette you want — warm white, multicolor, or custom themes.</p>
-            </div>
+            </GlowingCard>
 
             {/* Feature 4 - Flexible Ownership */}
-            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-            }}>
+            <GlowingCard
+              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                background: 'rgba(255, 255, 255, 0.75)',
+                backdropFilter: 'blur(10px) saturate(180%)',
+                border: '1px solid rgba(212, 175, 55, 0.2)',
+                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+              }}
+            >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 border: '1.5px solid #D4AF37',
@@ -659,15 +672,18 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Flexible Ownership</h3>
               <p className="text-gray-600">Lease or buy — transparent pricing with core services included in every package.</p>
-            </div>
+            </GlowingCard>
 
             {/* Feature 5 - Safety & Quality */}
-            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-            }}>
+            <GlowingCard
+              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                background: 'rgba(255, 255, 255, 0.75)',
+                backdropFilter: 'blur(10px) saturate(180%)',
+                border: '1px solid rgba(212, 175, 55, 0.2)',
+                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+              }}
+            >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 border: '1.5px solid #D4AF37',
@@ -677,10 +693,12 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Safety & Quality</h3>
               <p className="text-gray-600">Fall protection, weather-rated bulbs & wiring, and industry-grade termination caps for lasting beauty.</p>
-            </div>
+            </GlowingCard>
 
             {/* Feature 6 - Commercial */}
-            <div className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]" style={{
+            <GlowingCard
+              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+              style={{
               background: 'rgba(255, 255, 255, 0.75)',
               backdropFilter: 'blur(10px) saturate(180%)',
               border: '1px solid rgba(212, 175, 55, 0.2)',
@@ -695,7 +713,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Commercial</h3>
               <p className="text-gray-600">Professional holiday lighting solutions for businesses, storefronts, and office buildings.</p>
-            </div>
+            </GlowingCard>
           </div>
 
           <div className="text-center mt-12">
