@@ -135,7 +135,7 @@ export default function Chatbot() {
 
         .ripple-container {
           position: absolute;
-          inset: -40px;
+          inset: -20px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -144,11 +144,11 @@ export default function Chatbot() {
 
         .ripple-box {
           position: absolute;
-          background: linear-gradient(0deg, rgba(212, 175, 55, 0.15) 0%, rgba(255, 215, 0, 0.15) 100%);
+          background: linear-gradient(0deg, rgba(255, 250, 240, 0.12) 0%, rgba(255, 248, 220, 0.12) 100%);
           border-radius: 50%;
-          border-top: 1px solid rgba(212, 175, 55, 0.6);
-          box-shadow: rgba(212, 175, 55, 0.3) 0 10px 10px 0;
-          backdrop-filter: blur(5px);
+          border-top: 1px solid rgba(255, 248, 220, 0.4);
+          box-shadow: rgba(255, 248, 220, 0.3) 0 6px 12px 0;
+          backdrop-filter: blur(4px);
           animation: ripple 2s infinite ease-in-out;
         }
 
@@ -159,34 +159,34 @@ export default function Chatbot() {
         }
 
         .ripple-box:nth-child(2) {
-          width: 90px;
-          height: 90px;
+          width: 80px;
+          height: 80px;
           z-index: 4;
-          border-color: rgba(212, 175, 55, 0.5);
+          border-color: rgba(255, 248, 220, 0.35);
           animation-delay: 0.2s;
         }
 
         .ripple-box:nth-child(3) {
-          width: 116px;
-          height: 116px;
+          width: 96px;
+          height: 96px;
           z-index: 3;
-          border-color: rgba(212, 175, 55, 0.4);
+          border-color: rgba(255, 248, 220, 0.3);
           animation-delay: 0.4s;
         }
 
         .ripple-box:nth-child(4) {
-          width: 142px;
-          height: 142px;
+          width: 112px;
+          height: 112px;
           z-index: 2;
-          border-color: rgba(212, 175, 55, 0.3);
+          border-color: rgba(255, 248, 220, 0.25);
           animation-delay: 0.6s;
         }
 
         .ripple-box:nth-child(5) {
-          width: 168px;
-          height: 168px;
+          width: 128px;
+          height: 128px;
           z-index: 1;
-          border-color: rgba(212, 175, 55, 0.2);
+          border-color: rgba(255, 248, 220, 0.2);
           animation-delay: 0.8s;
         }
       `}</style>
