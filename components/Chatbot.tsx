@@ -198,7 +198,7 @@ export default function Chatbot() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full p-4 shadow-2xl hover:scale-110 transform transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-[100] bg-gradient-to-r from-[#2F7E80] to-[#EB834F] text-white rounded-full p-4 shadow-2xl hover:scale-110 transform transition-all duration-300 ${
           isOpen ? 'scale-0' : 'scale-100'
         }`}
         aria-label="Open chat"
@@ -221,13 +221,23 @@ export default function Chatbot() {
 
       {/* Chat Window */}
       <div
-        className={`fixed bottom-6 right-6 z-50 bg-white rounded-2xl shadow-2xl transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-[100] rounded-2xl shadow-2xl transition-all duration-300 ${
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
         }`}
-        style={{ width: '380px', height: '600px', maxHeight: '80vh' }}
+        style={{
+          width: '380px',
+          height: '600px',
+          maxHeight: '80vh',
+          background: 'rgba(255, 255, 255, 0.95)',
+          backdropFilter: 'blur(12px) saturate(180%)',
+          border: '1px solid rgba(212, 175, 55, 0.2)'
+        }}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-t-2xl p-4 flex items-center justify-between">
+        <div className="text-white rounded-t-2xl p-4 flex items-center justify-between" style={{
+          background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+          boxShadow: '0 2px 8px rgba(47, 126, 128, 0.2)'
+        }}>
           <div className="flex items-center space-x-3">
             <div className="bg-white/20 rounded-full p-2 flex items-center justify-center">
               <span className="text-lg font-bold">L</span>
@@ -256,11 +266,14 @@ export default function Chatbot() {
               className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[70%] rounded-2xl px-4 py-2 ${
-                  message.sender === 'user'
-                    ? 'bg-gradient-to-r from-[#147878] to-[#3d4547] text-white'
-                    : 'bg-[#e7f5f6] text-[#3d4547]'
-                }`}
+                className={`max-w-[70%] rounded-2xl px-4 py-2`}
+                style={message.sender === 'user' ? {
+                  background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+                  color: 'white'
+                } : {
+                  background: 'rgba(174, 231, 231, 0.3)',
+                  color: '#3d4547'
+                }}
               >
                 <p className="text-sm">{message.text}</p>
               </div>
@@ -292,11 +305,19 @@ export default function Chatbot() {
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Type your message..."
-              className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:border-[#147878] text-gray-800"
+              className="flex-1 border rounded-full px-4 py-2 focus:outline-none text-gray-800"
+              style={{
+                border: '1px solid rgba(212, 175, 55, 0.3)',
+                background: 'rgba(255, 255, 255, 0.8)'
+              }}
             />
             <button
               onClick={handleSendMessage}
-              className="bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full p-2 hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="text-white rounded-full p-2 hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              style={{
+                background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+                border: '1px solid rgba(212, 175, 55, 0.4)'
+              }}
               aria-label="Send message"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -309,19 +330,31 @@ export default function Chatbot() {
           <div className="flex flex-wrap gap-2 mt-3">
             <button
               onClick={() => setInputText("What are your prices?")}
-              className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
+              className="text-xs text-[#3d4547] px-3 py-1 rounded-full transition-colors"
+              style={{
+                background: 'rgba(174, 231, 231, 0.3)',
+                border: '1px solid rgba(212, 175, 55, 0.2)'
+              }}
             >
               Pricing
             </button>
             <button
               onClick={() => setInputText("How do I book?")}
-              className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
+              className="text-xs text-[#3d4547] px-3 py-1 rounded-full transition-colors"
+              style={{
+                background: 'rgba(174, 231, 231, 0.3)',
+                border: '1px solid rgba(212, 175, 55, 0.2)'
+              }}
             >
               Book Now
             </button>
             <button
               onClick={() => setInputText("What areas do you serve?")}
-              className="text-xs bg-[#e7f5f6]/50 text-[#3d4547] px-3 py-1 rounded-full hover:bg-[#e7f5f6] transition-colors"
+              className="text-xs text-[#3d4547] px-3 py-1 rounded-full transition-colors"
+              style={{
+                background: 'rgba(174, 231, 231, 0.3)',
+                border: '1px solid rgba(212, 175, 55, 0.2)'
+              }}
             >
               Service Areas
             </button>

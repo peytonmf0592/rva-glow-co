@@ -151,14 +151,14 @@ export default function ServicesPage() {
             </div>
 
             {/* Premium Holiday Lighting in Action */}
-            <div className="mt-16 rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_12px_48px_rgba(47,126,128,0.2)] transition-all duration-500" style={{
+            <div className="mt-16 max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_12px_48px_rgba(47,126,128,0.2)] transition-all duration-500" style={{
               background: 'rgba(255, 255, 255, 0.80)',
               backdropFilter: 'blur(14px) saturate(190%)',
               border: '1.5px solid rgba(212, 175, 55, 0.25)',
               boxShadow: '0 12px 40px rgba(47, 126, 128, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(212, 175, 55, 0.1)'
             }}>
               <div className="relative p-6">
-                <div className="aspect-video relative rounded-xl overflow-hidden shadow-lg" style={{
+                <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-lg" style={{
                   border: '2px solid rgba(212, 175, 55, 0.2)'
                 }}>
                   <Image
