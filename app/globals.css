@@ -5,6 +5,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand Color Tokens - Frosted Teal & Rose Gold System */
+  --forest-teal: #2F7E80;
+  --deep-ice: #AEE7E7;
+  --rose-gold: #D69C7A;
+  --gold: #D4AF37;
+  --peach-warm: #EB834F;
+
+  /* Overlay & Texture Tokens */
+  --frost-overlay: rgba(255, 255, 255, 0.06);
+  --bokeh-white: rgba(255, 255, 255, 0.65);
+
+  /* Legacy tokens (deprecated) */
   --primary-blue: #3b82f6;
   --primary-purple: #8b5cf6;
   --primary-gold: #fbbf24;

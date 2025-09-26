@@ -1,0 +1,38 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="roseGoldGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D69C7A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+    </linearGradient>
+    <filter id="bevel3">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+      <feSpecularLighting in="blur" surfaceScale="2" specularConstant="0.8" specularExponent="10" lighting-color="#FFE4B5" result="spec">
+        <fePointLight x="-50" y="-50" z="100"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="specOut"/>
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+    </filter>
+  </defs>
+
+  <!-- Palette shape -->
+  <path d="M 20 14 C 20 14 38 10 48 20 C 58 30 54 48 44 52 C 34 56 24 52 20 42 C 16 32 14 24 20 14 Z"
+        fill="url(#roseGoldGrad3)" filter="url(#bevel3)"/>
+
+  <!-- Thumb hole -->
+  <ellipse cx="24" cy="44" rx="4" ry="5" fill="#D4AF37" opacity="0.3"/>
+
+  <!-- Paint wells (color dots) -->
+  <circle cx="30" cy="20" r="3.5" fill="#D4AF37" opacity="0.8"/>
+  <circle cx="40" cy="18" r="3.5" fill="#D4AF37" opacity="0.7"/>
+  <circle cx="46" cy="28" r="3.5" fill="#D4AF37" opacity="0.8"/>
+  <circle cx="44" cy="38" r="3.5" fill="#D4AF37" opacity="0.7"/>
+  <circle cx="34" cy="42" r="3.5" fill="#D4AF37" opacity="0.8"/>
+
+  <!-- Light bulb overlaid -->
+  <ellipse cx="48" cy="48" rx="7" ry="9" fill="url(#roseGoldGrad3)" filter="url(#bevel3)"/>
+  <rect x="45" y="55" width="6" height="4" rx="1" fill="url(#roseGoldGrad3)"/>
+
+  <!-- Glow lines in bulb -->
+  <path d="M 48 42 L 48 52" stroke="#D4AF37" stroke-width="1.2" opacity="0.6"/>
+  <path d="M 44 46 L 52 46" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+</svg>

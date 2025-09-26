@@ -192,13 +192,48 @@ export default function Home() {
             src="/images/hero-home.png"
             alt="Holiday lights on home"
             className="w-full h-full object-cover"
+            loading="eager"
           />
-          {/* Matching gradient overlay that continues header colors */}
+
+          {/* Frosted Teal Gradient Overlay - top to bottom */}
           <div className="absolute inset-0" style={{
-            background: 'linear-gradient(90deg, rgba(49, 65, 67, 0.5) 0%, rgba(20, 120, 120, 0.45) 20%, rgba(235, 131, 79, 0.4) 60%, rgba(212, 175, 55, 0.35) 100%)'
+            background: 'linear-gradient(180deg, rgba(47, 126, 128, 0.45) 0%, rgba(174, 231, 231, 0.15) 30%, transparent 60%, rgba(47, 126, 128, 0.25) 100%)'
           }}></div>
-          {/* Bottom darkening for text contrast */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent"></div>
+
+          {/* Bokeh Light Points - sparse, varying sizes */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Top-left cluster */}
+            <div className="absolute" style={{top: '8%', left: '12%', width: '120px', height: '120px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.65) 0%, transparent 60%)', filter: 'blur(20px)', opacity: 0.4}}></div>
+            <div className="absolute" style={{top: '15%', left: '8%', width: '80px', height: '80px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 60%)', filter: 'blur(16px)', opacity: 0.3}}></div>
+            <div className="absolute" style={{top: '5%', left: '20%', width: '60px', height: '60px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, transparent 60%)', filter: 'blur(14px)', opacity: 0.25}}></div>
+
+            {/* Lower-right cluster */}
+            <div className="absolute" style={{bottom: '12%', right: '15%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 60%)', filter: 'blur(18px)', opacity: 0.35}}></div>
+            <div className="absolute" style={{bottom: '8%', right: '10%', width: '70px', height: '70px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%)', filter: 'blur(12px)', opacity: 0.3}}></div>
+            <div className="absolute" style={{bottom: '18%', right: '8%', width: '50px', height: '50px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, transparent 60%)', filter: 'blur(10px)', opacity: 0.2}}></div>
+          </div>
+
+          {/* Static Snow Specks - very low opacity */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            backgroundImage: `
+              radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+              radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+              radial-gradient(circle at 45% 35%, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+              radial-gradient(circle at 75% 55%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+              radial-gradient(circle at 25% 65%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+              radial-gradient(circle at 60% 75%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+              radial-gradient(circle at 90% 45%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+              radial-gradient(circle at 35% 85%, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+              radial-gradient(circle at 10% 50%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+              radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: '800px 600px'
+          }}></div>
+
+          {/* Bottom Frosted Band */}
+          <div className="absolute inset-x-0 bottom-0 h-1/3" style={{
+            background: 'linear-gradient(to top, rgba(47, 126, 128, 0.35) 0%, transparent 100%)'
+          }}></div>
         </div>
 
 
@@ -420,25 +455,30 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
             <Link
               href="/booking"
-              className="inline-block text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-300"
+              className="inline-block text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
               style={{
-                background: 'linear-gradient(90deg, #147878 0%, #eb834f 100%)',
-                border: '2px solid rgba(212, 175, 55, 0.6)',
-                boxShadow: '0 0 0 1px rgba(212, 175, 55, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4)'
+                background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.95) 0%, rgba(235, 132, 79, 0.92) 60%, rgba(214, 156, 122, 0.90) 100%)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: '0 0 0 0.5px rgba(212, 175, 55, 0.5), 0 8px 24px rgba(47, 126, 128, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+                textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
+                backdropFilter: 'blur(8px)'
               }}
             >
               Book a Free Design Consult →
             </Link>
             <button
               onClick={() => {
-                setEstimateAddress('') // Clear any previous address
-                setSubmitSuccess(false) // Reset success state
+                setEstimateAddress('')
+                setSubmitSuccess(false)
                 setShowEstimateModal(true)
               }}
-              className="inline-block bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transform transition-all duration-300"
+              className="inline-block text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
               style={{
-                border: '2px solid rgba(255, 255, 255, 0.8)',
-                boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3)'
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1.5px solid #D4AF37',
+                boxShadow: '0 0 0 0.5px rgba(212, 175, 55, 0.4), 0 6px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+                backdropFilter: 'blur(12px) saturate(180%)',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
               }}
             >
               Request Instant Estimate
