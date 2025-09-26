@@ -106,8 +106,8 @@ export default function Home() {
 
   return (
     <>
-      {/* Abstract SVG Accent Line - Between Header and Hero */}
-      <div className="relative w-full h-24 bg-gradient-to-b from-white to-transparent overflow-hidden">
+      {/* Abstract SVG Accent Line - Floating on Border */}
+      <div className="absolute top-20 left-0 right-0 h-24 pointer-events-none z-30 overflow-hidden">
         <svg
           className="absolute w-full h-full"
           viewBox="0 0 1920 150"
@@ -184,8 +184,8 @@ export default function Home() {
         </svg>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Shifted Up */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-24">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
