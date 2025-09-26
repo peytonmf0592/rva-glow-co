@@ -4,7 +4,7 @@ const services = [
   {
     title: 'Roofline Lighting',
     price: '',
-    image: '/Screen Shots/C9_OptiCore_LED_Warm_White_Faceted_Green_Wire.jpg',
+    image: '/images/roofline-lighting.png',
     features: [
       'Professional-grade C9 LED bulbs',
       'Custom-fit to your roofline',
@@ -150,7 +150,7 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            {/* Showcase: Installed Lights */}
+            {/* Premium Holiday Lighting in Action */}
             <div className="mt-16 rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_12px_48px_rgba(47,126,128,0.2)] transition-all duration-500" style={{
               background: 'rgba(255, 255, 255, 0.80)',
               backdropFilter: 'blur(14px) saturate(190%)',
@@ -162,8 +162,8 @@ export default function ServicesPage() {
                   border: '2px solid rgba(212, 175, 55, 0.2)'
                 }}>
                   <Image
-                    src="/images/hero-home.png"
-                    alt="Professional holiday lighting installation showcase - complete home display"
+                    src="/Screen Shots/C9_OptiCore_LED_Warm_White_Faceted_Green_Wire.jpg"
+                    alt="Faceted C9 LED bulbs illuminated on roofline - diamond-cut brilliance"
                     fill
                     className="object-cover"
                   />
@@ -176,7 +176,7 @@ export default function ServicesPage() {
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
                 }}>Premium Holiday Lighting in Action</h4>
-                <p className="text-gray-700 text-lg">See the stunning results our professional installation delivers</p>
+                <p className="text-gray-700 text-lg">Experience the diamond-cut brilliance of our faceted C9 LED bulbs</p>
               </div>
             </div>
 
