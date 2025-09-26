@@ -175,6 +175,34 @@ input[type="button"]:not(.no-glow):focus,
   transform: translate3d(0, 0, 0.01px);
 }
 
+/* Mobile: Show constant subtle glow on all edges */
+@media (hover: none) and (pointer: coarse) {
+  .glowing-card::before,
+  .glowing-card::after,
+  .glowing-card > .glow-effect {
+    opacity: 0.3 !important;
+    transition: none !important;
+  }
+
+  .glowing-card > .glow-effect {
+    mask-image: none !important;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  .glowing-card::before {
+    mask-image: none !important;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
 .glowing-card::before,
 .glowing-card::after,
 .glowing-card > .glow-effect {
