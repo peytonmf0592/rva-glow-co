@@ -21,6 +21,7 @@ export default function Home() {
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const addressInputRef = useRef<HTMLInputElement>(null)
   const [autocomplete, setAutocomplete] = useState<any>(null)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     if (showEstimateModal && addressInputRef.current) {
@@ -96,9 +97,7 @@ export default function Home() {
   // Parallax effect for SVG accent
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY
-      const parallaxElement = document.documentElement
-      parallaxElement.style.setProperty('--parallax-y', `${scrollY * 0.05}px`)
+      setScrollY(window.scrollY)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -107,6 +106,84 @@ export default function Home() {
 
   return (
     <>
+      {/* Abstract SVG Accent Line - Between Header and Hero */}
+      <div className="relative w-full h-24 bg-gradient-to-b from-white to-transparent overflow-hidden">
+        <svg
+          className="absolute w-full h-full"
+          viewBox="0 0 1920 150"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{
+            transform: `translateY(${scrollY * -0.3}px)`
+          }}
+        >
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#FFD700" stopOpacity="0.3" />
+              <stop offset="50%" stopColor="#FFD700" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#FFD700" stopOpacity="0.3" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Desktop: Flowing curves */}
+          <g className="hidden md:block">
+            <path
+              d="M -100 75 Q 400 25, 700 75 T 1400 55 Q 1700 35, 2020 75"
+              stroke="url(#goldGradient)"
+              strokeWidth="3"
+              fill="none"
+              filter="url(#glow)"
+              opacity="0.8"
+            >
+              <animate
+                attributeName="d"
+                values="M -100 75 Q 400 25, 700 75 T 1400 55 Q 1700 35, 2020 75;
+                        M -100 85 Q 500 45, 900 85 T 1600 70 Q 1800 50, 2020 85;
+                        M -100 75 Q 400 25, 700 75 T 1400 55 Q 1700 35, 2020 75"
+                dur="10s"
+                repeatCount="indefinite"/>
+            </path>
+
+            {/* Shimmer effect */}
+            <circle r="20" fill="#FFD700" opacity="0">
+              <animateMotion
+                path="M -100 75 Q 400 25, 700 75 T 1400 55 Q 1700 35, 2020 75"
+                dur="6s"
+                repeatCount="indefinite"/>
+              <animate
+                attributeName="opacity"
+                values="0;0.8;0"
+                dur="6s"
+                repeatCount="indefinite"/>
+              <animate
+                attributeName="r"
+                values="5;15;5"
+                dur="6s"
+                repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          {/* Mobile: Simple single curve */}
+          <g className="block md:hidden">
+            <path
+              d="M -50 75 Q 480 25, 970 75"
+              stroke="url(#goldGradient)"
+              strokeWidth="3"
+              fill="none"
+              filter="url(#glow)"
+              opacity="0.8"
+            />
+          </g>
+        </svg>
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -119,101 +196,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
-        {/* Abstract SVG Accent Line - Positioned at Top */}
-        <div
-          className="absolute top-0 left-0 right-0 h-48 pointer-events-none z-[15]"
-          style={{
-            transform: 'translateY(var(--parallax-y, 0px))',
-          }}
-        >
-          <svg
-            className="absolute w-full h-full"
-            viewBox="0 0 1920 200"
-            preserveAspectRatio="xMidYMin meet"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#FFD700" stopOpacity="0.3" />
-                <stop offset="50%" stopColor="#FFD700" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#FFD700" stopOpacity="0.3" />
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-
-            {/* Desktop: Double swooping curves at top */}
-            <g className="hidden md:block">
-              <path
-                d="M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100"
-                stroke="url(#goldGradient)"
-                strokeWidth="3"
-                fill="none"
-                filter="url(#glow)"
-                opacity="0.9"
-              >
-                <animate
-                  attributeName="d"
-                  values="M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100;
-                          M -100 100 Q 400 70, 700 100 T 1400 100 Q 1700 80, 2020 100;
-                          M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100"
-                  dur="8s"
-                  repeatCount="indefinite"/>
-              </path>
-              <path
-                d="M -100 120 Q 500 150, 900 120 T 1600 140 Q 1800 120, 2020 140"
-                stroke="url(#goldGradient)"
-                strokeWidth="2"
-                fill="none"
-                filter="url(#glow)"
-                opacity="0.6"
-              >
-                <animate
-                  attributeName="d"
-                  values="M -100 120 Q 500 150, 900 120 T 1600 140 Q 1800 120, 2020 140;
-                          M -100 120 Q 500 130, 900 120 T 1600 120 Q 1800 140, 2020 120;
-                          M -100 120 Q 500 150, 900 120 T 1600 140 Q 1800 120, 2020 140"
-                  dur="10s"
-                  repeatCount="indefinite"/>
-              </path>
-
-              {/* Shimmer effect along the crest */}
-              <circle r="20" fill="#FFD700" opacity="0">
-                <animateMotion
-                  path="M -100 100 Q 400 50, 700 100 T 1400 80 Q 1700 60, 2020 100"
-                  dur="6s"
-                  repeatCount="indefinite"/>
-                <animate
-                  attributeName="opacity"
-                  values="0;0.8;0"
-                  dur="6s"
-                  repeatCount="indefinite"/>
-                <animate
-                  attributeName="r"
-                  values="5;15;5"
-                  dur="6s"
-                  repeatCount="indefinite"/>
-              </circle>
-            </g>
-
-            {/* Mobile: Simple single curve at top */}
-            <g className="block md:hidden">
-              <path
-                d="M -50 100 Q 480 50, 970 100"
-                stroke="url(#goldGradient)"
-                strokeWidth="3"
-                fill="none"
-                filter="url(#glow)"
-                opacity="0.8"
-              />
-            </g>
-          </svg>
-        </div>
 
         {/* Light Glow Overlay - matches actual light positions in photo */}
         <div className="absolute inset-0 pointer-events-none">
