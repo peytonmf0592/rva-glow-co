@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { useRouter } from 'next/navigation'
 import HolidayPreview from '@/components/HolidayPreview'
-import GlowingCard from '@/components/GlowingCard'
+import ServiceSlider from '@/components/ServiceSlider'
 import HeroScrollEffect from '@/components/HeroScrollEffect'
 
 declare global {
@@ -277,134 +277,9 @@ export default function Home() {
             <p className="text-xl text-gray-600">Full-service holiday lighting that's truly hands-off for you</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 - True Full Service */}
-            <GlowingCard
-              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              style={{
-                background: 'rgba(255, 255, 255, 0.75)',
-                backdropFilter: 'blur(10px) saturate(180%)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
-              }}>
-                <img src="/icons/tree-service.svg" alt="Full Service" className="w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">True Full Service</h3>
-              <p className="text-gray-600">Design, Install, Seasonal maintenance, Takedown, Storage. We handle everything from start to finish and beyond.</p>
-            </GlowingCard>
+          <ServiceSlider />
 
-            {/* Feature 2 - Damage-Free Installation */}
-            <GlowingCard
-              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              style={{
-                background: 'rgba(255, 255, 255, 0.75)',
-                backdropFilter: 'blur(10px) saturate(180%)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
-              }}>
-                <img src="/icons/damage-free.svg" alt="Damage-Free" className="w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Damage-Free Installation</h3>
-              <p className="text-gray-600">Installation uses removable clips that attach securely without damaging your roof, gutters, or shingles. No holes, no nails, no worries.</p>
-            </GlowingCard>
-
-            {/* Feature 3 - Color Options */}
-            <GlowingCard
-              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              style={{
-                background: 'rgba(255, 255, 255, 0.75)',
-                backdropFilter: 'blur(10px) saturate(180%)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
-              }}>
-                <img src="/icons/color-options.svg" alt="Color Options" className="w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Color Options Without Automation</h3>
-              <p className="text-gray-600">Pick the color palette you want — warm white, multicolor, or custom themes.</p>
-            </GlowingCard>
-
-            {/* Feature 4 - Flexible Ownership */}
-            <GlowingCard
-              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              style={{
-                background: 'rgba(255, 255, 255, 0.75)',
-                backdropFilter: 'blur(10px) saturate(180%)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
-              }}>
-                <img src="/icons/flexible-ownership.svg" alt="Flexible Ownership" className="w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Flexible Ownership</h3>
-              <p className="text-gray-600">Lease or buy — transparent pricing with core services included in every package.</p>
-            </GlowingCard>
-
-            {/* Feature 5 - Safety & Quality */}
-            <GlowingCard
-              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              style={{
-                background: 'rgba(255, 255, 255, 0.75)',
-                backdropFilter: 'blur(10px) saturate(180%)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
-              }}>
-                <img src="/icons/safety-quality.svg" alt="Safety & Quality" className="w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Safety & Quality</h3>
-              <p className="text-gray-600">Fall protection, weather-rated bulbs & wiring, and industry-grade termination caps for lasting beauty.</p>
-            </GlowingCard>
-
-            {/* Feature 6 - Commercial */}
-            <GlowingCard
-              className="rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              style={{
-              background: 'rgba(255, 255, 255, 0.75)',
-              backdropFilter: 'blur(10px) saturate(180%)',
-              border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-            }}>
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: 'inset 0 2px 4px rgba(255, 255, 255, 0.1)'
-              }}>
-                <img src="/icons/commercial.svg" alt="Commercial" className="w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Commercial</h3>
-              <p className="text-gray-600">Professional holiday lighting solutions for businesses, storefronts, and office buildings.</p>
-            </GlowingCard>
-          </div>
-
-          <div className="text-center mt-12">
+          <div className="text-center mt-20">
             <Link
               href="/services"
               className="inline-block bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
