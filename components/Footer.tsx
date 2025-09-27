@@ -46,30 +46,12 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-[#FFD700]">Service Areas</h4>
             <ul className="space-y-2 text-gray-300">
-              <li className="flex items-center">
-                <span className="text-red-500 mr-2">📍</span>
-                Richmond
-              </li>
-              <li className="flex items-center">
-                <span className="text-red-500 mr-2">📍</span>
-                Henrico
-              </li>
-              <li className="flex items-center">
-                <span className="text-red-500 mr-2">📍</span>
-                Chesterfield
-              </li>
-              <li className="flex items-center">
-                <span className="text-red-500 mr-2">📍</span>
-                Midlothian
-              </li>
-              <li className="flex items-center">
-                <span className="text-red-500 mr-2">📍</span>
-                Short Pump
-              </li>
-              <li className="flex items-center">
-                <span className="text-red-500 mr-2">📍</span>
-                Glen Allen
-              </li>
+              <li>Richmond</li>
+              <li>Henrico</li>
+              <li>Chesterfield</li>
+              <li>Midlothian</li>
+              <li>Short Pump</li>
+              <li>Glen Allen</li>
             </ul>
           </div>
 

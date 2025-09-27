@@ -577,7 +577,7 @@ export default function HolidayPreview() {
                     onClick={startCropping}
                     className="px-10 py-4 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-200 animate-pulse"
                   >
-                    Start Cropping →
+                    Start Cropping
                   </button>
                 </div>
               </div>
@@ -817,7 +817,7 @@ export default function HolidayPreview() {
                         disabled={isSubmittingLead}
                         className="w-full py-4 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transform transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        {isSubmittingLead ? 'Sending...' : 'Get My Free Quote →'}
+                        {isSubmittingLead ? 'Sending...' : 'Get My Free Quote'}
                       </button>
                     </form>
 
@@ -852,7 +852,7 @@ export default function HolidayPreview() {
                     href="/booking"
                     className="inline-block px-10 py-4 bg-gray-200 text-gray-700 rounded-full text-lg font-semibold hover:bg-gray-300 transition-all"
                   >
-                    Or Book Installation Now →
+                    Or Book Installation Now
                   </a>
                 )}
                 <button

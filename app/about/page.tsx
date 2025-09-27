@@ -194,7 +194,7 @@ export default function AboutPage() {
                   type="submit"
                   className="cta-button bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-250"
                 >
-                  Request Quote →
+                  Request Quote
                 </button>
               </div>
             </form>

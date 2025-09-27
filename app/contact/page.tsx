@@ -186,7 +186,7 @@ export default function ContactPage() {
                   disabled={isSubmitting}
                   className="w-full py-4 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message →'}
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
@@ -275,7 +275,7 @@ export default function ContactPage() {
                     href="/booking"
                     className="block text-center px-6 py-3 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
                   >
-                    Book Installation →
+                    Book Installation
                   </a>
                   <a
                     href="/services"

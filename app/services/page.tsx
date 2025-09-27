@@ -74,7 +74,7 @@ export default function ServicesPage() {
                     href={`/contact?service=${service.title.toLowerCase().replace(' ', '-')}`}
                     className="block text-center px-6 py-3 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
                   >
-                    Get Quote →
+                    Get Quote
                   </a>
                 </div>
               </div>

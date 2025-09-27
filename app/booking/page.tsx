@@ -227,7 +227,7 @@ function BookingForm() {
                 disabled={isSubmitting}
                 className="w-full py-4 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'Submitting...' : 'Book My Free Consultation →'}
+                {isSubmitting ? 'Submitting...' : 'Book My Free Consultation'}
               </button>
             </form>
 

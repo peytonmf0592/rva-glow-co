@@ -6,6 +6,7 @@ import Script from 'next/script'
 import { useRouter } from 'next/navigation'
 import HolidayPreview from '@/components/HolidayPreview'
 import GlowingCard from '@/components/GlowingCard'
+import HeroScrollEffect from '@/components/HeroScrollEffect'
 
 declare global {
   interface Window {
@@ -107,6 +108,7 @@ export default function Home() {
 
   return (
     <>
+      <HeroScrollEffect />
       {/* Abstract SVG Accent Line - Floating on Border */}
       <div className="absolute top-20 left-0 right-0 h-24 pointer-events-none z-30 overflow-hidden">
         <svg
@@ -185,305 +187,68 @@ export default function Home() {
         </svg>
       </div>
 
-      {/* Hero Section - Shifted Up */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-24">
-        {/* Background Image */}
+      {/* Hero Section - Night House */}
+      <section id="hero" className="relative h-screen flex items-center overflow-hidden -mt-24">
+        {/* Background Image - Zoomed and Anchored Right */}
         <div className="absolute inset-0">
           <img
-            src="/images/hero-home.png"
-            alt="Holiday lights on home"
+            src="/images/hero-night-house.jpg"
+            alt="Holiday lights on home at night"
             className="w-full h-full object-cover"
+            style={{
+              objectPosition: 'center right',
+              transform: 'scale(1.3)',
+              transformOrigin: 'center right'
+            }}
             loading="eager"
           />
 
-          {/* Frosted Teal Gradient Overlay - top to bottom */}
+          {/* Subtle indigo overlay for text contrast */}
           <div className="absolute inset-0" style={{
-            background: 'linear-gradient(180deg, rgba(47, 126, 128, 0.45) 0%, rgba(174, 231, 231, 0.15) 30%, transparent 60%, rgba(47, 126, 128, 0.25) 100%)'
+            background: 'linear-gradient(180deg, rgba(26, 40, 69, 0.35) 0%, rgba(26, 40, 69, 0.15) 50%, transparent 70%)'
           }}></div>
 
-          {/* Bokeh Light Points - sparse, varying sizes */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Top-left cluster */}
-            <div className="absolute" style={{top: '8%', left: '12%', width: '120px', height: '120px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.65) 0%, transparent 60%)', filter: 'blur(20px)', opacity: 0.4}}></div>
-            <div className="absolute" style={{top: '15%', left: '8%', width: '80px', height: '80px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 60%)', filter: 'blur(16px)', opacity: 0.3}}></div>
-            <div className="absolute" style={{top: '5%', left: '20%', width: '60px', height: '60px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, transparent 60%)', filter: 'blur(14px)', opacity: 0.25}}></div>
-
-            {/* Lower-right cluster */}
-            <div className="absolute" style={{bottom: '12%', right: '15%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 60%)', filter: 'blur(18px)', opacity: 0.35}}></div>
-            <div className="absolute" style={{bottom: '8%', right: '10%', width: '70px', height: '70px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%)', filter: 'blur(12px)', opacity: 0.3}}></div>
-            <div className="absolute" style={{bottom: '18%', right: '8%', width: '50px', height: '50px', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, transparent 60%)', filter: 'blur(10px)', opacity: 0.2}}></div>
-          </div>
-
-          {/* Static Snow Specks - very low opacity */}
+          {/* Dark overlay behind text for contrast */}
           <div className="absolute inset-0 pointer-events-none" style={{
-            backgroundImage: `
-              radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-              radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-              radial-gradient(circle at 45% 35%, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-              radial-gradient(circle at 75% 55%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-              radial-gradient(circle at 25% 65%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-              radial-gradient(circle at 60% 75%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-              radial-gradient(circle at 90% 45%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-              radial-gradient(circle at 35% 85%, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-              radial-gradient(circle at 10% 50%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-              radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
-            `,
-            backgroundSize: '800px 600px'
-          }}></div>
-
-          {/* Bottom Frosted Band */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3" style={{
-            background: 'linear-gradient(to top, rgba(47, 126, 128, 0.35) 0%, transparent 100%)'
+            background: 'linear-gradient(90deg, rgba(13, 20, 36, 0.75) 0%, rgba(13, 20, 36, 0.55) 25%, transparent 50%)'
           }}></div>
         </div>
 
-
-        {/* Light Glow Overlay - matches actual light positions in photo */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Main roof peak - horizontal line along the highest roofline */}
-          <div
-            className="absolute top-[25%] left-[25%] right-[25%] h-[2px]"
-            style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255, 220, 150, 0.8), rgba(255, 220, 150, 0.8), transparent)',
-              filter: 'blur(10px)',
-              animation: 'lightPulse 3s ease-in-out infinite'
-            }}
-          />
-
-          {/* Main roof left slope */}
-          <div
-            className="absolute"
-            style={{
-              top: '25%',
-              left: '15%',
-              width: '200px',
-              height: '2px',
-              background: 'linear-gradient(135deg, rgba(255, 220, 150, 0.7), transparent)',
-              transform: 'rotate(30deg)',
-              transformOrigin: 'left center',
-              filter: 'blur(8px)',
-              animation: 'lightPulse 2.8s ease-in-out infinite',
-              animationDelay: '0.3s'
-            }}
-          />
-
-          {/* Main roof right slope */}
-          <div
-            className="absolute"
-            style={{
-              top: '25%',
-              right: '15%',
-              width: '200px',
-              height: '2px',
-              background: 'linear-gradient(-135deg, rgba(255, 220, 150, 0.7), transparent)',
-              transform: 'rotate(-30deg)',
-              transformOrigin: 'right center',
-              filter: 'blur(8px)',
-              animation: 'lightPulse 2.8s ease-in-out infinite',
-              animationDelay: '0.5s'
-            }}
-          />
-
-          {/* Front gable peak (triangular section above entrance) */}
-          <div
-            className="absolute top-[35%] left-[42%] right-[42%] h-[1px]"
-            style={{
-              background: 'rgba(255, 220, 150, 0.6)',
-              filter: 'blur(6px)',
-              animation: 'lightPulse 2.5s ease-in-out infinite',
-              animationDelay: '0.8s'
-            }}
-          />
-
-          {/* Front gable left edge */}
-          <div
-            className="absolute"
-            style={{
-              top: '35%',
-              left: '38%',
-              width: '80px',
-              height: '1px',
-              background: 'rgba(255, 220, 150, 0.6)',
-              transform: 'rotate(35deg)',
-              transformOrigin: 'left center',
-              filter: 'blur(6px)',
-              animation: 'lightPulse 2.6s ease-in-out infinite',
-              animationDelay: '1s'
-            }}
-          />
-
-          {/* Front gable right edge */}
-          <div
-            className="absolute"
-            style={{
-              top: '35%',
-              right: '38%',
-              width: '80px',
-              height: '1px',
-              background: 'rgba(255, 220, 150, 0.6)',
-              transform: 'rotate(-35deg)',
-              transformOrigin: 'right center',
-              filter: 'blur(6px)',
-              animation: 'lightPulse 2.6s ease-in-out infinite',
-              animationDelay: '1.2s'
-            }}
-          />
-
-          {/* Upper dormer roofline */}
-          <div
-            className="absolute top-[20%] left-[45%] right-[45%] h-[1px]"
-            style={{
-              background: 'rgba(255, 220, 150, 0.5)',
-              filter: 'blur(5px)',
-              animation: 'lightPulse 2.4s ease-in-out infinite',
-              animationDelay: '0.7s'
-            }}
-          />
-
-          {/* Lower horizontal roof edge */}
-          <div
-            className="absolute top-[45%] left-[20%] right-[20%] h-[1px]"
-            style={{
-              background: 'linear-gradient(90deg, rgba(255, 220, 150, 0.6), rgba(255, 220, 150, 0.7), rgba(255, 220, 150, 0.6))',
-              filter: 'blur(7px)',
-              animation: 'lightPulse 3s ease-in-out infinite',
-              animationDelay: '0.4s'
-            }}
-          />
-
-          {/* Front porch columns - left */}
-          <div
-            className="absolute top-[48%] left-[42%] w-[1px] h-[15%]"
-            style={{
-              background: 'linear-gradient(180deg, rgba(255, 220, 150, 0.6), rgba(255, 220, 150, 0.4))',
-              filter: 'blur(6px)',
-              animation: 'lightPulse 2.7s ease-in-out infinite',
-              animationDelay: '1.5s'
-            }}
-          />
-
-          {/* Front porch columns - right */}
-          <div
-            className="absolute top-[48%] right-[42%] w-[1px] h-[15%]"
-            style={{
-              background: 'linear-gradient(180deg, rgba(255, 220, 150, 0.6), rgba(255, 220, 150, 0.4))',
-              filter: 'blur(6px)',
-              animation: 'lightPulse 2.7s ease-in-out infinite',
-              animationDelay: '1.7s'
-            }}
-          />
-
-          {/* Door wreath glow */}
-          <div
-            className="absolute top-[52%] left-[48%] w-12 h-12"
-            style={{
-              background: 'radial-gradient(circle, rgba(255, 220, 150, 0.5) 0%, transparent 70%)',
-              filter: 'blur(10px)',
-              animation: 'lightPulse 2.5s ease-in-out infinite',
-              animationDelay: '2s'
-            }}
-          />
-
-          {/* Bushes/shrubs glow - far left */}
-          <div
-            className="absolute bottom-[35%] left-[15%] w-24 h-20"
-            style={{
-              background: 'radial-gradient(ellipse at bottom, rgba(255, 220, 150, 0.5) 0%, transparent 60%)',
-              filter: 'blur(15px)',
-              animation: 'lightPulse 2.8s ease-in-out infinite',
-              animationDelay: '0.6s'
-            }}
-          />
-
-          {/* Bushes/shrubs glow - left center */}
-          <div
-            className="absolute bottom-[35%] left-[30%] w-20 h-18"
-            style={{
-              background: 'radial-gradient(ellipse at bottom, rgba(255, 220, 150, 0.5) 0%, transparent 60%)',
-              filter: 'blur(15px)',
-              animation: 'lightPulse 2.6s ease-in-out infinite',
-              animationDelay: '0.9s'
-            }}
-          />
-
-          {/* Bushes/shrubs glow - right center */}
-          <div
-            className="absolute bottom-[35%] right-[30%] w-20 h-18"
-            style={{
-              background: 'radial-gradient(ellipse at bottom, rgba(255, 220, 150, 0.5) 0%, transparent 60%)',
-              filter: 'blur(15px)',
-              animation: 'lightPulse 2.6s ease-in-out infinite',
-              animationDelay: '1.1s'
-            }}
-          />
-
-          {/* Bushes/shrubs glow - far right */}
-          <div
-            className="absolute bottom-[35%] right-[15%] w-24 h-20"
-            style={{
-              background: 'radial-gradient(ellipse at bottom, rgba(255, 220, 150, 0.5) 0%, transparent 60%)',
-              filter: 'blur(15px)',
-              animation: 'lightPulse 2.8s ease-in-out infinite',
-              animationDelay: '1.4s'
-            }}
-          />
-
-          {/* Ground/pathway lights - create a subtle glow along the bottom */}
-          <div
-            className="absolute bottom-[25%] left-[10%] right-[10%] h-[1px]"
-            style={{
-              background: 'linear-gradient(90deg, rgba(255, 220, 150, 0.3), rgba(255, 220, 150, 0.4), rgba(255, 220, 150, 0.3))',
-              filter: 'blur(12px)',
-              animation: 'lightPulse 3s ease-in-out infinite',
-              animationDelay: '1.8s'
-            }}
-          />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
-            <span className="bg-gradient-to-r from-[#eb834f] via-white to-[#147878] bg-clip-text text-transparent">
-              Light Up Your Holidays
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-4 text-gray-100 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            RVA Glow Co turns your home into a seasonal showstopper — full-service, fully custom, and completely hands-off for you.
-          </p>
-          <p className="text-lg md:text-xl mb-8 text-gray-200 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            From crisp roofline accents to elegant tree and shrub highlights, we design, install, maintain, remove, and securely store your lights — all included.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
-            <Link
-              href="/booking"
-              className="inline-block text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
+        {/* Hero Content - About Block on Left */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-2xl lg:max-w-xl">
+            <div
+              id="hero-text"
+              className="text-white"
               style={{
-                background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.95) 0%, rgba(235, 132, 79, 0.92) 60%, rgba(214, 156, 122, 0.90) 100%)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: '0 0 0 0.5px rgba(212, 175, 55, 0.5), 0 8px 24px rgba(47, 126, 128, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
-                textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
-                backdropFilter: 'blur(8px)'
+                background: 'rgba(13, 20, 36, 0.4)',
+                backdropFilter: 'blur(8px)',
+                padding: '2rem',
+                borderRadius: '1rem',
+                border: '1px solid rgba(255, 220, 150, 0.15)'
               }}
             >
-              Book a Free Design Consult →
-            </Link>
-            <button
-              onClick={() => {
-                setEstimateAddress('')
-                setSubmitSuccess(false)
-                setShowEstimateModal(true)
-              }}
-              className="inline-block text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
-              style={{
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1.5px solid #D4AF37',
-                boxShadow: '0 0 0 0.5px rgba(212, 175, 55, 0.4), 0 6px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
-                backdropFilter: 'blur(12px) saturate(180%)',
-                textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
-              }}
-            >
-              Request Instant Estimate
-            </button>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-up">
+                Light Up Your Holidays
+              </h1>
+              <p className="text-lg md:text-xl mb-6 text-gray-100 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                RVA Glow Co turns your home into a seasonal showstopper — full-service, fully custom, and completely hands-off for you. From crisp roofline accents to elegant tree and shrub highlights, we design, install, maintain, remove, and securely store your lights — all included.
+              </p>
+              <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <Link
+                  href="/booking"
+                  className="inline-block text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
+                  style={{
+                    background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.95) 0%, rgba(235, 132, 79, 0.92) 60%, rgba(214, 156, 122, 0.90) 100%)',
+                    border: '1.5px solid #ffdc96',
+                    boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 8px 24px rgba(255, 220, 150, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+                    textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+                  }}
+                >
+                  Request Quote
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -494,21 +259,21 @@ export default function Home() {
           </svg>
         </div>
 
-        {/* Curved Bottom Edge with Gold Highlight */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+        {/* Curved Bottom Edge with Gold Highlight - Right-leaning sweep */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20">
           <svg
             className="w-full h-auto hero-curve-desktop"
-            viewBox="0 0 1920 200"
+            viewBox="0 0 1920 220"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ display: 'block' }}
+            style={{ display: 'block', height: '14vh' }}
           >
             <defs>
               <filter id="curveDropShadow">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
-                <feOffset dx="0" dy="4" result="offsetblur"/>
+                <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                <feOffset dx="0" dy="3" result="offsetblur"/>
                 <feComponentTransfer>
-                  <feFuncA type="linear" slope="0.3"/>
+                  <feFuncA type="linear" slope="0.25"/>
                 </feComponentTransfer>
                 <feMerge>
                   <feMergeNode/>
@@ -517,62 +282,62 @@ export default function Home() {
               </filter>
             </defs>
 
-            {/* Main curve shape - asymmetrical sweep to right */}
+            {/* Main curve shape - right-leaning asymmetrical sweep */}
             <path
-              d="M 0 50 Q 480 120, 960 80 T 1920 20 L 1920 200 L 0 200 Z"
+              d="M 0 60 Q 400 140, 960 90 T 1920 30 L 1920 220 L 0 220 Z"
               fill="white"
               filter="url(#curveDropShadow)"
             />
 
-            {/* Gold highlight along the crest */}
+            {/* Gold hairline along the crest */}
             <path
-              d="M 0 50 Q 480 120, 960 80 T 1920 20"
-              stroke="rgba(212, 175, 55, 0.6)"
-              strokeWidth="2"
+              d="M 0 60 Q 400 140, 960 90 T 1920 30"
+              stroke="#ffdc96"
+              strokeWidth="1.5"
               fill="none"
               style={{
-                filter: 'drop-shadow(0 -1px 2px rgba(212, 175, 55, 0.4))'
+                filter: 'drop-shadow(0 -1px 3px rgba(255, 220, 150, 0.4))'
               }}
             />
           </svg>
 
-          {/* Tablet curve - reduced depth */}
+          {/* Tablet curve */}
           <svg
             className="w-full h-auto hero-curve-tablet"
-            viewBox="0 0 1024 120"
+            viewBox="0 0 1024 140"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ display: 'none' }}
+            style={{ display: 'none', height: '12vh' }}
           >
             <path
-              d="M 0 40 Q 256 80, 512 60 T 1024 20 L 1024 120 L 0 120 Z"
+              d="M 0 45 Q 200 90, 512 65 T 1024 25 L 1024 140 L 0 140 Z"
               fill="white"
               filter="url(#curveDropShadow)"
             />
             <path
-              d="M 0 40 Q 256 80, 512 60 T 1024 20"
-              stroke="rgba(212, 175, 55, 0.6)"
+              d="M 0 45 Q 200 90, 512 65 T 1024 25"
+              stroke="#ffdc96"
               strokeWidth="1.5"
               fill="none"
             />
           </svg>
 
-          {/* Mobile curve - gentle diagonal */}
+          {/* Mobile curve */}
           <svg
             className="w-full h-auto hero-curve-mobile"
-            viewBox="0 0 375 80"
+            viewBox="0 0 375 90"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ display: 'none' }}
+            style={{ display: 'none', height: '10vh' }}
           >
             <path
-              d="M 0 35 Q 187 55, 375 25 L 375 80 L 0 80 Z"
+              d="M 0 40 Q 150 65, 375 30 L 375 90 L 0 90 Z"
               fill="white"
               filter="url(#curveDropShadow)"
             />
             <path
-              d="M 0 35 Q 187 55, 375 25"
-              stroke="rgba(212, 175, 55, 0.5)"
+              d="M 0 40 Q 150 65, 375 30"
+              stroke="#ffdc96"
               strokeWidth="1"
               fill="none"
             />
@@ -608,7 +373,7 @@ export default function Home() {
                 <img src="/icons/tree-service.svg" alt="Full Service" className="w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">True Full Service</h3>
-              <p className="text-gray-600">Design → Install → Seasonal maintenance → Takedown → Storage. We handle everything from start to finish and beyond.</p>
+              <p className="text-gray-600">Design, Install, Seasonal maintenance, Takedown, Storage. We handle everything from start to finish and beyond.</p>
             </GlowingCard>
 
             {/* Feature 2 - Damage-Free Installation */}
@@ -721,7 +486,7 @@ export default function Home() {
               href="/services"
               className="inline-block bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             >
-              View All Services →
+              View All Services
             </Link>
           </div>
         </div>
@@ -750,19 +515,19 @@ export default function Home() {
                   <p className="font-semibold text-gray-900 mb-4">Every quote you receive includes:</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span className="text-green-500 mr-2 mt-1">•</span>
                       <span>Full installation</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span className="text-green-500 mr-2 mt-1">•</span>
                       <span>Service calls during the season</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span className="text-green-500 mr-2 mt-1">•</span>
                       <span>Safe takedown after the holidays</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span className="text-green-500 mr-2 mt-1">•</span>
                       <span>Off-season storage</span>
                     </li>
                   </ul>
@@ -911,7 +676,7 @@ export default function Home() {
                         }}
                         className="w-full py-3 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
                       >
-                        Get My Estimate →
+                        Get My Estimate
                       </button>
 
                       <p className="text-center text-xs text-gray-500 mt-4">

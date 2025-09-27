@@ -52,14 +52,14 @@ export default function Header() {
         .nav-pill:hover,
         .nav-pill:focus-within {
           transform: scale(1.02);
-          border-color: rgba(212, 175, 55, 0.6);
-          box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+          border-color: rgba(255, 220, 150, 0.6);
+          box-shadow: 0 0 0 2px rgba(255, 220, 150, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .nav-pill.active {
           background: rgba(255, 255, 255, 0.25);
-          border-color: rgba(212, 175, 55, 0.5);
-          box-shadow: 0 0 12px 1px rgba(212, 175, 55, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
+          border-color: rgba(255, 220, 150, 0.6);
+          box-shadow: 0 0 12px 1px rgba(255, 220, 150, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .cta-button {
@@ -105,10 +105,10 @@ export default function Header() {
       `}</style>
 
       <header className="sticky top-0 z-50 shadow-lg" style={{
-        background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.92) 0%, rgba(174, 231, 231, 0.88) 40%, rgba(235, 132, 79, 0.90) 100%)',
-        backdropFilter: 'blur(14px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(14px) saturate(180%)',
-        boxShadow: '0 4px 12px rgba(47, 126, 128, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+        background: 'linear-gradient(90deg, rgba(26, 40, 69, 0.85) 0%, rgba(26, 40, 69, 0.80) 50%, rgba(255, 179, 102, 0.75) 100%)',
+        backdropFilter: 'blur(16px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+        boxShadow: '0 4px 12px rgba(13, 20, 36, 0.2), inset 0 1px 0 rgba(255, 220, 150, 0.1)'
       }}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
@@ -170,12 +170,12 @@ export default function Header() {
                 className="cta-button text-white px-6 py-3 rounded-full font-semibold"
                 style={{
                   background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 60%, #D69C7A 100%)',
-                  border: '1.5px solid #D4AF37',
-                  boxShadow: '0 0 0 0.5px rgba(212, 175, 55, 0.4), 0 6px 12px rgba(47, 126, 128, 0.25)',
-                  textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
+                  border: '1.5px solid #ffdc96',
+                  boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 6px 12px rgba(255, 179, 102, 0.3)',
+                  textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                Book Now →
+                Book Now
               </Link>
             </div>
 
@@ -248,13 +248,13 @@ export default function Header() {
                   className="cta-button text-white block px-4 py-3 rounded-full text-center font-semibold mt-4"
                   style={{
                     background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 60%, #D69C7A 100%)',
-                    border: '1.5px solid #D4AF37',
-                    boxShadow: '0 0 0 0.5px rgba(212, 175, 55, 0.4), 0 6px 12px rgba(47, 126, 128, 0.25)',
-                    textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
+                    border: '1.5px solid #ffdc96',
+                    boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 6px 12px rgba(255, 179, 102, 0.3)',
+                    textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
                   }}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Book Now →
+                  Book Now
                 </Link>
               </div>
             </div>

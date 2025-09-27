@@ -43,7 +43,7 @@ export default function Chatbot() {
 
     // Booking questions
     if (lowerMessage.includes('book') || lowerMessage.includes('schedule') || lowerMessage.includes('appointment')) {
-      return "Ready to light up your holidays? 🎄 You can book directly through our booking page, or call us at (804) 555-GLOW. We're booking up fast for this season!"
+      return "Ready to light up your holidays? You can book directly through our booking page, or call us at (804) 555-GLOW. We're booking up fast for this season!"
     }
 
     // Service area questions
@@ -68,12 +68,12 @@ export default function Chatbot() {
 
     // Greeting
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-      return "Hello there! 👋 Ready to make your home the brightest on the block? What questions can I answer about our holiday lighting services?"
+      return "Hello there! Ready to make your home the brightest on the block? What questions can I answer about our holiday lighting services?"
     }
 
     // Thanks
     if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
-      return "You're very welcome! 🌟 Is there anything else you'd like to know about RVA Glow Co?"
+      return "You're very welcome! Is there anything else you'd like to know about RVA Glow Co?"
     }
 
     // Default response
