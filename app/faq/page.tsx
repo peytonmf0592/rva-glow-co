@@ -417,8 +417,6 @@ export default function FAQ() {
             <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Notes</h3>
             <div className="space-y-3 text-sm text-gray-700">
               <p><strong>NEED LOCAL RESEARCH:</strong> Exact Richmond market rates, HOA requirements in specific neighborhoods</p>
-              <p><strong>CALL SUPPLIER:</strong> SiteOne inventory for C9 clips, ridge clips, Caney stakes, local bulk pricing</p>
-              <p><strong>LEGAL REVIEW:</strong> Virginia contractor licensing, insurance minimums, service agreement templates</p>
               <p><strong>POLICY CHOICE:</strong> Storage pricing structure, multi-year discount programs</p>
             </div>
           </div>

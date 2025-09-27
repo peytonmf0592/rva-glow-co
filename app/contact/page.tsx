@@ -219,7 +219,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
-                      <p className="text-gray-600">info@rvaglowco.com</p>
+                      <p className="text-gray-600">getlit@rvaglowco.com</p>
                       <p className="text-sm text-gray-500 mt-1">We respond within 24 hours</p>
                     </div>
                   </div>
@@ -237,33 +237,6 @@ export default function ContactPage() {
                       <p className="text-sm text-gray-500 mt-1">Henrico, Chesterfield, Hanover Counties</p>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Business Hours */}
-              <div className="bg-gradient-to-br from-[#e8dcc8] to-[#ffd4c1]/30 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-6 text-gray-800">Business Hours</h3>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="font-medium text-gray-700">Monday - Friday</span>
-                    <span className="text-gray-600">8:00 AM - 8:00 PM</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="font-medium text-gray-700">Saturday</span>
-                    <span className="text-gray-600">9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <span className="font-medium text-gray-700">Sunday</span>
-                    <span className="text-gray-600">9:00 AM - 6:00 PM</span>
-                  </div>
-                </div>
-
-                <div className="mt-6 p-4 bg-[#ffd4c1]/30 rounded-lg">
-                  <p className="text-sm text-[#db4009]">
-                    <strong>Holiday Season Hours:</strong> Extended hours November through January.
-                    Emergency support available 24/7 for existing customers.
-                  </p>
                 </div>
               </div>
 

@@ -46,12 +46,12 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-[#FFD700]">Service Areas</h4>
             <ul className="space-y-2 text-gray-300">
-              <li>Richmond</li>
-              <li>Henrico</li>
-              <li>Chesterfield</li>
-              <li>Midlothian</li>
-              <li>Short Pump</li>
-              <li>Glen Allen</li>
+              <li>📍 Richmond</li>
+              <li>📍 Henrico</li>
+              <li>📍 Chesterfield</li>
+              <li>📍 Midlothian</li>
+              <li>📍 Short Pump</li>
+              <li>📍 Glen Allen</li>
             </ul>
           </div>
 
@@ -65,7 +65,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center">
                 <span className="mr-2">Email:</span>
-                hello@rvaglowco.com
+                getlit@rvaglowco.com
               </p>
               <p className="flex items-center">
                 <span className="mr-2">Hours:</span>
