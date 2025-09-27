@@ -293,66 +293,6 @@ export default function Home() {
       {/* Holiday Preview Section */}
       <HolidayPreview />
 
-      {/* Your Vision Our Precision Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div className="order-2 lg:order-1">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Your Vision. Our Precision.
-              </h2>
-              <div className="space-y-4 text-gray-700">
-                <p className="text-lg leading-relaxed">
-                  No matter the size, slope, or shape of your home — if it has a roof, we can light it. From steep pitches to complex ridgelines, RVA Glow Co handles every install with expert precision and clean, custom results.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  You choose the colors. You choose exactly where the lights go — from rooflines to ridges, peaks to dormers. The image below is exactly what you can expect: crisp, professional, customized lighting that transforms your home.
-                </p>
-                <div className="bg-gradient-to-r from-[#e8dcc8] to-[#e8dcc8] rounded-xl p-6 my-6">
-                  <p className="font-semibold text-gray-900 mb-4">Every quote you receive includes:</p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">•</span>
-                      <span>Full installation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">•</span>
-                      <span>Service calls during the season</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">•</span>
-                      <span>Safe takedown after the holidays</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">•</span>
-                      <span>Off-season storage</span>
-                    </li>
-                  </ul>
-                </div>
-                <p className="text-lg leading-relaxed">
-                  Plus, you can choose to either <span className="font-semibold">lease or own</span> your lights depending on your needs. No stress, no clutter, no hassle — just brilliant lights and total peace of mind.
-                </p>
-              </div>
-            </div>
-
-            {/* Image Placeholder */}
-            <div className="order-1 lg:order-2">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1a2845]/20 to-[#8b4a3a]/20 blur-3xl"></div>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="/images/showcase-home.png"
-                    alt="Professional holiday light installation by RVA Glow Co"
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-[#1a2845] to-[#1a2845] text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
