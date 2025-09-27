@@ -344,7 +344,7 @@ export default function FAQ() {
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Complete FAQ Guide</h2>
           {fullFAQSections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-blue-500">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-[#1a2845]">
                 {section.title}
               </h3>
               <div className="space-y-4">
@@ -378,7 +378,7 @@ export default function FAQ() {
                           <ul className="space-y-2">
                             {item.details.map((detail, idx) => (
                               <li key={idx} className="flex items-start">
-                                <span className="text-blue-500 mr-2">✓</span>
+                                <span className="text-[#1a2845] mr-2">✓</span>
                                 <span className="text-gray-600">{detail}</span>
                               </li>
                             ))}
@@ -403,7 +403,7 @@ export default function FAQ() {
           </p>
           <Link
             href="/booking"
-            className="inline-block bg-gradient-to-r from-blue-500 to-amber-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+            className="inline-block bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
           >
             Book Your Free Design Consultation
           </Link>

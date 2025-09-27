@@ -105,10 +105,10 @@ export default function Header() {
       `}</style>
 
       <header className="sticky top-0 z-50 shadow-lg" style={{
-        background: 'linear-gradient(90deg, rgba(26, 40, 69, 0.85) 0%, rgba(26, 40, 69, 0.80) 50%, rgba(255, 179, 102, 0.75) 100%)',
+        background: 'linear-gradient(90deg, rgba(13, 20, 36, 0.90) 0%, rgba(26, 40, 69, 0.85) 40%, rgba(139, 74, 58, 0.80) 100%)',
         backdropFilter: 'blur(16px) saturate(180%)',
         WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-        boxShadow: '0 4px 12px rgba(13, 20, 36, 0.2), inset 0 1px 0 rgba(255, 220, 150, 0.1)'
+        boxShadow: '0 4px 12px rgba(13, 20, 36, 0.3), inset 0 1px 0 rgba(255, 220, 150, 0.12)'
       }}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
@@ -169,10 +169,10 @@ export default function Header() {
                 href="/booking"
                 className="cta-button text-white px-6 py-3 rounded-full font-semibold"
                 style={{
-                  background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 60%, #D69C7A 100%)',
+                  background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 60%, #a85845 100%)',
                   border: '1.5px solid #ffdc96',
-                  boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 6px 12px rgba(255, 179, 102, 0.3)',
-                  textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
+                  boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 6px 12px rgba(139, 74, 58, 0.3)',
+                  textShadow: '0 1px 2px rgba(0, 0, 0, 0.4)'
                 }}
               >
                 Book Now
@@ -247,10 +247,10 @@ export default function Header() {
                   href="/booking"
                   className="cta-button text-white block px-4 py-3 rounded-full text-center font-semibold mt-4"
                   style={{
-                    background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 60%, #D69C7A 100%)',
+                    background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 60%, #a85845 100%)',
                     border: '1.5px solid #ffdc96',
-                    boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 6px 12px rgba(255, 179, 102, 0.3)',
-                    textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
+                    boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 6px 12px rgba(139, 74, 58, 0.3)',
+                    textShadow: '0 1px 2px rgba(0, 0, 0, 0.4)'
                   }}
                   onClick={() => setIsMenuOpen(false)}
                 >

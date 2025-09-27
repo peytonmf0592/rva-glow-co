@@ -3,20 +3,20 @@
 export default function AboutPage() {
   return (
     <>
-      <main className="min-h-screen bg-gradient-to-b from-[#e7f5f6] to-white">
+      <main className="min-h-screen bg-gradient-to-b from-[#e8dcc8] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#147878] to-[#eb834f] bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">
               About
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#147878] to-[#eb834f] mx-auto"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] mx-auto"></div>
           </div>
 
           {/* Two Column Layout */}
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* Left Column - Professional Portrait */}
             <div className="flex items-center justify-center">
-              <div className="bg-gradient-to-br from-[#e7f5f6] to-[#ffd4c1]/30 rounded-2xl p-4 w-full max-w-md">
+              <div className="bg-gradient-to-br from-[#e8dcc8] to-[#ffd4c1]/30 rounded-2xl p-4 w-full max-w-md">
                 <div className="relative rounded-xl overflow-hidden shadow-xl">
                   <img
                     src="/images/peyton-fowlkes.jpg"
@@ -38,27 +38,27 @@ export default function AboutPage() {
               </p>
 
               {/* Core Services List */}
-              <div className="bg-[#e7f5f6]/30 rounded-xl p-6">
+              <div className="bg-[#e8dcc8]/30 rounded-xl p-6">
                 <h3 className="font-bold text-gray-900 mb-4">Core Services</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-[#1a2845] mr-3 mt-1">▸</span>
                     <span className="text-gray-700">Custom Design Consultation</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-[#1a2845] mr-3 mt-1">▸</span>
                     <span className="text-gray-700">Professional Installation</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-[#1a2845] mr-3 mt-1">▸</span>
                     <span className="text-gray-700">Seasonal Maintenance</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-[#1a2845] mr-3 mt-1">▸</span>
                     <span className="text-gray-700">Takedown & Secure Storage</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#147878] mr-3 mt-1">▸</span>
+                    <span className="text-[#1a2845] mr-3 mt-1">▸</span>
                     <span className="text-gray-700">Flexible Lease or Own Options</span>
                   </li>
                 </ul>
@@ -67,7 +67,7 @@ export default function AboutPage() {
           </div>
 
           {/* Free Quote Form */}
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#e7f5f6]/50 to-white rounded-2xl shadow-xl p-8">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#e8dcc8]/50 to-white rounded-2xl shadow-xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Get Your Free Quote</h3>
             <form className="space-y-6" onSubmit={(e) => {
               e.preventDefault()
@@ -102,7 +102,7 @@ export default function AboutPage() {
                     id="quote-name"
                     name="name"
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="Your Name"
                   />
                 </div>
@@ -116,7 +116,7 @@ export default function AboutPage() {
                     name="email"
                     required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -130,7 +130,7 @@ export default function AboutPage() {
                     name="phone"
                     required
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="804-555-0123"
                   />
                 </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
                     id="quote-address"
                     name="address"
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="123 Main St, Richmond, VA"
                   />
                 </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
                     id="quote-service"
                     name="service"
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                   >
                     <option value="">Choose a package</option>
                     <option value="roofline">Roofline Lighting</option>
@@ -173,7 +173,7 @@ export default function AboutPage() {
                     type="date"
                     id="quote-date"
                     name="preferredDate"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                   />
                 </div>
               </div>
@@ -185,14 +185,14 @@ export default function AboutPage() {
                   id="quote-message"
                   name="message"
                   rows={4}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                   placeholder="Tell us about your vision, special requests, or any specific areas you'd like lit..."
                 />
               </div>
               <div className="text-center">
                 <button
                   type="submit"
-                  className="cta-button bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-250"
+                  className="cta-button bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-250"
                 >
                   Request Quote
                 </button>

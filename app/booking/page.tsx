@@ -65,10 +65,10 @@ function BookingForm() {
   if (submitted) {
     return (
       <>
-        <main className="min-h-screen bg-gradient-to-b from-[#e7f5f6] to-white py-20">
+        <main className="min-h-screen bg-gradient-to-b from-[#e8dcc8] to-white py-20">
           <div className="max-w-2xl mx-auto px-4 text-center">
-            <div className="bg-[#e7f5f6] border-2 border-[#147878]/30 rounded-xl p-12">
-              <svg className="w-20 h-20 mx-auto mb-6 text-[#147878]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-[#e8dcc8] border-2 border-[#1a2845]/30 rounded-xl p-12">
+              <svg className="w-20 h-20 mx-auto mb-6 text-[#1a2845]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <h1 className="text-3xl font-bold text-gray-800 mb-4">Booking Request Received!</h1>
@@ -77,7 +77,7 @@ function BookingForm() {
               </p>
               <a
                 href="/"
-                className="inline-block px-8 py-3 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-semibold hover:shadow-lg transition-all"
+                className="inline-block px-8 py-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-semibold hover:shadow-lg transition-all"
               >
                 Return Home
               </a>
@@ -90,11 +90,11 @@ function BookingForm() {
 
   return (
     <>
-      <main className="min-h-screen bg-gradient-to-b from-[#e7f5f6] to-white">
+      <main className="min-h-screen bg-gradient-to-b from-[#e8dcc8] to-white">
         {/* Booking Form */}
         <div className="max-w-3xl mx-auto px-4 py-12">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#147878] to-[#eb834f] bg-clip-text text-transparent">Book Your Installation</h1>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">Book Your Installation</h1>
             <p className="text-xl text-gray-600">Transform your home with professional holiday lighting</p>
           </div>
 
@@ -116,7 +116,7 @@ function BookingForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="John Smith"
                   />
                 </div>
@@ -132,7 +132,7 @@ function BookingForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -148,7 +148,7 @@ function BookingForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="(804) 555-0123"
                   />
                 </div>
@@ -164,7 +164,7 @@ function BookingForm() {
                     value={formData.address}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                     placeholder="123 Main St, Richmond, VA 23220"
                   />
                 </div>
@@ -225,7 +225,7 @@ function BookingForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Submitting...' : 'Book My Free Consultation'}
               </button>
@@ -234,8 +234,8 @@ function BookingForm() {
             <div className="mt-8 pt-8 border-t border-gray-200">
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="w-12 h-12 mx-auto mb-3 bg-[#e7f5f6] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-[#147878]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-[#e8dcc8] rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#1a2845]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -244,7 +244,7 @@ function BookingForm() {
                 </div>
                 <div>
                   <div className="w-12 h-12 mx-auto mb-3 bg-[#ffd4c1] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-[#eb834f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-[#8b4a3a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -252,8 +252,8 @@ function BookingForm() {
                   <p className="text-sm text-gray-600">No obligation consultation</p>
                 </div>
                 <div>
-                  <div className="w-12 h-12 mx-auto mb-3 bg-[#e7f5f6] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-[#147878]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-[#e8dcc8] rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#1a2845]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>

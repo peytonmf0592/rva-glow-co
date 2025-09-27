@@ -239,7 +239,7 @@ export default function Home() {
                   href="/booking"
                   className="inline-block text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
                   style={{
-                    background: 'linear-gradient(90deg, rgba(47, 126, 128, 0.95) 0%, rgba(235, 132, 79, 0.92) 60%, rgba(214, 156, 122, 0.90) 100%)',
+                    background: 'linear-gradient(90deg, rgba(26, 40, 69, 0.95) 0%, rgba(139, 74, 58, 0.92) 60%, rgba(168, 88, 69, 0.90) 100%)',
                     border: '1.5px solid #ffdc96',
                     boxShadow: '0 0 0 0.5px rgba(255, 220, 150, 0.5), 0 8px 24px rgba(255, 220, 150, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
                     textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
@@ -350,7 +350,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose RVA Glow Co</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#147878] to-[#eb834f] mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] mx-auto mb-8"></div>
             <p className="text-xl text-gray-600">Full-service holiday lighting that's truly hands-off for you</p>
           </div>
 
@@ -362,7 +362,7 @@ export default function Home() {
                 background: 'rgba(255, 255, 255, 0.75)',
                 backdropFilter: 'blur(10px) saturate(180%)',
                 border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
               }}
             >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
@@ -383,7 +383,7 @@ export default function Home() {
                 background: 'rgba(255, 255, 255, 0.75)',
                 backdropFilter: 'blur(10px) saturate(180%)',
                 border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
               }}
             >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
@@ -404,7 +404,7 @@ export default function Home() {
                 background: 'rgba(255, 255, 255, 0.75)',
                 backdropFilter: 'blur(10px) saturate(180%)',
                 border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
               }}
             >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
@@ -425,7 +425,7 @@ export default function Home() {
                 background: 'rgba(255, 255, 255, 0.75)',
                 backdropFilter: 'blur(10px) saturate(180%)',
                 border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
               }}
             >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
@@ -446,7 +446,7 @@ export default function Home() {
                 background: 'rgba(255, 255, 255, 0.75)',
                 backdropFilter: 'blur(10px) saturate(180%)',
                 border: '1px solid rgba(212, 175, 55, 0.2)',
-                boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
               }}
             >
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
@@ -467,7 +467,7 @@ export default function Home() {
               background: 'rgba(255, 255, 255, 0.75)',
               backdropFilter: 'blur(10px) saturate(180%)',
               border: '1px solid rgba(212, 175, 55, 0.2)',
-              boxShadow: '0 8px 32px rgba(47, 126, 128, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+              boxShadow: '0 8px 32px rgba(26, 40, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
             }}>
               <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 p-2" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
@@ -484,7 +484,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/services"
-              className="inline-block bg-gradient-to-r from-[#147878] to-[#eb834f] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="inline-block bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             >
               View All Services
             </Link>
@@ -511,7 +511,7 @@ export default function Home() {
                 <p className="text-lg leading-relaxed">
                   You choose the colors. You choose exactly where the lights go — from rooflines to ridges, peaks to dormers. The image below is exactly what you can expect: crisp, professional, customized lighting that transforms your home.
                 </p>
-                <div className="bg-gradient-to-r from-[#e7f5f6] to-[#ffd4c1] rounded-xl p-6 my-6">
+                <div className="bg-gradient-to-r from-[#e8dcc8] to-[#e8dcc8] rounded-xl p-6 my-6">
                   <p className="font-semibold text-gray-900 mb-4">Every quote you receive includes:</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
@@ -541,7 +541,7 @@ export default function Home() {
             {/* Image Placeholder */}
             <div className="order-1 lg:order-2">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#147878]/20 to-[#eb834f]/20 blur-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1a2845]/20 to-[#8b4a3a]/20 blur-3xl"></div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <img
                     src="/images/showcase-home.png"
@@ -556,20 +556,20 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#3d4547] to-[#147878] text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1a2845] to-[#1a2845] text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Ready to glow?</h2>
-          <p className="text-xl mb-8 text-[#e7f5f6]">Book a free design consult or request an instant estimate and we'll show you exactly how your home will look.</p>
+          <p className="text-xl mb-8 text-[#e8dcc8]">Book a free design consult or request an instant estimate and we'll show you exactly how your home will look.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/booking"
-              className="bg-white text-[#3d4547] px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="bg-white text-[#1a2845] px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             >
               Book Free Design Consult
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#3d4547] transition-all duration-200"
+              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#1a2845] transition-all duration-200"
             >
               Get Free Quote
             </Link>
@@ -648,7 +648,7 @@ export default function Home() {
                               handleEstimateSubmit(e)
                             }
                           }}
-                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#147878] transition-all"
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
                           placeholder="Start typing your address..."
                         />
                         <p className="text-xs text-gray-500 mt-2">
@@ -674,13 +674,13 @@ export default function Home() {
                           console.log('Navigating to:', url)
                           window.location.href = url
                         }}
-                        className="w-full py-3 bg-gradient-to-r from-[#147878] to-[#eb834f] text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
+                        className="w-full py-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
                       >
                         Get My Estimate
                       </button>
 
                       <p className="text-center text-xs text-gray-500 mt-4">
-                        For a detailed quote, <Link href="/booking" className="text-[#147878] hover:underline">book a free consultation</Link>
+                        For a detailed quote, <Link href="/booking" className="text-[#1a2845] hover:underline">book a free consultation</Link>
                       </p>
 
                       {/* Debug button */}

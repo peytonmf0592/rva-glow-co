@@ -204,7 +204,7 @@ export default function Chatbot() {
         {/* Chat Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`relative bg-gradient-to-r from-[#2F7E80] to-[#EB834F] text-white rounded-full p-4 shadow-2xl hover:scale-110 transform transition-all duration-300 ${
+          className={`relative bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full p-4 shadow-2xl hover:scale-110 transform transition-all duration-300 ${
             isOpen ? 'scale-0' : 'scale-100'
           }`}
           aria-label="Open chat"
@@ -234,8 +234,8 @@ export default function Chatbot() {
       >
         {/* Header */}
         <div className="text-white rounded-t-2xl p-4 flex items-center justify-between" style={{
-          background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
-          boxShadow: '0 2px 8px rgba(47, 126, 128, 0.2)'
+          background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 100%)',
+          boxShadow: '0 2px 8px rgba(26, 40, 69, 0.2)'
         }}>
           <div className="flex items-center space-x-3">
             <div className="bg-white/20 rounded-full p-2 flex items-center justify-center">
@@ -267,11 +267,11 @@ export default function Chatbot() {
               <div
                 className={`max-w-[70%] rounded-2xl px-4 py-2`}
                 style={message.sender === 'user' ? {
-                  background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+                  background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 100%)',
                   color: 'white'
                 } : {
-                  background: 'rgba(174, 231, 231, 0.3)',
-                  color: '#3d4547'
+                  background: 'rgba(232, 220, 200, 0.4)',
+                  color: '#1a2845'
                 }}
               >
                 <p className="text-sm">{message.text}</p>
@@ -314,7 +314,7 @@ export default function Chatbot() {
               onClick={handleSendMessage}
               className="text-white rounded-full p-2 hover:shadow-lg transform hover:scale-105 transition-all duration-200"
               style={{
-                background: 'linear-gradient(90deg, #2F7E80 0%, #EB834F 100%)',
+                background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 100%)',
                 border: '1px solid rgba(212, 175, 55, 0.4)'
               }}
               aria-label="Send message"
@@ -329,9 +329,9 @@ export default function Chatbot() {
           <div className="flex flex-wrap gap-2 mt-3">
             <button
               onClick={() => setInputText("What are your prices?")}
-              className="text-xs text-[#3d4547] px-3 py-1 rounded-full transition-colors"
+              className="text-xs text-[#1a2845] px-3 py-1 rounded-full transition-colors"
               style={{
-                background: 'rgba(174, 231, 231, 0.3)',
+                background: 'rgba(232, 220, 200, 0.4)',
                 border: '1px solid rgba(212, 175, 55, 0.2)'
               }}
             >
@@ -339,9 +339,9 @@ export default function Chatbot() {
             </button>
             <button
               onClick={() => setInputText("How do I book?")}
-              className="text-xs text-[#3d4547] px-3 py-1 rounded-full transition-colors"
+              className="text-xs text-[#1a2845] px-3 py-1 rounded-full transition-colors"
               style={{
-                background: 'rgba(174, 231, 231, 0.3)',
+                background: 'rgba(232, 220, 200, 0.4)',
                 border: '1px solid rgba(212, 175, 55, 0.2)'
               }}
             >
@@ -349,9 +349,9 @@ export default function Chatbot() {
             </button>
             <button
               onClick={() => setInputText("What areas do you serve?")}
-              className="text-xs text-[#3d4547] px-3 py-1 rounded-full transition-colors"
+              className="text-xs text-[#1a2845] px-3 py-1 rounded-full transition-colors"
               style={{
-                background: 'rgba(174, 231, 231, 0.3)',
+                background: 'rgba(232, 220, 200, 0.4)',
                 border: '1px solid rgba(212, 175, 55, 0.2)'
               }}
             >

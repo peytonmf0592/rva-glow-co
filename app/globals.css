@@ -6,29 +6,18 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Hero Photo-Derived Color Tokens */
+  /* Night House Photo Color System - PRIMARY PALETTE */
   --night-indigo: #1a2845;
+  --night-dark: #0d1424;
   --house-gold: #ffdc96;
-  --warm-amber: #ffb366;
-  --dark-left: #0d1424;
-
-  /* Brand Color Tokens - Frosted Teal & Rose Gold System */
-  --forest-teal: #2F7E80;
-  --deep-ice: #AEE7E7;
-  --rose-gold: #D69C7A;
-  --gold: #D4AF37;
-  --peach-warm: #EB834F;
+  --gold-bright: #f5c266;
+  --brick-red: #8b4a3a;
+  --brick-warm: #a85845;
+  --house-trim: #e8dcc8;
 
   /* Overlay & Texture Tokens */
   --frost-overlay: rgba(255, 255, 255, 0.06);
   --bokeh-white: rgba(255, 255, 255, 0.65);
-
-  /* Legacy tokens (deprecated) */
-  --primary-blue: #3b82f6;
-  --primary-purple: #8b5cf6;
-  --primary-gold: #fbbf24;
-  --neon-blue: #60a5fa;
-  --neon-purple: #a78bfa;
 }
 
 /* Custom animations */

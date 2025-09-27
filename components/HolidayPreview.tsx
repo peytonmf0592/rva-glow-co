@@ -426,7 +426,7 @@ export default function HolidayPreview() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">
                 See Your Home in Holiday Lights
               </span>
             </h2>
@@ -443,7 +443,7 @@ export default function HolidayPreview() {
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
                       step >= num || (step === 2 && isCropping && num === 2)
-                        ? 'bg-gradient-to-r from-blue-500 to-amber-500 text-white'
+                        ? 'bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white'
                         : 'bg-gray-200 text-gray-500'
                     }`}
                   >
@@ -452,7 +452,7 @@ export default function HolidayPreview() {
                   {num < 4 && (
                     <div
                       className={`w-12 h-1 mx-2 ${
-                        step > num ? 'bg-blue-500' : 'bg-gray-200'
+                        step > num ? 'bg-[#1a2845]' : 'bg-gray-200'
                       }`}
                     />
                   )}
@@ -481,11 +481,11 @@ export default function HolidayPreview() {
                   ref={addressInputRef}
                   type="text"
                   placeholder="Start typing your home address..."
-                  className="w-full px-6 py-4 border-2 border-gray-300 rounded-lg text-lg focus:outline-none focus:border-blue-500 transition-all"
+                  className="w-full px-6 py-4 border-2 border-gray-300 rounded-lg text-lg focus:outline-none focus:border-[#1a2845] transition-all"
                 />
                 {isLoading && (
                   <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                    <div className="animate-spin rounded-full h-6 w-6 border-2 border-blue-500 border-t-transparent"></div>
+                    <div className="animate-spin rounded-full h-6 w-6 border-2 border-[#1a2845] border-t-transparent"></div>
                   </div>
                 )}
               </div>
@@ -500,7 +500,7 @@ export default function HolidayPreview() {
             {/* Helper message for step 2 */}
             {step === 2 && !isCropping && (
               <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-blue-500/90 text-white px-6 py-3 rounded-full backdrop-blur-sm shadow-lg">
+                <div className="bg-[#1a2845]/90 text-white px-6 py-3 rounded-full backdrop-blur-sm shadow-lg">
                   <p className="text-sm font-medium flex items-center">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2z" />
@@ -514,7 +514,7 @@ export default function HolidayPreview() {
             {/* Helper message when cropping */}
             {step === 2 && isCropping && (
               <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-amber-500/90 text-white px-6 py-3 rounded-full backdrop-blur-sm shadow-lg">
+                <div className="bg-[#8b4a3a]/90 text-white px-6 py-3 rounded-full backdrop-blur-sm shadow-lg">
                   <p className="text-sm font-medium flex items-center">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z" />
@@ -557,10 +557,10 @@ export default function HolidayPreview() {
                     }}
                   >
                     {/* Corner handles for visual feedback */}
-                    <div className="absolute -top-1 -left-1 w-3 h-3 bg-white border border-blue-500"></div>
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-white border border-blue-500"></div>
-                    <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-white border border-blue-500"></div>
-                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-white border border-blue-500"></div>
+                    <div className="absolute -top-1 -left-1 w-3 h-3 bg-white border border-[#1a2845]"></div>
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-white border border-[#1a2845]"></div>
+                    <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-white border border-[#1a2845]"></div>
+                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-white border border-[#1a2845]"></div>
                   </div>
                 )}
               </div>
@@ -575,7 +575,7 @@ export default function HolidayPreview() {
                   </p>
                   <button
                     onClick={startCropping}
-                    className="px-10 py-4 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-200 animate-pulse"
+                    className="px-10 py-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-200 animate-pulse"
                   >
                     Start Cropping
                   </button>
@@ -594,7 +594,7 @@ export default function HolidayPreview() {
                         onClick={() => setLightingOption('roof')}
                         className={`flex-1 px-4 py-3 rounded-lg border-2 transition-all ${
                           lightingOption === 'roof'
-                            ? 'border-blue-500 bg-blue-50 text-blue-700'
+                            ? 'border-[#1a2845] bg-[#e8dcc8] text-blue-700'
                             : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                         }`}
                       >
@@ -605,7 +605,7 @@ export default function HolidayPreview() {
                         onClick={() => setLightingOption('full')}
                         className={`flex-1 px-4 py-3 rounded-lg border-2 transition-all ${
                           lightingOption === 'full'
-                            ? 'border-amber-500 bg-amber-50 text-amber-700'
+                            ? 'border-[#8b4a3a] bg-[#e8dcc8] text-amber-700'
                             : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                         }`}
                       >
@@ -640,7 +640,7 @@ export default function HolidayPreview() {
                       </button>
                       <button
                         onClick={captureAndRender}
-                        className="px-8 py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-semibold hover:shadow-lg transition-all"
+                        className="px-8 py-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-semibold hover:shadow-lg transition-all"
                       >
                         Generate Preview
                       </button>
@@ -654,7 +654,7 @@ export default function HolidayPreview() {
           {/* Loading Spinner */}
           {isLoading && step === 3 && (
             <div className="flex flex-col items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-500 border-t-transparent mb-4"></div>
+              <div className="animate-spin rounded-full h-16 w-16 border-4 border-[#1a2845] border-t-transparent mb-4"></div>
               <p className="text-lg text-gray-600">Creating your holiday preview...</p>
               <p className="text-sm text-gray-500 mt-2">This may take 10-15 seconds</p>
             </div>
@@ -665,7 +665,7 @@ export default function HolidayPreview() {
             <div className="mt-12">
               {/* Before/After Slider */}
               <div className="max-w-4xl mx-auto">
-                <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
+                <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">
                   Your Holiday Lighting Transformation
                 </h3>
                 <p className="text-center text-gray-600 mb-6">
@@ -708,7 +708,7 @@ export default function HolidayPreview() {
                       style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
                     >
                       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
-                        <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-amber-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] rounded-full"></div>
                       </div>
                     </div>
 
@@ -716,7 +716,7 @@ export default function HolidayPreview() {
                     <div className="absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       Before
                     </div>
-                    <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white px-3 py-1 rounded-full text-sm font-semibold">
                       After
                     </div>
                   </div>
@@ -726,7 +726,7 @@ export default function HolidayPreview() {
               {/* Quota Exceeded Notice */}
               {isQuotaExceeded && (
                 <div className="mt-8 max-w-4xl mx-auto">
-                  <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-400 rounded-lg p-6 shadow-md">
+                  <div className="bg-gradient-to-r from-[#e8dcc8] to-orange-50 border-l-4 border-amber-400 rounded-lg p-6 shadow-md">
                     <div className="flex items-center">
                       <div className="flex-shrink-0">
                         <svg className="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -749,7 +749,7 @@ export default function HolidayPreview() {
               {/* Lead Capture Form - NEW */}
               {!leadSubmitted ? (
                 <div className="mt-12 max-w-2xl mx-auto">
-                  <div className="bg-gradient-to-br from-blue-50 to-amber-50 rounded-xl p-8 shadow-lg">
+                  <div className="bg-gradient-to-br from-[#e8dcc8] to-[#e8dcc8] rounded-xl p-8 shadow-lg">
                     <h4 className="text-2xl font-bold text-center mb-2 text-gray-800">
                       {isQuotaExceeded ? "Get Your Custom Design!" : "Love What You See?"}
                     </h4>
@@ -770,7 +770,7 @@ export default function HolidayPreview() {
                           id="name"
                           value={leadName}
                           onChange={(e) => setLeadName(e.target.value)}
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1a2845]"
                           placeholder="John Smith"
                           required
                         />
@@ -785,7 +785,7 @@ export default function HolidayPreview() {
                           id="phone"
                           value={leadPhone}
                           onChange={(e) => setLeadPhone(e.target.value)}
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1a2845]"
                           placeholder="(804) 555-0123"
                           required
                         />
@@ -800,7 +800,7 @@ export default function HolidayPreview() {
                           id="email"
                           value={leadEmail}
                           onChange={(e) => setLeadEmail(e.target.value)}
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1a2845]"
                           placeholder="john@example.com"
                           required
                         />
@@ -815,7 +815,7 @@ export default function HolidayPreview() {
                       <button
                         type="submit"
                         disabled={isSubmittingLead}
-                        className="w-full py-4 bg-gradient-to-r from-blue-500 to-amber-500 text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transform transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full py-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transform transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmittingLead ? 'Sending...' : 'Get My Free Quote'}
                       </button>
