@@ -375,12 +375,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Google Maps Script for Autocomplete */}
-      <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-        strategy="afterInteractive"
-      />
-
       {/* Instant Estimate Modal */}
       {showEstimateModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">

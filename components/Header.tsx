@@ -53,7 +53,7 @@ export default function Header() {
 
         .nav-pill:hover,
         .nav-pill:focus-within {
-          animation: buttonPulse 1.5s infinite;
+          animation: buttonPulse 1.5s ease-in-out infinite !important;
         }
 
         .nav-pill.active {
@@ -68,7 +68,7 @@ export default function Header() {
         }
 
         .cta-button:hover {
-          animation: buttonPulse 1.5s infinite;
+          animation: buttonPulse 1.5s ease-in-out infinite !important;
         }
 
         .mobile-nav-item {

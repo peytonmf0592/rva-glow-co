@@ -118,67 +118,193 @@ export default function Chatbot() {
     <>
       {/* Chatbot Toggle Button */}
       <style jsx>{`
-        @keyframes chatPulse {
+        @keyframes ripple {
           0% {
             transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+            box-shadow: rgba(255, 193, 7, 0.3) 0 5px 10px 0;
           }
-          70% {
-            transform: scale(1.05);
-            box-shadow: 0 0 0 15px rgba(255, 193, 7, 0);
+          50% {
+            transform: scale(1.3);
+            box-shadow: rgba(255, 193, 7, 0.3) 0 15px 20px 0;
           }
           100% {
             transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+            box-shadow: rgba(255, 193, 7, 0.3) 0 5px 10px 0;
           }
         }
 
-        .chat-button-glow {
-          animation: chatPulse 2s infinite;
+        @keyframes colorChange {
+          0% { opacity: 0.7; }
+          50% { opacity: 1; }
+          100% { opacity: 0.7; }
+        }
+
+        .loader-inner {
+          position: relative;
+          height: 100px;
+          width: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .loader-logo {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 70px;
+          height: 70px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          animation: colorChange 2s infinite ease-in-out;
+          z-index: 999;
+        }
+
+        .click-me-text {
+          position: absolute;
+          bottom: -24px;
+          font-size: 11px;
+          font-weight: 600;
+          color: #1a2845;
+          text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+          white-space: nowrap;
+        }
+
+        .ripple-box {
+          position: absolute;
+          background: linear-gradient(0deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 220, 150, 0.15) 100%);
+          border-radius: 50%;
+          border-top: 1px solid rgba(255, 193, 7, 0.6);
+          box-shadow: rgba(255, 193, 7, 0.2) 0 5px 10px 0;
+          backdrop-filter: blur(3px);
+          animation: ripple 2s infinite ease-in-out;
+        }
+
+        .ripple-box:nth-child(1) {
+          width: 25%;
+          aspect-ratio: 1/1;
+          z-index: 99;
+        }
+
+        .ripple-box:nth-child(2) {
+          inset: 30%;
+          z-index: 98;
+          border-color: rgba(255, 193, 7, 0.5);
+          animation-delay: 0.2s;
+        }
+
+        .ripple-box:nth-child(3) {
+          inset: 20%;
+          z-index: 97;
+          border-color: rgba(255, 193, 7, 0.4);
+          animation-delay: 0.4s;
+        }
+
+        .ripple-box:nth-child(4) {
+          inset: 10%;
+          z-index: 96;
+          border-color: rgba(255, 193, 7, 0.3);
+          animation-delay: 0.6s;
+        }
+
+        .ripple-box:nth-child(5) {
+          inset: 0;
+          z-index: 95;
+          border-color: rgba(255, 193, 7, 0.2);
+          animation-delay: 0.8s;
+        }
+
+        .chat-window-container {
+          position: relative;
+          border-radius: 24px;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(20px) saturate(180%);
+          box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.6),
+                      0 0 20px rgba(255, 193, 7, 0.4),
+                      0 0 40px rgba(255, 193, 7, 0.2);
+          overflow: hidden;
         }
       `}</style>
 
-      <div className="fixed bottom-6 right-6 z-[100]">
-        {/* Chat Button */}
+      <div className={`fixed bottom-6 right-6 z-[100] transition-all duration-300 ${isOpen ? 'scale-0' : 'scale-100'}`}>
+        {/* Chat Button with Ripple Effect */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`chat-button-glow relative bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full p-4 transform transition-all duration-300 ${
-            isOpen ? 'scale-0' : 'scale-100'
-          }`}
+          className="relative"
           aria-label="Open chat"
+          style={{ background: 'transparent', border: 'none', padding: 0 }}
         >
-          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.41 0-2.73-.36-3.88-.99l-.28-.15-2.9.49.49-2.9-.15-.28C4.36 14.73 4 13.41 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
-            <circle cx="12" cy="12" r="1.5"/>
-            <circle cx="16" cy="12" r="1.5"/>
-            <circle cx="8" cy="12" r="1.5"/>
-          </svg>
+          <div className="loader-inner">
+            <div className="loader-logo">
+              <img src="/images/lumi.png" alt="Chat with Lumi" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />
+              <span className="click-me-text">Click Me!</span>
+            </div>
+            <div className="ripple-box"></div>
+            <div className="ripple-box"></div>
+            <div className="ripple-box"></div>
+            <div className="ripple-box"></div>
+            <div className="ripple-box"></div>
+          </div>
         </button>
       </div>
 
+      {/* SVG Filter for Electric Border */}
+      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+        <defs>
+          <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+              <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+              <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+              <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+              <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+            <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+            <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+            <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B" />
+          </filter>
+        </defs>
+      </svg>
+
       {/* Chat Window */}
       <div
-        className={`fixed bottom-6 right-6 left-6 md:left-auto md:right-6 z-[100] rounded-2xl shadow-2xl transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 left-6 md:left-auto md:right-6 z-[100] transition-all duration-300 ${
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
         }`}
         style={{
           width: 'auto',
           maxWidth: '380px',
           height: 'min(600px, 80vh)',
-          maxHeight: '80vh',
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(12px) saturate(180%)',
-          border: '1px solid rgba(212, 175, 55, 0.2)'
+          maxHeight: '80vh'
         }}
       >
+        <div className="chat-window-container" style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
         {/* Header */}
         <div className="text-white rounded-t-2xl p-4 flex items-center justify-between" style={{
           background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 100%)',
           boxShadow: '0 2px 8px rgba(26, 40, 69, 0.2)'
         }}>
           <div className="flex items-center space-x-3">
-            <div className="bg-white/20 rounded-full p-2 flex items-center justify-center">
-              <span className="text-lg font-bold">L</span>
+            <div className="bg-white rounded-full flex items-center justify-center w-12 h-12 p-1">
+              <img src="/images/lumi.png" alt="Lumi" className="w-full h-full object-contain" />
             </div>
             <div>
               <h3 className="font-bold text-lg">Lumi</h3>
@@ -297,6 +423,7 @@ export default function Chatbot() {
               Service Areas
             </button>
           </div>
+        </div>
         </div>
       </div>
     </>
