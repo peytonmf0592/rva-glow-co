@@ -228,13 +228,13 @@ export default function Home() {
                 border: '1px solid rgba(255, 220, 150, 0.15)'
               }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-up">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Light Up Your Holidays
               </h1>
-              <p className="text-lg md:text-xl mb-6 text-gray-100 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <p className="text-lg md:text-xl mb-6 text-gray-100 leading-relaxed">
                 RVA Glow Co turns your home into a seasonal showstopper — full-service, fully custom, and completely hands-off for you. From crisp roofline accents to elegant tree and shrub highlights, we design, install, maintain, remove, and securely store your lights — all included.
               </p>
-              <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <div>
                 <Link
                   href="/booking"
                   className="inline-block text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
@@ -253,7 +253,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
           <svg className="w-6 h-6 text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
