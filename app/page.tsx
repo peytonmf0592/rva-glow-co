@@ -146,21 +146,21 @@ export default function Home() {
               style={{
                 background: 'rgba(13, 20, 36, 0.4)',
                 backdropFilter: 'blur(8px)',
-                padding: '2rem',
+                padding: '1.5rem',
                 borderRadius: '1rem',
                 border: '1px solid rgba(255, 220, 150, 0.15)'
               }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
                 Light Up Your Holidays
               </h1>
-              <p className="text-lg md:text-xl mb-6 text-gray-100 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-xl mb-4 md:mb-6 text-gray-100 leading-relaxed">
                 RVA Glow Co turns your home into a seasonal showstopper — full-service, fully custom, and completely hands-off for you. From crisp roofline accents to elegant tree and shrub highlights, we design, install, maintain, remove, and securely store your lights — all included.
               </p>
               <div>
                 <Link
                   href="/booking"
-                  className="inline-block text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-250"
+                  className="inline-block text-white px-8 py-4 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:scale-105 transform transition-all duration-250 min-h-[44px] flex items-center justify-center"
                   style={{
                     background: 'linear-gradient(90deg, rgba(26, 40, 69, 0.95) 0%, rgba(139, 74, 58, 0.92) 60%, rgba(168, 88, 69, 0.90) 100%)',
                     border: '1.5px solid #ffdc96',
@@ -269,9 +269,9 @@ export default function Home() {
       </section>
 
       {/* Quick Features */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose RVA Glow Co</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] mx-auto mb-8"></div>
             <p className="text-xl text-gray-600">Full-service holiday lighting that's truly hands-off for you</p>
@@ -279,7 +279,7 @@ export default function Home() {
 
           <ServiceSlider />
 
-          <div className="text-center mt-20">
+          <div className="text-center mt-12">
             <Link
               href="/services"
               className="inline-block bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"

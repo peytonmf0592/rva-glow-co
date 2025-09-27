@@ -2,21 +2,42 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   // This helper function checks if we're on the current page
   const isActive = (path: string) => pathname === path
 
+  // Handle navigation with animation delay
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (pathname !== path) {
+      e.preventDefault()
+      setTimeout(() => {
+        router.push(path)
+      }, 400)
+    }
+  }
+
   return (
     <>
       <style jsx global>{`
-        @keyframes goldGlow {
-          0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
-          100% { box-shadow: 0 0 20px 2px rgba(255, 215, 0, 0.4); }
+        @keyframes buttonPulse {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+          }
+          70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 15px rgba(255, 193, 7, 0);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+          }
         }
 
         .nav-pill {
@@ -25,41 +46,19 @@ export default function Header() {
           border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 24px;
           padding: 8px 16px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
           transition: all 250ms ease;
           overflow: hidden;
           backdrop-filter: blur(8px);
         }
 
-        .nav-pill::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
-          opacity: 0;
-          transition: opacity 250ms ease;
-          pointer-events: none;
-        }
-
-        .nav-pill:hover::before,
-        .nav-pill:focus-within::before {
-          opacity: 1;
-        }
-
         .nav-pill:hover,
         .nav-pill:focus-within {
-          transform: scale(1.02);
-          border-color: rgba(255, 220, 150, 0.6);
-          box-shadow: 0 0 0 2px rgba(255, 220, 150, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+          animation: buttonPulse 1.5s infinite;
         }
 
         .nav-pill.active {
           background: rgba(255, 255, 255, 0.25);
           border-color: rgba(255, 220, 150, 0.6);
-          box-shadow: 0 0 12px 1px rgba(255, 220, 150, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .cta-button {
@@ -68,28 +67,8 @@ export default function Header() {
           transition: all 250ms ease;
         }
 
-        .cta-button::before {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
-          transform: translate(-50%, -50%) scale(0);
-          transition: transform 250ms ease;
-          pointer-events: none;
-        }
-
-        .cta-button:hover::before,
-        .cta-button:focus::before {
-          transform: translate(-50%, -50%) scale(2);
-        }
-
-        .cta-button:hover,
-        .cta-button:focus {
-          transform: scale(1.05);
-          box-shadow: 0 0 25px 3px rgba(255, 215, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.15);
+        .cta-button:hover {
+          animation: buttonPulse 1.5s infinite;
         }
 
         .mobile-nav-item {
@@ -123,6 +102,7 @@ export default function Header() {
             <div className="hidden md:flex items-center space-x-3">
               <Link
                 href="/"
+                onClick={(e) => handleNavigation(e, '/')}
                 className={`nav-pill ${isActive('/') ? 'active' : ''}`}
               >
                 <span className="relative z-10 font-medium text-white">
@@ -131,6 +111,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/services"
+                onClick={(e) => handleNavigation(e, '/services')}
                 className={`nav-pill ${isActive('/services') ? 'active' : ''}`}
               >
                 <span className="relative z-10 font-medium text-white">
@@ -139,6 +120,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/faq"
+                onClick={(e) => handleNavigation(e, '/faq')}
                 className={`nav-pill ${isActive('/faq') ? 'active' : ''}`}
               >
                 <span className="relative z-10 font-medium text-white">
@@ -147,6 +129,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/about"
+                onClick={(e) => handleNavigation(e, '/about')}
                 className={`nav-pill ${isActive('/about') ? 'active' : ''}`}
               >
                 <span className="relative z-10 font-medium text-white">
@@ -155,6 +138,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/contact"
+                onClick={(e) => handleNavigation(e, '/contact')}
                 className={`nav-pill ${isActive('/contact') ? 'active' : ''}`}
               >
                 <span className="relative z-10 font-medium text-white">
@@ -167,6 +151,7 @@ export default function Header() {
             <div className="hidden md:block">
               <Link
                 href="/booking"
+                onClick={(e) => handleNavigation(e, '/booking')}
                 className="cta-button text-white px-6 py-3 rounded-full font-semibold"
                 style={{
                   background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 60%, #a85845 100%)',

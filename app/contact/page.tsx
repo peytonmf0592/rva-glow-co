@@ -102,7 +102,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                     placeholder="John Smith"
                   />
                 </div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                       placeholder="(804) 555-0123"
                     />
                   </div>
@@ -149,7 +149,7 @@ export default function ContactPage() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                   >
                     <option value="general">General Inquiry</option>
                     <option value="quote">Request a Quote</option>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                     placeholder="Tell us how we can help you..."
                   />
                 </div>

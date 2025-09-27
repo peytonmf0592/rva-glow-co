@@ -187,8 +187,8 @@ export default function HolidayPreview() {
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!isCropping || !cropOverlayRef.current) return
 
-    e.preventDefault() // Prevent default behavior
-    e.stopPropagation() // Stop event from bubbling to Street View
+    e.preventDefault()
+    e.stopPropagation()
 
     const rect = cropOverlayRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -213,6 +213,47 @@ export default function HolidayPreview() {
   }
 
   const handleMouseUp = (e?: React.MouseEvent) => {
+    if (!isDragging) return
+
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
+    setIsDragging(false)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isCropping || !cropOverlayRef.current) return
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    const touch = e.touches[0]
+    const rect = cropOverlayRef.current.getBoundingClientRect()
+    const x = touch.clientX - rect.left
+    const y = touch.clientY - rect.top
+
+    setCropStart({ x, y })
+    setCropEnd({ x, y })
+    setIsDragging(true)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !cropOverlayRef.current) return
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    const touch = e.touches[0]
+    const rect = cropOverlayRef.current.getBoundingClientRect()
+    const x = Math.max(0, Math.min(touch.clientX - rect.left, rect.width))
+    const y = Math.max(0, Math.min(touch.clientY - rect.top, rect.height))
+
+    setCropEnd({ x, y })
+  }
+
+  const handleTouchEnd = (e?: React.TouchEvent) => {
     if (!isDragging) return
 
     if (e) {
@@ -422,26 +463,26 @@ export default function HolidayPreview() {
         strategy="lazyOnload"
       />
 
-      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-12 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
               <span className="bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">
                 See Your Home in Holiday Lights
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg md:text-xl text-gray-600">
               Preview how professional holiday lighting will transform your home
             </p>
           </div>
 
           {/* Step Indicators */}
-          <div className="flex justify-center mb-8">
-            <div className="flex items-center space-x-4">
+          <div className="flex justify-center mb-6 overflow-x-auto">
+            <div className="flex items-center space-x-2 md:space-x-4">
               {[1, 2, 3, 4].map((num) => (
                 <div key={num} className="flex items-center">
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-semibold text-sm md:text-base ${
                       step >= num || (step === 2 && isCropping && num === 2)
                         ? 'bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white'
                         : 'bg-gray-200 text-gray-500'
@@ -451,7 +492,7 @@ export default function HolidayPreview() {
                   </div>
                   {num < 4 && (
                     <div
-                      className={`w-12 h-1 mx-2 ${
+                      className={`w-8 md:w-12 h-1 mx-1 md:mx-2 ${
                         step > num ? 'bg-[#1a2845]' : 'bg-gray-200'
                       }`}
                     />
@@ -528,7 +569,7 @@ export default function HolidayPreview() {
 
             <div
               ref={streetViewRef}
-              className={`w-full h-[600px] rounded-xl overflow-hidden shadow-2xl ${
+              className={`w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden shadow-2xl ${
                 step === 1 ? 'opacity-50' : ''
               }`}
             />
@@ -542,7 +583,10 @@ export default function HolidayPreview() {
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
-                style={{ pointerEvents: 'auto' }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                style={{ pointerEvents: 'auto', touchAction: 'none' }}
               >
                 {/* Semi-transparent overlay */}
                 <div className="absolute inset-0 bg-black/30" />

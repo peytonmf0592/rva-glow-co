@@ -116,7 +116,7 @@ function BookingForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                     placeholder="John Smith"
                   />
                 </div>
@@ -132,7 +132,7 @@ function BookingForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -148,7 +148,7 @@ function BookingForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                     placeholder="(804) 555-0123"
                   />
                 </div>
@@ -164,7 +164,7 @@ function BookingForm() {
                     value={formData.address}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all"
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
                     placeholder="123 Main St, Richmond, VA 23220"
                   />
                 </div>
@@ -179,7 +179,7 @@ function BookingForm() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
+                  className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all min-h-[48px]"
                 >
                   <option value="roofline">Roofline Only</option>
                   <option value="complete">Complete Package - Roofline + Landscape</option>
@@ -197,7 +197,7 @@ function BookingForm() {
                   name="preferredDate"
                   value={formData.preferredDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
+                  className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all min-h-[48px]"
                 />
               </div>
 
@@ -211,7 +211,7 @@ function BookingForm() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
+                  className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all min-h-[48px]"
                   placeholder="Tell us about any specific requests, roof concerns, or design preferences..."
                 />
               </div>

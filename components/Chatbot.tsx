@@ -118,93 +118,31 @@ export default function Chatbot() {
     <>
       {/* Chatbot Toggle Button */}
       <style jsx>{`
-        @keyframes ripple {
+        @keyframes chatPulse {
           0% {
             transform: scale(1);
-            box-shadow: rgba(255, 248, 220, 0.3) 0 4px 8px 0;
+            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
           }
-          50% {
-            transform: scale(1.15);
-            box-shadow: rgba(255, 248, 220, 0.4) 0 6px 12px 0;
+          70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 15px rgba(255, 193, 7, 0);
           }
           100% {
             transform: scale(1);
-            box-shadow: rgba(255, 248, 220, 0.3) 0 4px 8px 0;
+            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
           }
         }
 
-        .ripple-container {
-          position: absolute;
-          inset: -10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          pointer-events: none;
-        }
-
-        .ripple-box {
-          position: absolute;
-          background: rgba(255, 248, 220, 0.12);
-          border-radius: 50%;
-          border: 1px solid rgba(255, 248, 220, 0.4);
-          box-shadow: rgba(255, 248, 220, 0.3) 0 4px 8px 0;
-          backdrop-filter: blur(3px);
-          animation: ripple 2s infinite ease-in-out;
-        }
-
-        .ripple-box:nth-child(1) {
-          width: 64px;
-          height: 64px;
-          z-index: 5;
-        }
-
-        .ripple-box:nth-child(2) {
-          width: 72px;
-          height: 72px;
-          z-index: 4;
-          border-color: rgba(255, 248, 220, 0.35);
-          animation-delay: 0.2s;
-        }
-
-        .ripple-box:nth-child(3) {
-          width: 80px;
-          height: 80px;
-          z-index: 3;
-          border-color: rgba(255, 248, 220, 0.3);
-          animation-delay: 0.4s;
-        }
-
-        .ripple-box:nth-child(4) {
-          width: 88px;
-          height: 88px;
-          z-index: 2;
-          border-color: rgba(255, 248, 220, 0.25);
-          animation-delay: 0.6s;
-        }
-
-        .ripple-box:nth-child(5) {
-          width: 96px;
-          height: 96px;
-          z-index: 1;
-          border-color: rgba(255, 248, 220, 0.2);
-          animation-delay: 0.8s;
+        .chat-button-glow {
+          animation: chatPulse 2s infinite;
         }
       `}</style>
 
       <div className="fixed bottom-6 right-6 z-[100]">
-        {/* Ripple Effect Background */}
-        <div className={`ripple-container ${isOpen ? 'scale-0' : 'scale-100'} transition-all duration-300`}>
-          <div className="ripple-box"></div>
-          <div className="ripple-box"></div>
-          <div className="ripple-box"></div>
-          <div className="ripple-box"></div>
-          <div className="ripple-box"></div>
-        </div>
-
         {/* Chat Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`relative bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full p-4 shadow-2xl hover:scale-110 transform transition-all duration-300 ${
+          className={`chat-button-glow relative bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full p-4 transform transition-all duration-300 ${
             isOpen ? 'scale-0' : 'scale-100'
           }`}
           aria-label="Open chat"
@@ -220,12 +158,13 @@ export default function Chatbot() {
 
       {/* Chat Window */}
       <div
-        className={`fixed bottom-6 right-6 z-[100] rounded-2xl shadow-2xl transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 left-6 md:left-auto md:right-6 z-[100] rounded-2xl shadow-2xl transition-all duration-300 ${
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
         }`}
         style={{
-          width: '380px',
-          height: '600px',
+          width: 'auto',
+          maxWidth: '380px',
+          height: 'min(600px, 80vh)',
           maxHeight: '80vh',
           background: 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(12px) saturate(180%)',

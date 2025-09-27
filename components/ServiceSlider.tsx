@@ -209,25 +209,58 @@ export default function ServiceSlider() {
 
         @media (max-width: 768px) {
           .service-slides {
-            height: 600px;
+            height: 450px;
           }
 
           .service-nav label {
-            line-height: 600px;
-            font-size: 48pt;
-            width: 60px;
+            line-height: 450px;
+            font-size: 36pt;
+            width: 50px;
           }
 
           .service-slide-content {
-            padding: 2rem;
+            padding: 1.5rem;
           }
 
           .service-slide h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            line-height: 1.3;
           }
 
           .service-slide p {
-            font-size: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .service-slides {
+            height: 400px;
+          }
+
+          .service-nav label {
+            line-height: 400px;
+            font-size: 32pt;
+            width: 45px;
+          }
+
+          .service-slide-content {
+            padding: 1rem;
+          }
+
+          .service-slide h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+          }
+
+          .service-slide p {
+            font-size: 0.875rem;
+          }
+
+          .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
           }
         }
       `}</style>
