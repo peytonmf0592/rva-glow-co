@@ -541,12 +541,13 @@ export default function HolidayPreview() {
             {/* Helper message for step 2 */}
             {step === 2 && !isCropping && (
               <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-[#1a2845]/90 text-white px-6 py-3 rounded-full backdrop-blur-sm shadow-lg">
-                  <p className="text-sm font-medium flex items-center">
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-[#1a2845]/90 text-white px-3 py-1.5 rounded-full backdrop-blur-sm shadow-lg">
+                  <p className="text-xs font-medium flex items-center">
+                    <svg className="w-4 h-4 mr-1.5 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2z" />
                     </svg>
-                    Drag to adjust • Zoom to frame your house • Click and hold to pan
+                    <span className="hidden sm:inline">Drag to adjust • Zoom to frame your house • Click and hold to pan</span>
+                    <span className="sm:hidden">Drag • Zoom • Pan to frame house</span>
                   </p>
                 </div>
               </div>
@@ -555,13 +556,14 @@ export default function HolidayPreview() {
             {/* Helper message when cropping */}
             {step === 2 && isCropping && (
               <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-[#8b4a3a]/90 text-white px-6 py-3 rounded-full backdrop-blur-sm shadow-lg">
-                  <p className="text-sm font-medium flex items-center">
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-[#8b4a3a]/90 text-white px-3 py-1.5 rounded-full backdrop-blur-sm shadow-lg">
+                  <p className="text-xs font-medium flex items-center">
+                    <svg className="w-4 h-4 mr-1.5 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5l16 16" />
                     </svg>
-                    Click and drag to draw a box around your house
+                    <span className="hidden sm:inline">Click and drag to draw a box around your house</span>
+                    <span className="sm:hidden">Drag to draw box around house</span>
                   </p>
                 </div>
               </div>
@@ -613,8 +615,16 @@ export default function HolidayPreview() {
             {/* Action Buttons */}
             {step === 2 && !isCropping && (
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 w-11/12 max-w-sm">
-                <div className="bg-white/95 backdrop-blur-sm rounded-xl p-2.5 md:p-3 shadow-2xl">
-                  <p className="text-xs text-gray-600 mb-2 text-center">
+                <div
+                  className="rounded-xl p-2.5 md:p-3 shadow-2xl"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.15)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
+                  <p className="text-xs text-white mb-2 text-center font-semibold drop-shadow-md">
                     Frame your house, then click below
                   </p>
                   <button

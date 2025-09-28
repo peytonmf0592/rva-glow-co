@@ -75,7 +75,7 @@ export default function PrivacyPage() {
             <li>Disable cookies through your browser settings</li>
           </ul>
           <p className="text-gray-700 mb-6">
-            To exercise these rights, please contact us at <a href="mailto:getlit@rvaglowco.com" className="text-[#1a2845] hover:underline">getlit@rvaglowco.com</a> or call <a href="tel:8045554569" className="text-[#1a2845] hover:underline">(804) 555-4569</a>.
+            To exercise these rights, please contact us at <a href="mailto:getlit@rvaglowco.com" className="text-[#1a2845] hover:underline">getlit@rvaglowco.com</a> or call <a href="tel:8045186955" className="text-[#1a2845] hover:underline">(804) 518-6955</a>.
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Cookies and Tracking Technologies</h2>
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
           <div className="bg-gray-50 p-6 rounded-lg mb-8">
             <p className="text-gray-700 mb-2"><strong>RVA Glow Co</strong></p>
             <p className="text-gray-700 mb-2">Email: <a href="mailto:getlit@rvaglowco.com" className="text-[#1a2845] hover:underline">getlit@rvaglowco.com</a></p>
-            <p className="text-gray-700 mb-2">Phone: <a href="tel:8045554569" className="text-[#1a2845] hover:underline">(804) 555-4569</a></p>
+            <p className="text-gray-700 mb-2">Phone: <a href="tel:8045186955" className="text-[#1a2845] hover:underline">(804) 518-6955</a></p>
             <p className="text-gray-700">Serving Richmond, VA and surrounding areas</p>
           </div>
 

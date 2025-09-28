@@ -68,12 +68,12 @@ export default function Chatbot() {
 
     // Booking questions
     if (lowerMessage.includes('book') || lowerMessage.includes('schedule') || lowerMessage.includes('appointment')) {
-      return "Ready to light up your holidays? You can book directly through our booking page, or call us at (804) 555-4569. We're booking up fast for this season!"
+      return "Ready to light up your holidays? You can book directly through our booking page, or call us at (804) 518-6955. We're booking up fast for this season!"
     }
 
     // Service area questions
     if (lowerMessage.includes('area') || lowerMessage.includes('location') || lowerMessage.includes('where') || lowerMessage.includes('serve')) {
-      return "We proudly serve Richmond and surrounding areas including Henrico, Chesterfield, Midlothian, Short Pump, and Glen Allen! Located outside our primary area? We're willing to travel depending on the distance. Please reach out at (804) 555-4569 and let's see if we can make it work!"
+      return "We proudly serve Richmond and surrounding areas including Henrico, Chesterfield, Midlothian, Short Pump, and Glen Allen! Located outside our primary area? We're willing to travel depending on the distance. Please reach out at (804) 518-6955 and let's see if we can make it work!"
     }
 
     // Process questions
@@ -112,7 +112,7 @@ export default function Chatbot() {
     }
 
     // Default response
-    return "That's a great question! For the most detailed information, please call us at (804) 555-4569 or visit our FAQ page. I can help with questions about our lights, materials, pricing, installation process, and services!"
+    return "That's a great question! For the most detailed information, please call us at (804) 518-6955 or visit our FAQ page. I can help with questions about our lights, materials, pricing, installation process, and services!"
   }
 
   const handleSendMessage = () => {
