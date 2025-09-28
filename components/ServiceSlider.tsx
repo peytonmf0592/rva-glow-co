@@ -156,6 +156,18 @@ export default function ServiceSlider() {
           background-color: rgba(26, 40, 69, 0.15);
         }
 
+        /* Always show arrows on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse) {
+          input:checked + .service-slide-container .service-nav label {
+            opacity: 0.6;
+          }
+
+          .service-nav label:active {
+            opacity: 1;
+            background-color: rgba(26, 40, 69, 0.2);
+          }
+        }
+
         .service-nav .next {
           right: 0;
         }
@@ -187,14 +199,25 @@ export default function ServiceSlider() {
           position: relative;
           border-radius: 100%;
           display: inline-block;
-          background-color: rgba(26, 40, 69, 0.3);
+          background-color: rgba(26, 40, 69, 0.4);
           transition: all 0.2s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .service-nav-dots .service-nav-dot:hover {
           cursor: pointer;
-          background-color: rgba(26, 40, 69, 0.5);
+          background-color: rgba(26, 40, 69, 0.6);
           transform: scale(1.2);
+        }
+
+        /* Make dots more prominent on mobile */
+        @media (hover: none) and (pointer: coarse) {
+          .service-nav-dots .service-nav-dot {
+            width: 16px;
+            height: 16px;
+            margin: 0 8px;
+            background-color: rgba(26, 40, 69, 0.5);
+          }
         }
 
         input#service-1:checked ~ .service-nav-dots label#service-dot-1,

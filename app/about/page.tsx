@@ -5,15 +5,137 @@ import Image from 'next/image'
 export default function AboutPage() {
   return (
     <>
-      <main className="min-h-screen bg-gradient-to-b from-[#e8dcc8] to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">
-              About
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] mx-auto"></div>
+      <main className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="relative h-[70vh] min-h-[600px] overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/hero-house.jpg"
+              alt="Beautiful holiday lighting installation"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1a2845]/80 to-[#8b4a3a]/80"></div>
           </div>
 
+          <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center">
+            <div className="text-white max-w-3xl">
+              <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+                Your Vision. <span className="text-[#d4af37]">Our Precision.</span>
+              </h1>
+
+              <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 mt-8 border-l-4 border-[#d4af37]">
+                <h3 className="text-2xl font-bold mb-4 text-[#d4af37]">Every quote includes:</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-center text-lg">
+                    <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+                    Full installation
+                  </li>
+                  <li className="flex items-center text-lg">
+                    <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+                    Service calls during season
+                  </li>
+                  <li className="flex items-center text-lg">
+                    <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+                    Safe takedown after holidays
+                  </li>
+                  <li className="flex items-center text-lg">
+                    <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+                    Off-season storage
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Curved Bottom Edge with Gold Highlight - Right-aligned */}
+          <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20" style={{ transform: 'translateY(20px)' }}>
+            <svg
+              className="w-full h-auto hero-curve-desktop"
+              viewBox="0 0 1920 220"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: 'block', height: '14vh' }}
+            >
+              <defs>
+                <filter id="aboutCurveDropShadow">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                  <feOffset dx="0" dy="3" result="offsetblur"/>
+                  <feComponentTransfer>
+                    <feFuncA type="linear" slope="0.25"/>
+                  </feComponentTransfer>
+                  <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Main curve shape - left-leaning asymmetrical sweep (flipped) */}
+              <path
+                d="M 1920 60 Q 1520 140, 960 90 T 0 30 L 0 220 L 1920 220 Z"
+                fill="white"
+                filter="url(#aboutCurveDropShadow)"
+              />
+
+              {/* Gold hairline along the crest */}
+              <path
+                d="M 1920 60 Q 1520 140, 960 90 T 0 30"
+                stroke="#ffdc96"
+                strokeWidth="1.5"
+                fill="none"
+                style={{
+                  filter: 'drop-shadow(0 -1px 3px rgba(255, 220, 150, 0.4))'
+                }}
+              />
+            </svg>
+
+            {/* Tablet curve */}
+            <svg
+              className="w-full h-auto hero-curve-tablet"
+              viewBox="0 0 1024 140"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: 'none', height: '12vh' }}
+            >
+              <path
+                d="M 1024 45 Q 824 90, 512 65 T 0 25 L 0 140 L 1024 140 Z"
+                fill="white"
+                filter="url(#aboutCurveDropShadow)"
+              />
+              <path
+                d="M 1024 45 Q 824 90, 512 65 T 0 25"
+                stroke="#ffdc96"
+                strokeWidth="1.5"
+                fill="none"
+              />
+            </svg>
+
+            {/* Mobile curve */}
+            <svg
+              className="w-full h-auto hero-curve-mobile"
+              viewBox="0 0 375 90"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: 'none', height: '10vh' }}
+            >
+              <path
+                d="M 375 40 Q 225 65, 0 30 L 0 90 L 375 90 Z"
+                fill="white"
+                filter="url(#aboutCurveDropShadow)"
+              />
+              <path
+                d="M 375 40 Q 225 65, 0 30"
+                stroke="#ffdc96"
+                strokeWidth="1"
+                fill="none"
+              />
+            </svg>
+          </div>
+        </section>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Two Column Layout */}
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* Left Column - Professional Portrait */}
@@ -68,81 +190,13 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Commercial Materials Section */}
+          {/* Premium Holiday Lighting in Action */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Commercial-Grade Materials We Use</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">SP</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">SPT-1 Wire</p>
-                <p className="text-xs text-gray-500 mt-1">Heavy-duty</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">ZC</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">Zip Cord</p>
-                <p className="text-xs text-gray-500 mt-1">& Plugs</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">TC</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">Termination Caps</p>
-                <p className="text-xs text-gray-500 mt-1">Weatherproof</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">RC</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">Ridge Clips</p>
-                <p className="text-xs text-gray-500 mt-1">Secure mount</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">ML</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">Mini-Light Strings</p>
-                <p className="text-xs text-gray-500 mt-1">Premium grade</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">C9</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">C9 LED Bulbs</p>
-                <p className="text-xs text-gray-500 mt-1">Commercial-grade</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">OB</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">Outdoor Bulbs</p>
-                <p className="text-xs text-gray-500 mt-1">& Sockets</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">EC</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">Extension Cords</p>
-                <p className="text-xs text-gray-500 mt-1">Heavy-duty</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">WC</span>
-                </div>
-                <p className="text-sm font-medium text-gray-800">Weatherproof</p>
-                <p className="text-xs text-gray-500 mt-1">Connectors</p>
-              </div>
-            </div>
-
-            {/* Premium Holiday Lighting in Action */}
-            <div className="mt-16 max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_12px_48px_rgba(47,126,128,0.2)] transition-all duration-500" style={{
-              background: 'rgba(255, 255, 255, 0.80)',
-              backdropFilter: 'blur(14px) saturate(190%)',
+            <div className="mt-16 max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_12px_48px_rgba(212,175,55,0.2)] transition-all duration-500" style={{
+              background: 'rgba(255, 255, 255, 0.85)',
+              backdropFilter: 'blur(10px)',
               border: '1.5px solid rgba(212, 175, 55, 0.25)',
-              boxShadow: '0 12px 40px rgba(26, 40, 69, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(212, 175, 55, 0.1)'
+              boxShadow: '0 12px 40px rgba(26, 40, 69, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
             }}>
               <div className="relative p-6">
                 <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-lg" style={{
@@ -169,10 +223,10 @@ export default function AboutPage() {
 
             {/* C9 LED Bulb Specifications */}
             <div className="mt-12 rounded-2xl p-8" style={{
-              background: 'rgba(255, 255, 255, 0.80)',
-              backdropFilter: 'blur(14px) saturate(190%)',
+              background: 'rgba(255, 255, 255, 0.85)',
+              backdropFilter: 'blur(10px)',
               border: '1.5px solid rgba(212, 175, 55, 0.25)',
-              boxShadow: '0 12px 40px rgba(26, 40, 69, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.25)'
+              boxShadow: '0 12px 40px rgba(26, 40, 69, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
             }}>
               <h4 className="text-3xl font-bold text-center mb-3" style={{
                 background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 100%)',
@@ -185,21 +239,21 @@ export default function AboutPage() {
               <div className="max-w-2xl mx-auto grid md:grid-cols-3 gap-6">
                 <div className="text-center p-4 rounded-xl" style={{
                   background: 'rgba(255, 255, 255, 0.6)',
-                  border: '1px solid rgba(212, 175, 55, 0.2)'
+                  border: '1px solid rgba(212, 175, 55, 0.3)'
                 }}>
                   <div className="text-3xl font-bold mb-1" style={{ color: '#1a2845' }}>50,000+</div>
                   <div className="text-sm text-gray-700">Hour Lifespan</div>
                 </div>
                 <div className="text-center p-4 rounded-xl" style={{
                   background: 'rgba(255, 255, 255, 0.6)',
-                  border: '1px solid rgba(212, 175, 55, 0.2)'
+                  border: '1px solid rgba(212, 175, 55, 0.3)'
                 }}>
                   <div className="text-3xl font-bold mb-1" style={{ color: '#8b4a3a' }}>90%</div>
                   <div className="text-sm text-gray-700">Energy Savings</div>
                 </div>
                 <div className="text-center p-4 rounded-xl" style={{
                   background: 'rgba(255, 255, 255, 0.6)',
-                  border: '1px solid rgba(212, 175, 55, 0.2)'
+                  border: '1px solid rgba(212, 175, 55, 0.3)'
                 }}>
                   <div className="text-3xl font-bold mb-1" style={{ color: '#a85845' }}>100%</div>
                   <div className="text-sm text-gray-700">Commercial Grade</div>
@@ -208,9 +262,9 @@ export default function AboutPage() {
 
               <div className="mt-8 text-center">
                 <div className="inline-block px-6 py-3 rounded-full" style={{
-                  background: 'linear-gradient(90deg, rgba(26, 40, 69, 0.2) 0%, rgba(139, 74, 58, 0.2) 100%)',
+                  background: 'linear-gradient(90deg, rgba(26, 40, 69, 0.1) 0%, rgba(139, 74, 58, 0.1) 100%)',
                   border: '1.5px solid rgba(212, 175, 55, 0.4)',
-                  boxShadow: '0 4px 12px rgba(26, 40, 69, 0.15)'
+                  boxShadow: '0 4px 12px rgba(26, 40, 69, 0.08)'
                 }}>
                   <span className="text-base font-bold" style={{
                     background: 'linear-gradient(90deg, #1a2845 0%, #8b4a3a 100%)',
@@ -220,59 +274,6 @@ export default function AboutPage() {
                   }}>Diamond-Cut Faceted Design</span>
                 </div>
                 <p className="text-sm text-gray-600 mt-4 max-w-xl mx-auto">Our faceted bulbs feature precision-cut surfaces that refract light into brilliant sparkles, creating an elegant, high-end display that stands out from standard bulbs</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Process Section */}
-          <div className="bg-[#e8dcc8]/30 rounded-2xl p-8 mb-16">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Simple Process</h2>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { step: '1', title: 'Consultation', description: 'Free on-site assessment and custom design plan' },
-                { step: '2', title: 'Installation', description: 'Professional installation by certified technicians' },
-                { step: '3', title: 'Enjoyment', description: 'Sit back and enjoy your beautiful display' },
-                { step: '4', title: 'Removal', description: 'Complete removal and storage after the season' }
-              ].map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Pricing Details */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8">Pricing Details</h2>
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-xl font-semibold mb-4">What's Included in Every Package:</h3>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Free consultation and custom design',
-                  'Professional installation and removal',
-                  'Commercial-grade LED lights',
-                  'Timer system for automatic operation',
-                  'Full-season maintenance and support',
-                  'Storage of materials between seasons',
-                  'Liability insurance coverage'
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <svg className="w-5 h-5 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="bg-[#ffd4c1]/30 border border-[#8b4a3a]/30 rounded-lg p-4">
-                <p className="text-[#db4009]">
-                  <strong>Note:</strong> Final pricing depends on home size, roof complexity, and specific design requirements.
-                  Schedule a free consultation for an exact quote.
-                </p>
               </div>
             </div>
           </div>

@@ -51,40 +51,11 @@ export default function ServicesPage() {
 
       {/* Vision and Precision Content */}
       <section className="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
-                <p className="text-xl">
-                  No matter the size, slope, or shape of your home — if it has a roof, <span className="font-bold text-[#1a2845]">you can get lit</span>. From steep pitches to complex ridgelines, RVA Glow Co handles every install with expert precision and clean, custom results.
-                </p>
-
-                <p className="text-xl bg-gradient-to-r from-[#e8dcc8] to-white p-6 rounded-xl border-l-4 border-[#d4af37]">
-                  Choose to either <span className="font-bold text-[#1a2845]">lease or own</span> your lights. No stress, no clutter, no hassle — just brilliant lights and total peace of mind.
-                </p>
-              </div>
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#1a2845] to-[#8b4a3a]"></div>
-                  <div className="absolute inset-0 bg-black/20"></div>
-                </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300 mt-8">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#8b4a3a] to-[#d4af37]"></div>
-                  <div className="absolute inset-0 bg-black/20"></div>
-                </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#d4af37] to-[#1a2845]"></div>
-                  <div className="absolute inset-0 bg-black/20"></div>
-                </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300 mt-8">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#1a2845] to-[#8b4a3a]"></div>
-                  <div className="absolute inset-0 bg-black/20"></div>
-                </div>
-              </div>
-            </div>
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+            <p className="text-xl bg-gradient-to-r from-[#e8dcc8] to-white p-6 rounded-xl border-l-4 border-[#d4af37]">
+              Choose to either <span className="font-bold text-[#1a2845]">lease or own</span> your lights. No stress, no clutter, no hassle — just brilliant lights and total peace of mind.
+            </p>
           </div>
         </div>
       </section>
@@ -211,6 +182,31 @@ export default function ServicesPage() {
                   Get Quote
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-[#e8dcc8]/30 rounded-2xl p-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Our Simple Process</h2>
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { step: '1', title: 'Consultation', description: 'Free on-site assessment and custom design plan' },
+                { step: '2', title: 'Installation', description: 'Professional installation by certified technicians' },
+                { step: '3', title: 'Enjoyment', description: 'Sit back and enjoy your beautiful display' },
+                { step: '4', title: 'Removal', description: 'Complete removal and storage after the season' }
+              ].map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

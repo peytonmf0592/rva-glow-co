@@ -61,15 +61,11 @@ export default function Footer() {
             <div className="space-y-2 text-gray-300">
               <p className="flex items-center">
                 <span className="mr-2">Phone:</span>
-                (804) 555-GLOW
+                (804) 555-4569
               </p>
               <p className="flex items-center">
                 <span className="mr-2">Email:</span>
                 getlit@rvaglowco.com
-              </p>
-              <p className="flex items-center">
-                <span className="mr-2">Hours:</span>
-                Mon-Sat: 8AM - 6PM
               </p>
             </div>
           </div>
@@ -77,7 +73,15 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-          <p>&copy; 2024 RVA Glow Co. All rights reserved.</p>
+          <p className="mb-3">&copy; 2024 RVA Glow Co. All rights reserved.</p>
+          <div className="flex justify-center space-x-6 text-sm">
+            <Link href="/privacy" className="hover:text-[#FFD700] transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-[#FFD700] transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

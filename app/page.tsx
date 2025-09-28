@@ -65,35 +65,19 @@ export default function Home() {
   }, [showEstimateModal])
 
   const handleEstimateSubmit = (e: React.FormEvent) => {
-    console.log('=== handleEstimateSubmit called ===')
-    console.log('Current address:', estimateAddress)
-
     if (!estimateAddress || !estimateAddress.trim()) {
-      console.log('No address entered, returning')
       return
     }
 
-    // Store the address before any state changes
     const addressToPass = estimateAddress
-    console.log('Address to pass:', addressToPass)
-
-    // Show submitting state
     setIsSubmitting(true)
     setSubmitSuccess(true)
-    console.log('States updated - showing success message')
 
-    // Direct navigation after a short delay
-    const timeoutId = window.setTimeout(() => {
-      console.log('Timeout executed - navigating now!')
+    window.setTimeout(() => {
       const encodedAddress = encodeURIComponent(addressToPass)
       const bookingUrl = `/booking?address=${encodedAddress}`
-      console.log('Final URL:', bookingUrl)
-
-      // Force navigation using location.replace
       window.location.replace(bookingUrl)
     }, 1500)
-
-    console.log('Timeout scheduled with ID:', timeoutId)
   }
 
   // Parallax effect for SVG accent
@@ -115,7 +99,7 @@ export default function Home() {
         {/* Background Image - Zoomed and Anchored Right */}
         <div className="absolute inset-0">
           <img
-            src="/images/hero-night-house.jpg"
+            src="/images/hero-house.jpg"
             alt="Holiday lights on home at night"
             className="w-full h-full object-cover"
             style={{
@@ -297,7 +281,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-[#1a2845] to-[#1a2845] text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Ready to glow?</h2>
-          <p className="text-xl mb-8 text-[#e8dcc8]">Book a free design consult or request an instant estimate and we'll show you exactly how your home will look.</p>
+          <p className="text-xl mb-8 text-[#e8dcc8]">Book a free design consult or request an estimate and we'll show you exactly how your home will look.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/booking"
@@ -391,19 +375,12 @@ export default function Home() {
                       <button
                         type="button"
                         onClick={() => {
-                          // Immediate test
-                          alert(`Button clicked! Address: ${estimateAddress}`)
-                          console.log('BUTTON CLICKED!', estimateAddress)
-
                           if (!estimateAddress || estimateAddress.trim() === '') {
-                            alert('Please enter an address')
                             return
                           }
 
-                          // Direct navigation without any state changes
                           const encodedAddress = encodeURIComponent(estimateAddress)
                           const url = `/booking?address=${encodedAddress}`
-                          console.log('Navigating to:', url)
                           window.location.href = url
                         }}
                         className="w-full py-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
@@ -414,15 +391,6 @@ export default function Home() {
                       <p className="text-center text-xs text-gray-500 mt-4">
                         For a detailed quote, <Link href="/booking" className="text-[#1a2845] hover:underline">book a free consultation</Link>
                       </p>
-
-                      {/* Debug button */}
-                      <button
-                        type="button"
-                        onClick={() => alert('Test button works!')}
-                        className="w-full mt-4 py-2 bg-gray-500 text-white rounded"
-                      >
-                        Test Button (Debug)
-                      </button>
                     </div>
                   </>
                 )}

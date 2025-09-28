@@ -49,7 +49,7 @@ function BookingForm() {
 
       setSubmitted(true)
     } catch (err) {
-      setError('Failed to submit booking. Please call us at (804) 555-0123')
+      setError('Failed to submit booking. Please call us at (804) 555-4569')
     } finally {
       setIsSubmitting(false)
     }
@@ -149,7 +149,7 @@ function BookingForm() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
-                    placeholder="(804) 555-0123"
+                    placeholder="(804) 555-4569"
                   />
                 </div>
 

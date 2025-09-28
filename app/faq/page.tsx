@@ -410,18 +410,6 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* What We'll Confirm Locally */}
-      <section className="py-12 bg-white border-t">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-blue-50 rounded-xl p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Notes</h3>
-            <div className="space-y-3 text-sm text-gray-700">
-              <p><strong>NEED LOCAL RESEARCH:</strong> Exact Richmond market rates, HOA requirements in specific neighborhoods</p>
-              <p><strong>POLICY CHOICE:</strong> Storage pricing structure, multi-year discount programs</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

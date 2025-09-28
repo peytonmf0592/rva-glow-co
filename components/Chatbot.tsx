@@ -36,34 +36,69 @@ export default function Chatbot() {
   const getBotResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase()
 
+    // Lights/Materials questions
+    if (lowerMessage.includes('light') || lowerMessage.includes('bulb') || lowerMessage.includes('c9') || lowerMessage.includes('led')) {
+      return "We use professional-grade faceted C9 LED bulbs - the gold standard for holiday lighting! They feature diamond-cut facets that create brilliant sparkles, last 50,000+ hours, save 90% energy vs incandescent, and are 100% commercial grade. We also offer G50 bulbs for a different look. All bulbs are weather-rated and built to last!"
+    }
+
+    // Materials/Quality questions
+    if (lowerMessage.includes('material') || lowerMessage.includes('wire') || lowerMessage.includes('cord') || lowerMessage.includes('quality')) {
+      return "We use only commercial-grade materials: SPT-1 rated outdoor socket cord, heavy-duty zip cord for power runs, professional termination caps (safer than exposed plugs), damage-free ridge clips for peaks, and circle clips that rotate for shingles and gutters. Everything is weatherproof and built to Richmond's weather standards!"
+    }
+
+    // Clips/Installation method
+    if (lowerMessage.includes('clip') || lowerMessage.includes('attach') || lowerMessage.includes('damage') || lowerMessage.includes('nail')) {
+      return "We use specialized clips designed for your roof type - no nails, staples, or permanent attachments! Circle clips rotate to work on both shingles and gutters, and ridge clips protect your peaks. Everything is removable and damage-free. Your roof warranty stays intact!"
+    }
+
+    // Colors/Design questions
+    if (lowerMessage.includes('color') || lowerMessage.includes('pattern') || lowerMessage.includes('white') || lowerMessage.includes('multi')) {
+      return "You can choose from warm white, multicolor, red/green, or custom color combinations! Popular patterns include solid colors or our 3-2 red/green alternating pattern. Note: Blues and greens appear brighter than reds and oranges. We install one color first, then add the second for perfect spacing!"
+    }
+
     // Pricing questions
     if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
-      return "Our pricing ranges from $8-$15 per linear foot, depending on the height and steepness of your roofline. Some parts of your house may cost more than others due to accessibility challenges. Steeper roofs and higher peaks require specialized equipment and additional safety measures. Would you like a free consultation to get an exact quote for your home?"
+      return "Our roofline lighting starts at $7-10 per linear foot for standard installations. Steeper roofs and complex designs vary based on pitch and accessibility. Every quote includes full installation, seasonal maintenance, takedown, and storage options. Want a free consultation for an exact quote?"
+    }
+
+    // Lease vs Buy
+    if (lowerMessage.includes('lease') || lowerMessage.includes('buy') || lowerMessage.includes('own') || lowerMessage.includes('purchase')) {
+      return "Great question! LEASE: Same price yearly with fresh lights and storage included. BUY: Save ~40% in year 2 and beyond (labor only). Most customers choose buying for long-term savings. Both options include installation, service, takedown, and maintenance!"
     }
 
     // Booking questions
     if (lowerMessage.includes('book') || lowerMessage.includes('schedule') || lowerMessage.includes('appointment')) {
-      return "Ready to light up your holidays? You can book directly through our booking page, or call us at (804) 555-GLOW. We're booking up fast for this season!"
+      return "Ready to light up your holidays? You can book directly through our booking page, or call us at (804) 555-4569. We're booking up fast for this season!"
     }
 
     // Service area questions
-    if (lowerMessage.includes('area') || lowerMessage.includes('location') || lowerMessage.includes('where')) {
-      return "We proudly serve Richmond and surrounding areas including Henrico, Chesterfield, Midlothian, Short Pump, and Glen Allen! Is your home in one of these areas?"
+    if (lowerMessage.includes('area') || lowerMessage.includes('location') || lowerMessage.includes('where') || lowerMessage.includes('serve')) {
+      return "We proudly serve Richmond and surrounding areas including Henrico, Chesterfield, Midlothian, Short Pump, and Glen Allen! Located outside our primary area? We're willing to travel depending on the distance. Please reach out at (804) 555-4569 and let's see if we can make it work!"
     }
 
     // Process questions
-    if (lowerMessage.includes('how') || lowerMessage.includes('process') || lowerMessage.includes('work')) {
-      return "It's super easy! 1) You book a consultation 2) We design your custom display 3) Our team installs everything 4) You enjoy the holidays 5) We handle the takedown in January. No ladders for you!"
+    if (lowerMessage.includes('process') || lowerMessage.includes('work')) {
+      return "It's super easy! 1) You book a free consultation 2) We design your custom display 3) Our team installs everything 4) You enjoy the holidays stress-free 5) We handle takedown in January 6) Optional storage. No ladders, no hassle for you!"
     }
 
-    // Timing questions
-    if (lowerMessage.includes('when') || lowerMessage.includes('long') || lowerMessage.includes('time')) {
-      return "Most installations take 2-4 hours depending on your home size. We typically start installations in early November and remove lights in January. Book early for the best dates!"
+    // Timing/Installation questions
+    if (lowerMessage.includes('when') || lowerMessage.includes('long') || lowerMessage.includes('install') || lowerMessage.includes('take')) {
+      return "Most installations take 2.5-3 hours for a typical single-story home (150 linear feet). Larger homes take 4-6 hours. We start installations in late October through December 24th. Removal happens in January. Book early for the best dates!"
+    }
+
+    // Service/Maintenance questions
+    if (lowerMessage.includes('service') || lowerMessage.includes('maintenance') || lowerMessage.includes('repair') || lowerMessage.includes('fix')) {
+      return "All packages include complimentary service calls during the season! We respond within 48 hours to replace bulbs, fix weather damage, or adjust timers. No extra charge for standard service calls. We've got you covered!"
     }
 
     // Safety/Insurance
     if (lowerMessage.includes('insur') || lowerMessage.includes('safe') || lowerMessage.includes('licens')) {
-      return "Absolutely! We're fully insured. Our team is trained in ladder safety and electrical work. Your home and our team are completely protected."
+      return "Absolutely! We're fully insured with liability coverage. Our installers are trained in ladder safety, fall protection, and proper electrical work. We use steep assist devices for difficult pitches. Your home and our team are completely protected!"
+    }
+
+    // Storage questions
+    if (lowerMessage.includes('storage') || lowerMessage.includes('store')) {
+      return "Storage is included with lease options and available as an add-on for purchased lights. We keep everything in climate-controlled storage, test lights before the next season, and organize by property. No garage clutter for you!"
     }
 
     // Greeting
@@ -77,7 +112,7 @@ export default function Chatbot() {
     }
 
     // Default response
-    return "That's a great question! For the most accurate information, please call us at (804) 555-GLOW or visit our FAQ page. I'm still learning, but I'm here to help with basic questions about our services!"
+    return "That's a great question! For the most detailed information, please call us at (804) 555-4569 or visit our FAQ page. I can help with questions about our lights, materials, pricing, installation process, and services!"
   }
 
   const handleSendMessage = () => {

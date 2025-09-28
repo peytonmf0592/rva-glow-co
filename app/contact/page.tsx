@@ -35,7 +35,7 @@ export default function ContactPage() {
 
       setSubmitted(true)
     } catch (err) {
-      setError('Failed to send message. Please call us at (804) 555-0123')
+      setError('Failed to send message. Please call us at (804) 555-4569')
     } finally {
       setIsSubmitting(false)
     }
@@ -59,7 +59,7 @@ export default function ContactPage() {
               </svg>
               <h1 className="text-3xl font-bold text-gray-800 mb-4">Message Sent Successfully!</h1>
               <p className="text-lg text-gray-600 mb-8">
-                We'll get back to you within 24 hours. For immediate assistance, call us at (804) 555-0123.
+                We'll get back to you within 24 hours. For immediate assistance, call us at (804) 555-4569.
               </p>
               <a
                 href="/"
@@ -206,7 +206,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-1">Phone</h4>
-                      <p className="text-gray-600">(804) 555-0123</p>
+                      <p className="text-gray-600">(804) 555-4569</p>
                       <p className="text-sm text-gray-500 mt-1">Mon-Fri 8AM-8PM, Sat-Sun 9AM-6PM</p>
                     </div>
                   </div>
