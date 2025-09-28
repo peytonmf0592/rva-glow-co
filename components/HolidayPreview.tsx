@@ -612,14 +612,14 @@ export default function HolidayPreview() {
 
             {/* Action Buttons */}
             {step === 2 && !isCropping && (
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-2xl">
-                  <p className="text-sm text-gray-600 mb-3 text-center">
-                    Frame your house perfectly, then click below
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 w-11/12 max-w-sm">
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl p-2.5 md:p-3 shadow-2xl">
+                  <p className="text-xs text-gray-600 mb-2 text-center">
+                    Frame your house, then click below
                   </p>
                   <button
                     onClick={startCropping}
-                    className="px-10 py-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-200 animate-pulse"
+                    className="w-full px-5 py-2.5 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-bold text-sm hover:shadow-xl hover:scale-105 transition-all duration-200 animate-pulse"
                   >
                     Start Cropping
                   </button>
@@ -628,44 +628,44 @@ export default function HolidayPreview() {
             )}
 
             {step === 2 && isCropping && (
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 w-11/12 max-w-md">
                 {/* Lighting options selector - shows ONLY when selection is made AND not dragging */}
                 {!isDragging && cropEnd.x !== cropStart.x && cropEnd.y !== cropStart.y && (
-                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-2xl mb-4">
-                    <p className="text-sm font-semibold text-gray-700 mb-3 text-center">Choose your lighting package:</p>
-                    <div className="flex gap-3 mb-4">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-3 md:p-4 shadow-2xl mb-3 md:mb-4">
+                    <p className="text-xs md:text-sm font-semibold text-gray-700 mb-2 md:mb-3 text-center">Choose your lighting package:</p>
+                    <div className="flex gap-2 md:gap-3 mb-3 md:mb-4">
                       <button
                         onClick={() => setLightingOption('roof')}
-                        className={`flex-1 px-4 py-3 rounded-lg border-2 transition-all ${
+                        className={`flex-1 px-2 md:px-4 py-2 md:py-3 rounded-lg border-2 transition-all ${
                           lightingOption === 'roof'
                             ? 'border-[#1a2845] bg-[#e8dcc8] text-blue-700'
                             : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                         }`}
                       >
-                        <div className="font-semibold">Roofline Only</div>
-                        <div className="text-xs mt-1">Classic & Elegant</div>
+                        <div className="font-semibold text-xs md:text-base">Roofline Only</div>
+                        <div className="text-xs mt-1 hidden md:block">Classic & Elegant</div>
                       </button>
                       <button
                         onClick={() => setLightingOption('full')}
-                        className={`flex-1 px-4 py-3 rounded-lg border-2 transition-all ${
+                        className={`flex-1 px-2 md:px-4 py-2 md:py-3 rounded-lg border-2 transition-all ${
                           lightingOption === 'full'
                             ? 'border-[#8b4a3a] bg-[#e8dcc8] text-amber-700'
                             : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                         }`}
                       >
-                        <div className="font-semibold">Roofline + Landscape</div>
-                        <div className="text-xs mt-1">Complete Package</div>
+                        <div className="font-semibold text-xs md:text-base">Roofline + Landscape</div>
+                        <div className="text-xs mt-1 hidden md:block">Complete Package</div>
                       </button>
                     </div>
                   </div>
                 )}
 
                 {/* Action buttons */}
-                <div className="flex space-x-4">
+                <div className="flex space-x-2 md:space-x-4">
                   {/* Show cancel button always when cropping */}
                   <button
                     onClick={cancelCropping}
-                    className="px-6 py-3 bg-red-500 text-white rounded-full font-semibold hover:bg-red-600 transition-all"
+                    className="px-4 md:px-6 py-2 md:py-3 bg-red-500 text-white rounded-full text-sm md:text-base font-semibold hover:bg-red-600 transition-all"
                   >
                     Cancel
                   </button>
@@ -678,15 +678,15 @@ export default function HolidayPreview() {
                           setCropStart({ x: 0, y: 0 })
                           setCropEnd({ x: 0, y: 0 })
                         }}
-                        className="px-6 py-3 bg-gray-500 text-white rounded-full font-semibold hover:bg-gray-600 transition-all"
+                        className="px-4 md:px-6 py-2 md:py-3 bg-gray-500 text-white rounded-full text-sm md:text-base font-semibold hover:bg-gray-600 transition-all"
                       >
                         Redraw
                       </button>
                       <button
                         onClick={captureAndRender}
-                        className="px-8 py-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-semibold hover:shadow-lg transition-all"
+                        className="px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full text-sm md:text-base font-semibold hover:shadow-lg transition-all"
                       >
-                        Generate Preview
+                        Generate
                       </button>
                     </>
                   )}
@@ -712,8 +712,9 @@ export default function HolidayPreview() {
                 <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">
                   Your Holiday Lighting Transformation
                 </h3>
-                <p className="text-center text-gray-600 mb-6">
-                  Drag the slider to see the before and after • Click the after image to view full size
+                <p className="text-center text-gray-600 mb-6 text-sm md:text-base">
+                  <span className="hidden md:inline">Drag the slider to see the before and after • Click the after image to view full size</span>
+                  <span className="md:hidden">Swipe the slider to compare • Tap to view full size</span>
                 </p>
 
                 <div
@@ -723,6 +724,24 @@ export default function HolidayPreview() {
                   onMouseDown={handleSliderStart}
                   onMouseMove={handleSliderMove}
                   onMouseUp={handleSliderEnd}
+                  onTouchStart={(e) => {
+                    const touch = e.touches[0]
+                    const rect = e.currentTarget.getBoundingClientRect()
+                    const x = touch.clientX - rect.left
+                    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+                    setSliderPosition(percentage)
+                    setIsDraggingSlider(true)
+                  }}
+                  onTouchMove={(e) => {
+                    if (!isDraggingSlider) return
+                    e.preventDefault()
+                    const touch = e.touches[0]
+                    const rect = e.currentTarget.getBoundingClientRect()
+                    const x = touch.clientX - rect.left
+                    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+                    setSliderPosition(percentage)
+                  }}
+                  onTouchEnd={() => setIsDraggingSlider(false)}
                 >
                   {/* After Image (Background) */}
                   <div className="relative">
