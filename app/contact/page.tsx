@@ -124,7 +124,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">Contact Us</h1>
-            <p className="text-xl text-gray-600">We're here to help make your holidays magical</p>
+            <p className="text-xl text-gray-600">Light up your holidays — Get Lit with RVA Glow Co</p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
