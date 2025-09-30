@@ -60,7 +60,15 @@ export default function ContactPage() {
 
           <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
             <div className="max-w-2xl w-full">
-              <div className="bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md border border-white/20 rounded-2xl p-12 shadow-2xl relative overflow-hidden">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl p-12 shadow-2xl relative overflow-hidden"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)'
+                }}
+              >
                 {/* Success Icon with festive colors */}
                 <div className="relative z-10">
                   <svg className="w-24 h-24 mx-auto mb-6" fill="none" viewBox="0 0 24 24">
@@ -75,19 +83,19 @@ export default function ContactPage() {
                     </defs>
                   </svg>
 
-                  <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#1a2845] via-[#8b4a3a] to-[#1a2845] bg-clip-text text-transparent">
+                  <h1 className="text-4xl font-bold mb-4 text-white drop-shadow-lg">
                     Message Sent Successfully!
                   </h1>
 
                   <div className="space-y-3 mb-8">
-                    <p className="text-lg text-gray-700">
+                    <p className="text-lg text-white/90 drop-shadow">
                       🎄 Thank you for choosing RVA Glow Co!
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-white/80">
                       We'll get back to you within 24 hours to discuss making your holidays magical.
                     </p>
-                    <p className="text-gray-600">
-                      For immediate assistance, call us at <span className="font-semibold text-[#8b4a3a]">(804) 518-6955</span>
+                    <p className="text-white/80">
+                      For immediate assistance, call us at <span className="font-semibold text-[#FFD700]">(804) 518-6955</span>
                     </p>
                   </div>
 
