@@ -43,7 +43,7 @@ export async function POST(request: Request) {
       try {
         await resend.emails.send({
           from: 'RVA Glow Co <onboarding@resend.dev>',
-          to: 'getlit@rvaglowco.com',
+          to: 'peytonmf0592@gmail.com', // Temporary until domain verified
           subject: `New Contact Form Submission from ${name}`,
           html: `
             <h2>New Contact Form Submission</h2>

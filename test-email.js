@@ -1,7 +1,7 @@
 // Test email configuration
 // Run with: node test-email.js
 
-const apiKey = 'YOUR_RESEND_API_KEY_HERE'; // Replace with your actual Resend API key
+const apiKey = 're_FPcuWSZu_83FoBaoAVNHtE33Wmzv3Mc8i'; // Your Resend API key
 
 async function testEmail() {
   console.log('Testing email configuration...\n');
@@ -15,7 +15,7 @@ async function testEmail() {
       },
       body: JSON.stringify({
         from: 'RVA Glow Co <onboarding@resend.dev>',
-        to: 'getlit@rvaglowco.com',
+        to: 'peytonmf0592@gmail.com',
         subject: 'Test Email from RVA Glow Co Website',
         html: `
           <h2>Test Email</h2>
@@ -55,5 +55,5 @@ console.log('6. Update RESEND_API_KEY in .env.local');
 console.log('7. Add RESEND_API_KEY to Vercel environment variables\n');
 console.log('=================================\n');
 
-// Uncomment the line below when you've added your API key
-// testEmail();
+// Run the test
+testEmail();
