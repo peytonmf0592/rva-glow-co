@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     }
 
     // Send email notification if Resend is configured
-    if (resend && process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 're_test_key') {
+    if (resend && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: 'RVA Glow Co <onboarding@resend.dev>',
