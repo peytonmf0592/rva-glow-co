@@ -92,7 +92,7 @@ export default function ContactPage() {
                       🎄 Thanks for choosing RVA Glow Co
                     </p>
                     <p className="text-white/80">
-                      We'll reply within 24 hours to plan your holiday lighting and help you Get Lit.
+                      We'll reply within 24 hours to plan your holiday lighting and help you Get Lit!
                     </p>
                     <p className="text-white/80">
                       For immediate assistance, call us at <span className="font-semibold text-[#FFD700]">(804) 518-6955</span>
