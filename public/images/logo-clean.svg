@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="72" viewBox="0 0 180 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light bulb icon -->
+  <g transform="translate(10, 10)">
+    <!-- Teal circle background -->
+    <circle cx="20" cy="20" r="18" fill="#4ECDC4"/>
+
+    <!-- Light bulb -->
+    <g transform="translate(20, 20)">
+      <!-- Bulb outline -->
+      <path d="M 0,-10 C -6,-10 -10,-6 -10,0 C -10,4 -8,7 -5,9 L -5,12 L 5,12 L 5,9 C 8,7 10,4 10,0 C 10,-6 6,-10 0,-10 Z"
+            fill="white" stroke="#1a2845" stroke-width="1.5"/>
+
+      <!-- Filament/flame -->
+      <path d="M 0,-6 C -2,-6 -3,-4 -3,-2 C -3,1 -2,3 0,5 C 2,3 3,1 3,-2 C 3,-4 2,-6 0,-6 Z"
+            fill="#FFA500"/>
+
+      <!-- Base threads -->
+      <line x1="-5" y1="12" x2="5" y2="12" stroke="#1a2845" stroke-width="1"/>
+      <line x1="-4" y1="14" x2="4" y2="14" stroke="#1a2845" stroke-width="1"/>
+      <line x1="-3" y1="16" x2="3" y2="16" stroke="#1a2845" stroke-width="1"/>
+    </g>
+
+    <!-- Sparkles -->
+    <g fill="#FFA500" opacity="0.8">
+      <circle cx="5" cy="5" r="1.5"/>
+      <circle cx="35" cy="8" r="1"/>
+      <circle cx="38" cy="20" r="1.5"/>
+      <circle cx="35" cy="32" r="1"/>
+      <circle cx="5" cy="35" r="1.5"/>
+    </g>
+
+    <!-- Plus signs for decoration -->
+    <g stroke="#FFA500" stroke-width="1" opacity="0.6">
+      <path d="M 8,12 L 8,16 M 6,14 L 10,14"/>
+      <path d="M 32,14 L 32,18 M 30,16 L 34,16"/>
+      <path d="M 8,26 L 8,30 M 6,28 L 10,28"/>
+      <path d="M 32,26 L 32,30 M 30,28 L 34,28"/>
+    </g>
+  </g>
+
+  <!-- Text -->
+  <g transform="translate(55, 32)">
+    <!-- RVA -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="18" font-weight="300" fill="#d4d4d4">RVA</text>
+
+    <!-- Glow (cursive style) -->
+    <text x="35" y="0" font-family="Brush Script MT, cursive" font-size="22" font-weight="400" fill="#FFD700" style="font-style: italic;">Glow</text>
+
+    <!-- CO -->
+    <text x="85" y="0" font-family="Arial, sans-serif" font-size="18" font-weight="300" fill="#d4d4d4">CO</text>
+  </g>
+
+  <!-- HOLIDAY LIGHTING subtitle -->
+  <text x="90" y="50" font-family="Arial, sans-serif" font-size="10" font-weight="400" fill="#1a2845" text-anchor="middle" letter-spacing="2">HOLIDAY LIGHTING</text>
+</svg>

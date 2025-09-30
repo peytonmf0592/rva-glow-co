@@ -74,31 +74,52 @@ export default function HolidayPreview() {
 
   const initMap = useCallback(() => {
     if (window.google && streetViewRef.current) {
+      console.log('Initializing Google Maps...')
       const service = new window.google.maps.StreetViewService()
       const newGeocoder = new window.google.maps.Geocoder()
       setGeocoder(newGeocoder)
 
-      // Initialize with a default location (Richmond, VA)
-      const defaultLocation = { lat: 37.5407, lng: -77.4360 }
+      // Initialize with a default location (Richmond, VA - Monument Ave with known Street View)
+      const defaultLocation = { lat: 37.5538, lng: -77.4603 }
 
-      const newPanorama = new window.google.maps.StreetViewPanorama(
-        streetViewRef.current,
-        {
-          position: defaultLocation,
-          pov: { heading: 165, pitch: 10 },
-          zoom: 0.8,
-          addressControl: false,
-          linksControl: false,
-          panControl: true,
-          enableCloseButton: false,
-          fullscreenControl: false,
-          zoomControl: true,
-          motionTracking: false,
-          motionTrackingControl: false
+      // First check if Street View is available at this location
+      service.getPanorama({ location: defaultLocation, radius: 200 }, (data: any, status: any) => {
+        if (status === window.google.maps.StreetViewStatus.OK && streetViewRef.current) {
+          const newPanorama = new window.google.maps.StreetViewPanorama(
+            streetViewRef.current,
+            {
+              position: data.location.latLng,
+              pov: { heading: 90, pitch: 0 },
+              zoom: 1,
+              addressControl: false,
+              linksControl: true,
+              panControl: true,
+              enableCloseButton: false,
+              fullscreenControl: false,
+              zoomControl: true,
+              motionTracking: false,
+              motionTrackingControl: false,
+              visible: true
+            }
+          )
+          setPanorama(newPanorama)
+          console.log('Street View initialized successfully at:', data.location.latLng.toString())
+        } else {
+          console.error('Street View data not found, trying fallback location...')
+          // Fallback to Times Square which definitely has Street View
+          const fallbackLocation = { lat: 40.758, lng: -73.9855 }
+          const fallbackPanorama = new window.google.maps.StreetViewPanorama(
+            streetViewRef.current,
+            {
+              position: fallbackLocation,
+              pov: { heading: 90, pitch: 0 },
+              zoom: 1,
+              visible: true
+            }
+          )
+          setPanorama(fallbackPanorama)
         }
-      )
-
-      setPanorama(newPanorama)
+      })
 
       // Initialize Places Autocomplete on the address input
       if (addressInputRef.current) {

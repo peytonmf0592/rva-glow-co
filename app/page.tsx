@@ -103,12 +103,24 @@ export default function Home() {
             alt="Holiday lights on home at night"
             className="w-full h-full object-cover"
             style={{
-              objectPosition: 'center right',
-              transform: 'scale(1.3)',
-              transformOrigin: 'center right'
+              objectPosition: '85% 20%',
+              transform: 'scale(1.1)',
+              transformOrigin: 'center'
             }}
             loading="eager"
           />
+          <style jsx>{`
+            @media (max-width: 768px) {
+              img {
+                object-position: 85% 20% !important;
+              }
+            }
+            @media (min-width: 769px) {
+              img {
+                object-position: 70% 20% !important;
+              }
+            }
+          `}</style>
 
           {/* Subtle indigo overlay for text contrast */}
           <div className="absolute inset-0" style={{
@@ -117,22 +129,22 @@ export default function Home() {
 
           {/* Dark overlay behind text for contrast */}
           <div className="absolute inset-0 pointer-events-none" style={{
-            background: 'linear-gradient(90deg, rgba(13, 20, 36, 0.75) 0%, rgba(13, 20, 36, 0.55) 25%, transparent 50%)'
+            background: 'linear-gradient(90deg, rgba(13, 20, 36, 0.5) 0%, rgba(13, 20, 36, 0.3) 25%, transparent 50%)'
           }}></div>
         </div>
 
         {/* Hero Content - About Block on Left */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl lg:max-w-xl">
+          <div className="max-w-2xl lg:max-w-xl mt-52">
             <div
               id="hero-text"
               className="text-white"
               style={{
-                background: 'rgba(13, 20, 36, 0.4)',
-                backdropFilter: 'blur(8px)',
+                background: 'rgba(13, 20, 36, 0.25)',
+                backdropFilter: 'blur(6px)',
                 padding: '1.5rem',
                 borderRadius: '1rem',
-                border: '1px solid rgba(255, 220, 150, 0.15)'
+                border: '1px solid rgba(255, 220, 150, 0.2)'
               }}
             >
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">

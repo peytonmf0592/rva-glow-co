@@ -6,7 +6,7 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] overflow-hidden">
+      <section className="relative h-[80vh] min-h-[700px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/hero-house.jpg"
@@ -24,23 +24,23 @@ export default function ServicesPage() {
               Your Vision. <span className="text-[#d4af37]">Our Precision.</span>
             </h1>
 
-            <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 mt-8 border-l-4 border-[#d4af37]">
-              <h3 className="text-2xl font-bold mb-4 text-[#d4af37]">Every quote includes:</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center text-lg">
-                  <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+            <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 mt-8 border-l-4 border-[#d4af37]">
+              <h3 className="text-xl font-bold mb-3 text-[#d4af37]">Every quote includes:</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center text-base">
+                  <span className="text-[#d4af37] text-xl mr-2">✓</span>
                   Full installation
                 </li>
-                <li className="flex items-center text-lg">
-                  <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+                <li className="flex items-center text-base">
+                  <span className="text-[#d4af37] text-xl mr-2">✓</span>
                   Service calls during season
                 </li>
-                <li className="flex items-center text-lg">
-                  <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+                <li className="flex items-center text-base">
+                  <span className="text-[#d4af37] text-xl mr-2">✓</span>
                   Safe takedown after holidays
                 </li>
-                <li className="flex items-center text-lg">
-                  <span className="text-[#d4af37] text-2xl mr-3">✓</span>
+                <li className="flex items-center text-base">
+                  <span className="text-[#d4af37] text-xl mr-2">✓</span>
                   Off-season storage
                 </li>
               </ul>

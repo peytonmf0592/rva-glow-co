@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- String of Holiday Lights Symbol -->
+  <g transform="translate(5, 20)">
+    <defs>
+      <linearGradient id="bulb1" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+      </linearGradient>
+      <linearGradient id="bulb2" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#FF4757;stop-opacity:1" />
+      </linearGradient>
+      <linearGradient id="bulb3" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#44A39C;stop-opacity:1" />
+      </linearGradient>
+      <filter id="lightGlow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- String/wire -->
+    <path d="M 0,5 Q 10,0 20,5 T 40,5" stroke="#333" stroke-width="1" fill="none" opacity="0.5"/>
+
+    <!-- Three C9-style bulbs -->
+    <!-- Bulb 1 - Gold -->
+    <g transform="translate(5, 3)">
+      <ellipse cx="5" cy="8" rx="4" ry="5.5" fill="url(#bulb1)" filter="url(#lightGlow)"/>
+      <rect x="3" y="12" width="4" height="3" fill="#333" rx="0.5"/>
+      <ellipse cx="3.5" cy="6" rx="1.5" ry="2" fill="white" opacity="0.3"/>
+    </g>
+
+    <!-- Bulb 2 - Red -->
+    <g transform="translate(15, 3)">
+      <ellipse cx="5" cy="8" rx="4" ry="5.5" fill="url(#bulb2)" filter="url(#lightGlow)"/>
+      <rect x="3" y="12" width="4" height="3" fill="#333" rx="0.5"/>
+      <ellipse cx="3.5" cy="6" rx="1.5" ry="2" fill="white" opacity="0.3"/>
+    </g>
+
+    <!-- Bulb 3 - Teal -->
+    <g transform="translate(25, 3)">
+      <ellipse cx="5" cy="8" rx="4" ry="5.5" fill="url(#bulb3)" filter="url(#lightGlow)"/>
+      <rect x="3" y="12" width="4" height="3" fill="#333" rx="0.5"/>
+      <ellipse cx="3.5" cy="6" rx="1.5" ry="2" fill="white" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Text Logo -->
+  <g transform="translate(55, 30)">
+    <!-- RVA - White -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="18" font-weight="300" fill="white">RVA</text>
+
+    <!-- Glow - Made to stand out with gradient and larger size -->
+    <defs>
+      <linearGradient id="glowText" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
+      </linearGradient>
+      <filter id="textGlow">
+        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <text x="35" y="2" font-family="Brush Script MT, cursive" font-size="26" font-weight="600"
+          fill="url(#glowText)" filter="url(#textGlow)" style="font-style: italic;">Glow</text>
+
+    <!-- CO - White -->
+    <text x="95" y="0" font-family="Arial, sans-serif" font-size="18" font-weight="300" fill="white">CO</text>
+  </g>
+</svg>
