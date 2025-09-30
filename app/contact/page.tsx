@@ -24,10 +24,12 @@ export default function ContactPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
-          source: 'contact-page',
-          address: 'Not provided',
-          lightingOption: formData.subject
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          address: 'Contact Form Submission',
+          package_interest: formData.subject,
+          message: formData.message
         })
       })
 
@@ -207,7 +209,6 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-1">Phone</h4>
                       <p className="text-gray-600">(804) 518-6955</p>
-                      <p className="text-sm text-gray-500 mt-1">Mon-Fri 8AM-8PM, Sat-Sun 9AM-6PM</p>
                     </div>
                   </div>
 
