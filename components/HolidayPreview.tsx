@@ -154,13 +154,13 @@ export default function HolidayPreview() {
               radius: 50
             },
             (data: any, status: any) => {
-              if (status === 'OK') {
-                newPanorama.setPosition(data.location.latLng)
-                newPanorama.setPov({
+              if (status === 'OK' && panorama) {
+                panorama.setPosition(data.location.latLng)
+                panorama.setPov({
                   heading: 0,
                   pitch: 10  // Slight upward tilt to better frame houses
                 })
-                newPanorama.setZoom(0.5)  // Zoom out to show more of the house
+                panorama.setZoom(0.5)  // Zoom out to show more of the house
                 setStep(2)
               } else {
                 setError('No Street View coverage at this location. Try a different address.')
