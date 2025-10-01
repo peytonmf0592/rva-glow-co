@@ -21,13 +21,13 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "RVA Glow Co - Holiday Light Installation | Richmond, VA",
-  description: "Professional holiday light installation service for homes and businesses in Richmond, Virginia and surrounding areas.",
+  title: "RVA Glow Co - Holiday Light Installation | Richmond, VA - Get Lit",
+  description: "Professional holiday light installation service for homes and businesses in Richmond, Virginia and surrounding areas. Get Lit with RVA Glow Co!",
   keywords: "holiday lights, Christmas lights, Richmond VA, light installation, professional lighting, holiday decorating, Henrico, Chesterfield, Short Pump",
   authors: [{ name: "RVA Glow Co" }],
   openGraph: {
-    title: "RVA Glow Co - Professional Holiday Light Installation",
-    description: "Transform your home with professional holiday lighting. Full-service installation, maintenance, and removal in Richmond, VA.",
+    title: "RVA Glow Co - Professional Holiday Light Installation - Get Lit",
+    description: "Transform your home with professional holiday lighting. Full-service installation, maintenance, and removal in Richmond, VA. Get Lit with RVA Glow Co!",
     url: "https://rvaglowco.com",
     siteName: "RVA Glow Co",
     images: [
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RVA Glow Co - Professional Holiday Light Installation",
-    description: "Transform your home with professional holiday lighting. Full-service in Richmond, VA.",
+    title: "RVA Glow Co - Professional Holiday Light Installation - Get Lit",
+    description: "Transform your home with professional holiday lighting. Full-service in Richmond, VA. Get Lit!",
     images: ["/images/og-image.png"],
   },
   robots: {
