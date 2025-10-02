@@ -21,6 +21,7 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rvaglowco.com'),
   title: "RVA Glow Co - Holiday Light Installation | Richmond, VA - Get Lit",
   description: "Professional holiday light installation service for homes and businesses in Richmond, Virginia and surrounding areas. Get Lit with RVA Glow Co!",
   keywords: "holiday lights, Christmas lights, Richmond VA, light installation, professional lighting, holiday decorating, Henrico, Chesterfield, Short Pump",
@@ -57,9 +58,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
 };
 
