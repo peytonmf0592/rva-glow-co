@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import ChristmasLights from '@/components/ChristmasLights'
 
 function BookingForm() {
   const searchParams = useSearchParams()
@@ -65,22 +66,62 @@ function BookingForm() {
   if (submitted) {
     return (
       <>
-        <main className="min-h-screen bg-gradient-to-b from-[#e8dcc8] to-white py-20">
-          <div className="max-w-2xl mx-auto px-4 text-center">
-            <div className="bg-[#e8dcc8] border-2 border-[#1a2845]/30 rounded-xl p-12">
-              <svg className="w-20 h-20 mx-auto mb-6 text-[#1a2845]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <h1 className="text-3xl font-bold text-gray-800 mb-4">Booking Request Received!</h1>
-              <p className="text-lg text-gray-600 mb-8">
-                We'll contact you within 24 hours to confirm your installation appointment and provide a detailed quote.
-              </p>
-              <a
-                href="/"
-                className="inline-block px-8 py-3 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] text-white rounded-full font-semibold hover:shadow-lg transition-all"
+        <main className="min-h-screen bg-gradient-to-b from-[#0d1424] via-[#1a2845] to-[#2d1b1a] relative overflow-hidden">
+          {/* Christmas Lights Animation Background */}
+          <ChristmasLights />
+
+          <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
+            <div className="max-w-2xl w-full">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl p-12 shadow-2xl relative overflow-hidden"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)'
+                }}
               >
-                Return Home
-              </a>
+                {/* Success Icon with festive colors */}
+                <div className="relative z-10">
+                  <svg className="w-24 h-24 mx-auto mb-6" fill="none" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="11" stroke="url(#gradient)" strokeWidth="2"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} stroke="#4CAF50" d="M9 12l2 2 4-4" />
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#FFD700" />
+                        <stop offset="50%" stopColor="#FF6B6B" />
+                        <stop offset="100%" stopColor="#4ECDC4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <h1 className="text-4xl font-bold mb-4 text-white drop-shadow-lg">
+                    Booking Request Received!
+                  </h1>
+
+                  <div className="space-y-3 mb-8">
+                    <p className="text-lg text-white/90 drop-shadow">
+                      🎄 Thanks for choosing RVA Glow Co
+                    </p>
+                    <p className="text-white/80">
+                      We'll reply within 24 hours to plan your holiday lighting and help you Get Lit!
+                    </p>
+                    <p className="text-white/80">
+                      For immediate assistance, call us at <span className="font-semibold text-[#FFD700]">(804) 518-6955</span>
+                    </p>
+                  </div>
+
+                  <a
+                    href="/"
+                    className="inline-block px-10 py-4 bg-gradient-to-r from-[#1a2845] via-[#8b4a3a] to-[#1a2845] text-white rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                    style={{
+                      boxShadow: '0 10px 25px rgba(139, 74, 58, 0.3)',
+                    }}
+                  >
+                    Return to Home
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </main>
