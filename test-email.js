@@ -16,7 +16,7 @@ async function testEmail() {
       body: JSON.stringify({
         from: 'RVA Glow Co <noreply@rvaglowco.com>',
         to: 'getlit@rvaglowco.com',
-        subject: 'DOMAIN VERIFICATION TEST - RVA Glow Co',
+        subject: '✅ SUCCESS! Email Test from RVA Glow Co',
         html: `
           <h2>Test Email</h2>
           <p>This is a test email to verify your Resend configuration is working.</p>

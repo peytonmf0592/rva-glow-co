@@ -42,8 +42,8 @@ export async function POST(request: Request) {
     if (resend && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
-          from: 'RVA Glow Co <onboarding@resend.dev>',
-          to: 'peytonmf0592@gmail.com', // Temporary until domain verified
+          from: 'RVA Glow Co <noreply@rvaglowco.com>',
+          to: 'getlit@rvaglowco.com',
           subject: `New Contact Form Submission from ${name}`,
           html: `
             <h2>New Contact Form Submission</h2>
