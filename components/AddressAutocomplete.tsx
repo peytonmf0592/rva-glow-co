@@ -3,6 +3,12 @@
 import { useEffect, useRef, useState } from 'react'
 import Script from 'next/script'
 
+declare global {
+  interface Window {
+    google: typeof google;
+  }
+}
+
 interface AddressAutocompleteProps {
   value: string
   onChange: (value: string) => void
