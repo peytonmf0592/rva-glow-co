@@ -90,7 +90,7 @@ export default function ContactPage() {
 
                   <div className="space-y-3 mb-8">
                     <p className="text-lg text-white/90 drop-shadow">
-                      🎄 Thanks for choosing RVA Glow Co
+                      Thanks for choosing RVA Glow Co
                     </p>
                     <p className="text-white/80">
                       We'll reply within 24 hours to plan your holiday lighting and help you Get Lit!
@@ -100,15 +100,17 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                  <a
-                    href="/"
-                    className="inline-block px-10 py-4 bg-gradient-to-r from-[#1a2845] via-[#8b4a3a] to-[#1a2845] text-white rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                    style={{
-                      boxShadow: '0 10px 25px rgba(139, 74, 58, 0.3)',
-                    }}
-                  >
-                    Return to Home
-                  </a>
+                  <div className="text-center">
+                    <a
+                      href="/"
+                      className="inline-block px-10 py-4 bg-gradient-to-r from-[#1a2845] via-[#8b4a3a] to-[#1a2845] text-white rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                      style={{
+                        boxShadow: '0 10px 25px rgba(139, 74, 58, 0.3)',
+                      }}
+                    >
+                      Return to Home
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
