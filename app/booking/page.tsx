@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ChristmasLights from '@/components/ChristmasLights'
+import AddressAutocomplete from '@/components/AddressAutocomplete'
 
 function BookingForm() {
   const searchParams = useSearchParams()
@@ -200,15 +201,14 @@ function BookingForm() {
                   <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-2">
                     Property Address *
                   </label>
-                  <input
-                    type="text"
+                  <AddressAutocomplete
                     id="address"
                     name="address"
                     value={formData.address}
-                    onChange={handleChange}
+                    onChange={(value) => setFormData({ ...formData, address: value })}
                     required
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
-                    placeholder="123 Main St, Richmond, VA 23220"
+                    placeholder="Start typing your address..."
                   />
                 </div>
               </div>

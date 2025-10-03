@@ -2,12 +2,14 @@
 
 import { useState } from 'react'
 import ChristmasLights from '@/components/ChristmasLights'
+import AddressAutocomplete from '@/components/AddressAutocomplete'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    address: '',
     subject: 'general',
     message: ''
   })
@@ -28,7 +30,7 @@ export default function ContactPage() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          address: 'Contact Form Submission',
+          address: formData.address || 'Not provided',
           package_interest: formData.subject,
           message: formData.message,
           source: 'contact-page'
@@ -184,6 +186,21 @@ export default function ContactPage() {
                       placeholder="(804) 518-6955"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Property Address (optional)
+                  </label>
+                  <AddressAutocomplete
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={(value) => setFormData({ ...formData, address: value })}
+                    required={false}
+                    className="w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#1a2845] transition-all min-h-[48px]"
+                    placeholder="Start typing your address..."
+                  />
                 </div>
 
                 <div>
