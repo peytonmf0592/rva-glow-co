@@ -56,6 +56,11 @@ export async function POST(request: Request) {
       'roofline': 'Roofline Only',
       'complete': 'Complete Package - Roofline + Landscape',
       'custom': 'Custom Design - Let\'s Discuss',
+      'general': 'General Inquiry',
+      'quote': 'Request a Quote',
+      'booking': 'Schedule Installation',
+      'support': 'Customer Support',
+      'service': 'Service Call',
       'Quote Request': 'Quote Request',
       'Holiday Light Installation': 'Holiday Light Installation',
       'General Inquiry': 'General Inquiry'
@@ -73,9 +78,13 @@ export async function POST(request: Request) {
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-            <p><strong>Address:</strong> ${address || 'Not provided'}</p>
-            <p><strong>Package/Interest:</strong> ${packageDescription}</p>
-            ${preferredDate ? `<p><strong>Preferred Installation Date:</strong> ${formattedDate}</p>` : ''}
+            ${source === 'booking-page' ?
+              `<p><strong>Address:</strong> ${address || 'Not provided'}</p>
+              <p><strong>Service Type:</strong> ${packageDescription}</p>
+              <p><strong>Preferred Installation Date:</strong> ${formattedDate}</p>` :
+              `<p><strong>Address:</strong> ${address || 'Not provided'}</p>
+              <p><strong>Subject/Interest:</strong> ${packageDescription}</p>`
+            }
             <p><strong>Message:</strong></p>
             <p>${message || 'No additional message'}</p>
             <hr>
