@@ -41,7 +41,6 @@ export async function POST(request: Request) {
     // Determine the form source and package selection
     const formSource = source === 'booking-page' ? 'Booking Form' : 'Contact Form'
     const selectedPackage = service || lightingOption || package_interest || 'Not specified'
-    const installDate = preferredDate || 'Not specified'
 
     // Format the preferred date if provided
     const formattedDate = preferredDate ? new Date(preferredDate).toLocaleDateString('en-US', {
@@ -52,7 +51,7 @@ export async function POST(request: Request) {
     }) : 'Not specified'
 
     // Create package description
-    const packageDescription = {
+    const packageDescriptionMap: Record<string, string> = {
       'roofline': 'Roofline Only',
       'complete': 'Complete Package - Roofline + Landscape',
       'custom': 'Custom Design - Let\'s Discuss',
@@ -64,7 +63,8 @@ export async function POST(request: Request) {
       'Quote Request': 'Quote Request',
       'Holiday Light Installation': 'Holiday Light Installation',
       'General Inquiry': 'General Inquiry'
-    }[selectedPackage] || selectedPackage
+    }
+    const packageDescription = packageDescriptionMap[selectedPackage] || selectedPackage
 
     // Send email notification if Resend is configured
     if (resend && process.env.RESEND_API_KEY) {
