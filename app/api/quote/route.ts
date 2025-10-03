@@ -7,7 +7,7 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, phone, address, package_interest, message } = body
+    const { name, email, phone, address, package_interest, message, source, service, preferredDate, lightingOption } = body
 
     // Try to save to Supabase if configured (optional)
     let savedToDatabase = false
@@ -38,24 +38,48 @@ export async function POST(request: Request) {
       console.log('Database operation skipped:', dbError)
     }
 
+    // Determine the form source and package selection
+    const formSource = source === 'booking-page' ? 'Booking Form' : 'Contact Form'
+    const selectedPackage = service || lightingOption || package_interest || 'Not specified'
+    const installDate = preferredDate || 'Not specified'
+
+    // Format the preferred date if provided
+    const formattedDate = preferredDate ? new Date(preferredDate).toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }) : 'Not specified'
+
+    // Create package description
+    const packageDescription = {
+      'roofline': 'Roofline Only',
+      'complete': 'Complete Package - Roofline + Landscape',
+      'custom': 'Custom Design - Let\'s Discuss',
+      'Quote Request': 'Quote Request',
+      'Holiday Light Installation': 'Holiday Light Installation',
+      'General Inquiry': 'General Inquiry'
+    }[selectedPackage] || selectedPackage
+
     // Send email notification if Resend is configured
     if (resend && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: 'RVA Glow Co <noreply@rvaglowco.com>',
           to: 'getlit@rvaglowco.com',
-          subject: `New Contact Form Submission from ${name}`,
+          subject: `New ${formSource} - ${packageDescription} from ${name}`,
           html: `
-            <h2>New Contact Form Submission</h2>
+            <h2>New ${formSource} Submission</h2>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
             <p><strong>Address:</strong> ${address || 'Not provided'}</p>
-            <p><strong>Subject/Interest:</strong> ${package_interest || 'Not specified'}</p>
+            <p><strong>Package/Interest:</strong> ${packageDescription}</p>
+            ${preferredDate ? `<p><strong>Preferred Installation Date:</strong> ${formattedDate}</p>` : ''}
             <p><strong>Message:</strong></p>
-            <p>${message || 'No message'}</p>
+            <p>${message || 'No additional message'}</p>
             <hr>
-            <p style="color: #666; font-size: 12px;">Sent from rvaglowco.com contact form${savedToDatabase ? ' and saved to database' : ''}.</p>
+            <p style="color: #666; font-size: 12px;">Sent from rvaglowco.com ${formSource.toLowerCase()}${savedToDatabase ? ' and saved to database' : ''}.</p>
           `
         })
       } catch (emailError) {

@@ -30,7 +30,8 @@ export default function ContactPage() {
           phone: formData.phone,
           address: 'Contact Form Submission',
           package_interest: formData.subject,
-          message: formData.message
+          message: formData.message,
+          source: 'contact-page'
         })
       })
 
