@@ -3,12 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Script from 'next/script'
 
-declare global {
-  interface Window {
-    google: typeof google;
-  }
-}
-
 interface AddressAutocompleteProps {
   value: string
   onChange: (value: string) => void
@@ -30,33 +24,36 @@ export default function AddressAutocomplete({
 }: AddressAutocompleteProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
-  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null)
+  const autocompleteRef = useRef<any>(null)
 
   useEffect(() => {
     if (!isLoaded || !inputRef.current || autocompleteRef.current) return
 
     try {
-      // Initialize autocomplete
-      autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
-        componentRestrictions: { country: 'us' },
-        fields: ['formatted_address'],
-        types: ['address']
-      })
+      // Check if google maps is available
+      if (typeof window !== 'undefined' && (window as any).google?.maps?.places) {
+        // Initialize autocomplete
+        autocompleteRef.current = new (window as any).google.maps.places.Autocomplete(inputRef.current, {
+          componentRestrictions: { country: 'us' },
+          fields: ['formatted_address'],
+          types: ['address']
+        })
 
-      // Add place changed listener
-      autocompleteRef.current.addListener('place_changed', () => {
-        const place = autocompleteRef.current?.getPlace()
-        if (place?.formatted_address) {
-          onChange(place.formatted_address)
-        }
-      })
+        // Add place changed listener
+        autocompleteRef.current.addListener('place_changed', () => {
+          const place = autocompleteRef.current?.getPlace()
+          if (place?.formatted_address) {
+            onChange(place.formatted_address)
+          }
+        })
+      }
     } catch (error) {
       console.error('Error initializing autocomplete:', error)
     }
 
     return () => {
-      if (autocompleteRef.current) {
-        window.google.maps.event.clearInstanceListeners(autocompleteRef.current)
+      if (autocompleteRef.current && typeof window !== 'undefined' && (window as any).google?.maps?.event) {
+        (window as any).google.maps.event.clearInstanceListeners(autocompleteRef.current)
       }
     }
   }, [isLoaded, onChange])
