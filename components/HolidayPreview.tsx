@@ -163,7 +163,28 @@ export default function HolidayPreview() {
                 panorama.setZoom(0.5)  // Zoom out to show more of the house
                 setStep(2)
               } else {
-                setError('No Street View coverage at this location. Try a different address.')
+                // Try a slightly wider radius for Street View
+                service.getPanorama(
+                  {
+                    location: location,
+                    radius: 200  // Increased radius
+                  },
+                  (data2: any, status2: any) => {
+                    if (status2 === 'OK' && panorama) {
+                      panorama.setPosition(data2.location.latLng)
+                      panorama.setPov({
+                        heading: 0,
+                        pitch: 10
+                      })
+                      panorama.setZoom(0.5)
+                      setStep(2)
+                    } else {
+                      setError('Street View is not available for this address. This often happens with new developments or rural areas. Please try a nearby main street address, or contact us directly for a custom quote at (804) 518-6955.')
+                    }
+                    setIsLoading(false)
+                  }
+                )
+                return  // Exit early to avoid setting loading false twice
               }
               setIsLoading(false)
             }
@@ -989,8 +1010,32 @@ export default function HolidayPreview() {
 
           {/* Error Message */}
           {error && (
-            <div className="max-w-2xl mx-auto mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-700 text-center">{error}</p>
+            <div className="max-w-2xl mx-auto mt-6 p-6 bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-lg shadow-lg">
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <svg className="h-6 w-6 text-amber-400 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <div className="ml-3 flex-1">
+                  <h3 className="text-lg font-semibold text-amber-800 mb-1">Address Not Available for Preview</h3>
+                  <p className="text-amber-700">{error}</p>
+                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                    <button
+                      onClick={resetPreview}
+                      className="px-6 py-2 bg-[#1a2845] text-white rounded-full font-semibold hover:bg-[#2a3855] transition-all"
+                    >
+                      Try Another Address
+                    </button>
+                    <a
+                      href="/booking"
+                      className="px-6 py-2 bg-white border-2 border-[#8b4a3a] text-[#8b4a3a] rounded-full font-semibold hover:bg-[#8b4a3a] hover:text-white transition-all text-center"
+                    >
+                      Book Consultation Instead
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
