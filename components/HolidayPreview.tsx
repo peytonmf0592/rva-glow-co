@@ -75,6 +75,9 @@ export default function HolidayPreview() {
   const initMap = useCallback(() => {
     if (window.google && streetViewRef.current) {
       console.log('Initializing Google Maps...')
+      console.log('User Agent:', navigator.userAgent)
+      console.log('Is Mobile:', /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+
       const service = new window.google.maps.StreetViewService()
       const newGeocoder = new window.google.maps.Geocoder()
       setGeocoder(newGeocoder)
@@ -148,13 +151,25 @@ export default function HolidayPreview() {
           // Get Street View data for the selected location
           const location = place.geometry.location
 
+          // Log for debugging
+          console.log('Searching for Street View at:', place.formatted_address)
+          console.log('Coordinates:', location.lat(), location.lng())
+
+          // For mobile, try with preference for outdoor panoramas
+          const searchOptions = {
+            location: location,
+            radius: 50,
+            preference: 'nearest' as any,
+            source: 'outdoor' as any
+          }
+
           service.getPanorama(
-            {
-              location: location,
-              radius: 50
-            },
+            searchOptions,
             (data: any, status: any) => {
+              console.log('First search status:', status)
+
               if (status === 'OK' && panorama) {
+                console.log('Street View found at first attempt')
                 panorama.setPosition(data.location.latLng)
                 panorama.setPov({
                   heading: 0,
@@ -162,15 +177,21 @@ export default function HolidayPreview() {
                 })
                 panorama.setZoom(0.5)  // Zoom out to show more of the house
                 setStep(2)
+                setIsLoading(false)
               } else {
-                // Try a slightly wider radius for Street View
+                // Try a wider radius without source restriction
+                console.log('First search failed, trying wider radius...')
                 service.getPanorama(
                   {
                     location: location,
-                    radius: 200  // Increased radius
+                    radius: 200,
+                    preference: 'nearest' as any
                   },
                   (data2: any, status2: any) => {
+                    console.log('Second search status:', status2)
+
                     if (status2 === 'OK' && panorama) {
+                      console.log('Street View found at second attempt')
                       panorama.setPosition(data2.location.latLng)
                       panorama.setPov({
                         heading: 0,
@@ -179,14 +200,30 @@ export default function HolidayPreview() {
                       panorama.setZoom(0.5)
                       setStep(2)
                     } else {
-                      setError('Street View is not available for this address. This often happens with new developments or rural areas. Please try a nearby main street address, or contact us directly for a custom quote at (804) 518-6955.')
+                      // Final attempt - use location directly without service
+                      console.log('Both searches failed, trying direct positioning...')
+                      if (panorama) {
+                        // Try to set position directly
+                        panorama.setPosition(location)
+                        // Check if panorama loaded after setting position
+                        setTimeout(() => {
+                          const panoLocation = panorama.getPosition()
+                          if (panoLocation) {
+                            console.log('Direct positioning succeeded')
+                            setStep(2)
+                          } else {
+                            console.log('Direct positioning failed')
+                            setError('Street View is not available for this address. This often happens with new developments or rural areas. Please try a nearby main street address, or contact us directly for a custom quote at (804) 518-6955.')
+                          }
+                        }, 1000)
+                      } else {
+                        setError('Street View is not available for this address. This often happens with new developments or rural areas. Please try a nearby main street address, or contact us directly for a custom quote at (804) 518-6955.')
+                      }
                     }
                     setIsLoading(false)
                   }
                 )
-                return  // Exit early to avoid setting loading false twice
               }
-              setIsLoading(false)
             }
           )
         })
