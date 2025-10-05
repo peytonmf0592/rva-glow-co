@@ -155,18 +155,63 @@ export default function HolidayPreview() {
           console.log('Searching for Street View at:', place.formatted_address)
           console.log('Coordinates:', location.lat(), location.lng())
 
-          // Create a new StreetViewService for this search
-          const searchService = new window.google.maps.StreetViewService()
+          // Destroy and recreate the panorama for the new location
+          if (streetViewRef.current) {
+            // Clear the current panorama
+            streetViewRef.current.innerHTML = ''
 
-          // For mobile, try with preference for outdoor panoramas
-          const searchOptions = {
-            location: location,
-            radius: 50,
-            preference: 'nearest' as any,
-            source: 'outdoor' as any
+            // Create a completely new panorama at the new location
+            const newPanorama = new window.google.maps.StreetViewPanorama(
+              streetViewRef.current,
+              {
+                position: location,
+                pov: { heading: 0, pitch: 10 },
+                zoom: 0.5,
+                addressControl: false,
+                linksControl: true,
+                panControl: true,
+                enableCloseButton: false,
+                fullscreenControl: false,
+                zoomControl: true,
+                motionTracking: false,
+                motionTrackingControl: false,
+                visible: true
+              }
+            )
+
+            setPanorama(newPanorama)
+
+            // Give it a moment to initialize, then check if it loaded
+            setTimeout(() => {
+              const panoLocation = newPanorama.getPosition()
+              if (panoLocation) {
+                console.log('New panorama created successfully at:', panoLocation.toString())
+                setStep(2)
+                setIsLoading(false)
+              } else {
+                console.log('Panorama creation failed, trying service lookup...')
+                // Fall back to service lookup
+                lookupStreetView(location)
+              }
+            }, 500)
+
+            return
           }
 
-          searchService.getPanorama(
+          // Fallback to service lookup
+          const lookupStreetView = (loc: any) => {
+            // Create a new StreetViewService for this search
+            const searchService = new window.google.maps.StreetViewService()
+
+            // For mobile, try with preference for outdoor panoramas
+            const searchOptions = {
+              location: loc,
+              radius: 50,
+              preference: 'nearest' as any,
+              source: 'outdoor' as any
+            }
+
+            searchService.getPanorama(
             searchOptions,
             (data: any, status: any) => {
               console.log('First search status:', status)
@@ -254,6 +299,10 @@ export default function HolidayPreview() {
               }
             }
           )
+          }
+
+          // If initial creation failed, try lookup
+          lookupStreetView(location)
         })
 
         setAutocomplete(newAutocomplete)
