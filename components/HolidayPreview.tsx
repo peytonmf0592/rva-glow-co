@@ -205,16 +205,13 @@ export default function HolidayPreview() {
                       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 
                       if (isMobile) {
-                        console.log('Mobile device detected - proceeding without Street View')
-                        // On mobile, just proceed to the next step even without Street View
-                        // The capture will use a placeholder or the last known position
-                        if (panorama) {
-                          // Try to set position anyway
-                          panorama.setPosition(location)
-                        }
-                        setStep(2)
-                        // Show a mobile-specific message
-                        setError('Street View preview is limited on mobile devices. You can still proceed with your address, and we\'ll create a custom lighting design for your home!')
+                        console.log('Mobile device detected - skipping to quote form')
+                        // On mobile, skip directly to the quote form
+                        setStep(4)
+                        // Set a flag to show mobile quote form
+                        setOriginalImage('mobile-skip')
+                        setRenderedImage('mobile-skip')
+                        setIsQuotaExceeded(true) // Use the quota exceeded flow which shows the form
                       } else if (panorama) {
                         // Desktop fallback - try direct positioning
                         console.log('Desktop - trying direct positioning...')
@@ -810,7 +807,26 @@ export default function HolidayPreview() {
           {/* Results Display - Before/After Slider */}
           {step === 4 && originalImage && renderedImage && (
             <div className="mt-12">
-              {/* Before/After Slider */}
+              {/* Show mobile message instead of slider if on mobile */}
+              {originalImage === 'mobile-skip' ? (
+                <div className="max-w-2xl mx-auto mb-8">
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 text-center">
+                    <svg className="w-16 h-16 mx-auto mb-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                      Address Confirmed!
+                    </h3>
+                    <p className="text-gray-600 mb-2">
+                      <strong>{address}</strong>
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Our designers will create a custom holiday lighting plan specifically for your home
+                    </p>
+                  </div>
+                </div>
+              ) : (
+              /* Original Before/After Slider */
               <div className="max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-[#1a2845] to-[#8b4a3a] bg-clip-text text-transparent">
                   Your Holiday Lighting Transformation
@@ -888,9 +904,10 @@ export default function HolidayPreview() {
                   </div>
                 </div>
               </div>
+              )}
 
-              {/* Quota Exceeded Notice */}
-              {isQuotaExceeded && (
+              {/* Quota Exceeded Notice - Show different message for mobile */}
+              {isQuotaExceeded && originalImage !== 'mobile-skip' && (
                 <div className="mt-8 max-w-4xl mx-auto">
                   <div className="bg-gradient-to-r from-[#e8dcc8] to-orange-50 border-l-4 border-amber-400 rounded-lg p-6 shadow-md">
                     <div className="flex items-center">
