@@ -155,6 +155,9 @@ export default function HolidayPreview() {
           console.log('Searching for Street View at:', place.formatted_address)
           console.log('Coordinates:', location.lat(), location.lng())
 
+          // Create a new StreetViewService for this search
+          const searchService = new window.google.maps.StreetViewService()
+
           // For mobile, try with preference for outdoor panoramas
           const searchOptions = {
             location: location,
@@ -163,25 +166,32 @@ export default function HolidayPreview() {
             source: 'outdoor' as any
           }
 
-          service.getPanorama(
+          searchService.getPanorama(
             searchOptions,
             (data: any, status: any) => {
               console.log('First search status:', status)
 
               if (status === 'OK' && panorama) {
                 console.log('Street View found at first attempt')
-                panorama.setPosition(data.location.latLng)
-                panorama.setPov({
-                  heading: 0,
-                  pitch: 10  // Slight upward tilt to better frame houses
-                })
-                panorama.setZoom(0.5)  // Zoom out to show more of the house
-                setStep(2)
-                setIsLoading(false)
+                console.log('Setting panorama to:', data.location.latLng.toString())
+
+                // Force the panorama to update
+                panorama.setVisible(false)
+                setTimeout(() => {
+                  panorama.setPosition(data.location.latLng)
+                  panorama.setPov({
+                    heading: 0,
+                    pitch: 10  // Slight upward tilt to better frame houses
+                  })
+                  panorama.setZoom(0.5)  // Zoom out to show more of the house
+                  panorama.setVisible(true)
+                  setStep(2)
+                  setIsLoading(false)
+                }, 100)
               } else {
                 // Try a wider radius without source restriction
                 console.log('First search failed, trying wider radius...')
-                service.getPanorama(
+                searchService.getPanorama(
                   {
                     location: location,
                     radius: 200,
@@ -192,13 +202,20 @@ export default function HolidayPreview() {
 
                     if (status2 === 'OK' && panorama) {
                       console.log('Street View found at second attempt')
-                      panorama.setPosition(data2.location.latLng)
-                      panorama.setPov({
-                        heading: 0,
-                        pitch: 10
-                      })
-                      panorama.setZoom(0.5)
-                      setStep(2)
+                      console.log('Setting panorama to:', data2.location.latLng.toString())
+
+                      // Force the panorama to update
+                      panorama.setVisible(false)
+                      setTimeout(() => {
+                        panorama.setPosition(data2.location.latLng)
+                        panorama.setPov({
+                          heading: 0,
+                          pitch: 10
+                        })
+                        panorama.setZoom(0.5)
+                        panorama.setVisible(true)
+                        setStep(2)
+                      }, 100)
                     } else {
                       // Final attempt for mobile - skip to step 2 anyway on mobile devices
                       console.log('Both searches failed, checking if mobile...')
