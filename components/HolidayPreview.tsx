@@ -200,10 +200,24 @@ export default function HolidayPreview() {
                       panorama.setZoom(0.5)
                       setStep(2)
                     } else {
-                      // Final attempt - use location directly without service
-                      console.log('Both searches failed, trying direct positioning...')
-                      if (panorama) {
-                        // Try to set position directly
+                      // Final attempt for mobile - skip to step 2 anyway on mobile devices
+                      console.log('Both searches failed, checking if mobile...')
+                      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+
+                      if (isMobile) {
+                        console.log('Mobile device detected - proceeding without Street View')
+                        // On mobile, just proceed to the next step even without Street View
+                        // The capture will use a placeholder or the last known position
+                        if (panorama) {
+                          // Try to set position anyway
+                          panorama.setPosition(location)
+                        }
+                        setStep(2)
+                        // Show a mobile-specific message
+                        setError('Street View preview is limited on mobile devices. You can still proceed with your address, and we\'ll create a custom lighting design for your home!')
+                      } else if (panorama) {
+                        // Desktop fallback - try direct positioning
+                        console.log('Desktop - trying direct positioning...')
                         panorama.setPosition(location)
                         // Check if panorama loaded after setting position
                         setTimeout(() => {
@@ -1055,22 +1069,30 @@ export default function HolidayPreview() {
                   </svg>
                 </div>
                 <div className="ml-3 flex-1">
-                  <h3 className="text-lg font-semibold text-amber-800 mb-1">Address Not Available for Preview</h3>
+                  <h3 className="text-lg font-semibold text-amber-800 mb-1">
+                    {error.includes('mobile') ? 'Mobile Preview Notice' : 'Address Not Available for Preview'}
+                  </h3>
                   <p className="text-amber-700">{error}</p>
-                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                    <button
-                      onClick={resetPreview}
-                      className="px-6 py-2 bg-[#1a2845] text-white rounded-full font-semibold hover:bg-[#2a3855] transition-all"
-                    >
-                      Try Another Address
-                    </button>
-                    <a
-                      href="/booking"
-                      className="px-6 py-2 bg-white border-2 border-[#8b4a3a] text-[#8b4a3a] rounded-full font-semibold hover:bg-[#8b4a3a] hover:text-white transition-all text-center"
-                    >
-                      Book Consultation Instead
-                    </a>
-                  </div>
+                  {error.includes('mobile') && step === 2 ? (
+                    <div className="mt-4">
+                      <p className="text-sm text-amber-600 mb-3">You can continue with the preview tool using the default view.</p>
+                    </div>
+                  ) : (
+                    <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                      <button
+                        onClick={resetPreview}
+                        className="px-6 py-2 bg-[#1a2845] text-white rounded-full font-semibold hover:bg-[#2a3855] transition-all"
+                      >
+                        Try Another Address
+                      </button>
+                      <a
+                        href="/booking"
+                        className="px-6 py-2 bg-white border-2 border-[#8b4a3a] text-[#8b4a3a] rounded-full font-semibold hover:bg-[#8b4a3a] hover:text-white transition-all text-center"
+                      >
+                        Book Consultation Instead
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
