@@ -95,17 +95,15 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center group hover:opacity-90 transition-opacity">
               <Image
-                src="/images/rva-glow-logo-transparent.png"
+                src="/images/rva-glow-logo-canva.png"
                 alt="RVA Glow Co - Holiday Lights"
-                width={320}
-                height={90}
+                width={400}
+                height={100}
                 priority
-                className="h-12 md:h-16 w-auto"
+                className="h-10 md:h-14 w-auto"
                 style={{
                   filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
-                  objectFit: 'contain',
-                  backgroundColor: 'transparent',
-                  mixBlendMode: 'normal'
+                  objectFit: 'contain'
                 }}
               />
             </Link>
