@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 
@@ -92,53 +93,19 @@ export default function Header() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3">
             {/* Logo */}
-            <Link href="/" className="flex items-center group">
-              <div className="flex flex-col items-center">
-                {/* Roof with lights SVG */}
-                <svg width="140" height="30" viewBox="0 0 140 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Roof outline */}
-                  <path d="M10 25 L70 10 L130 25" stroke="white" strokeWidth="2" fill="none" opacity="0.8"/>
-
-                  {/* Holiday lights along the roofline */}
-                  {/* Light 1 */}
-                  <circle cx="20" cy="22" r="3" fill="#FFD700" className="animate-pulse"/>
-                  <line x1="20" y1="22" x2="20" y2="17" stroke="#444" strokeWidth="0.5"/>
-
-                  {/* Light 2 */}
-                  <circle cx="35" cy="18" r="3" fill="#FF6B6B" className="animate-pulse" style={{animationDelay: '0.2s'}}/>
-                  <line x1="35" y1="18" x2="35" y2="13" stroke="#444" strokeWidth="0.5"/>
-
-                  {/* Light 3 */}
-                  <circle cx="50" cy="14" r="3" fill="#4ECDC4" className="animate-pulse" style={{animationDelay: '0.4s'}}/>
-                  <line x1="50" y1="14" x2="50" y2="9" stroke="#444" strokeWidth="0.5"/>
-
-                  {/* Light 4 */}
-                  <circle cx="70" cy="10" r="3" fill="#FFD700" className="animate-pulse" style={{animationDelay: '0.6s'}}/>
-                  <line x1="70" y1="10" x2="70" y2="5" stroke="#444" strokeWidth="0.5"/>
-
-                  {/* Light 5 */}
-                  <circle cx="90" cy="14" r="3" fill="#FF6B6B" className="animate-pulse" style={{animationDelay: '0.8s'}}/>
-                  <line x1="90" y1="14" x2="90" y2="9" stroke="#444" strokeWidth="0.5"/>
-
-                  {/* Light 6 */}
-                  <circle cx="105" cy="18" r="3" fill="#4ECDC4" className="animate-pulse" style={{animationDelay: '1s'}}/>
-                  <line x1="105" y1="18" x2="105" y2="13" stroke="#444" strokeWidth="0.5"/>
-
-                  {/* Light 7 */}
-                  <circle cx="120" cy="22" r="3" fill="#FFD700" className="animate-pulse" style={{animationDelay: '1.2s'}}/>
-                  <line x1="120" y1="22" x2="120" y2="17" stroke="#444" strokeWidth="0.5"/>
-
-                  {/* String connecting the lights */}
-                  <path d="M20 17 Q35 12, 50 9 T90 9 Q105 12, 120 17" stroke="#444" strokeWidth="0.5" fill="none" opacity="0.4"/>
-                </svg>
-
-                <div className="flex items-center border-b-2 border-[#ffdc96] pb-0.5">
-                  <span className="text-xl md:text-2xl font-bold text-white">RVA</span>
-                  <span className="text-2xl md:text-3xl font-bold text-[#ffdc96] mx-2">Glow</span>
-                  <span className="text-xl md:text-2xl font-bold text-white">Co</span>
-                </div>
-                <span className="text-xs text-white tracking-widest opacity-90 mt-0.5">HOLIDAY LIGHTS</span>
-              </div>
+            <Link href="/" className="flex items-center group hover:opacity-90 transition-opacity">
+              <Image
+                src="/images/rva-glow-logo-new.png"
+                alt="RVA Glow Co - Holiday Lights"
+                width={320}
+                height={90}
+                priority
+                className="h-14 md:h-20 w-auto"
+                style={{
+                  filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.8))',
+                  objectFit: 'contain'
+                }}
+              />
             </Link>
 
             {/* Desktop Navigation */}
