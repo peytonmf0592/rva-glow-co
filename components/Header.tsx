@@ -103,7 +103,9 @@ export default function Header() {
                 className="h-12 md:h-16 w-auto"
                 style={{
                   filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
-                  objectFit: 'contain'
+                  objectFit: 'contain',
+                  backgroundColor: 'transparent',
+                  mixBlendMode: 'normal'
                 }}
               />
             </Link>
