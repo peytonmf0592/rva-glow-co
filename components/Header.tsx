@@ -90,13 +90,13 @@ export default function Header() {
         boxShadow: '0 4px 12px rgba(13, 20, 36, 0.3), inset 0 1px 0 rgba(255, 220, 150, 0.12)'
       }}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3">
+          <div className="flex justify-between items-center py-1">
             {/* Logo */}
             <Link href="/" className="flex items-center group hover:opacity-90 transition-opacity">
               <img
                 src="/images/rva-glow-logo-final.png"
                 alt="RVA Glow Co - Holiday Lights"
-                className="h-20 md:h-28 w-auto"
+                className="h-16 md:h-20 w-auto"
                 style={{
                   filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
                   objectFit: 'contain'
