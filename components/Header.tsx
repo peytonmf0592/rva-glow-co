@@ -96,7 +96,7 @@ export default function Header() {
               <img
                 src="/images/rva-glow-logo-final.png"
                 alt="RVA Glow Co - Holiday Lights"
-                className="h-10 md:h-14 w-auto"
+                className="h-14 md:h-20 w-auto"
                 style={{
                   filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
                   objectFit: 'contain'
