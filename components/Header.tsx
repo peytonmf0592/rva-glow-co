@@ -93,26 +93,15 @@ export default function Header() {
           <div className="flex justify-between items-center py-3">
             {/* Logo */}
             <Link href="/" className="flex items-center group hover:opacity-90 transition-opacity">
-              <div
+              <img
+                src="/images/rva-glow-logo-final.png"
+                alt="RVA Glow Co - Holiday Lights"
                 className="h-10 md:h-14 w-auto"
                 style={{
-                  width: 'auto',
-                  height: '100%',
-                  mixBlendMode: 'multiply',
-                  backgroundColor: 'transparent'
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
+                  objectFit: 'contain'
                 }}
-              >
-                <img
-                  src="/images/rva-glow-logo-canva.png"
-                  alt="RVA Glow Co - Holiday Lights"
-                  className="h-full w-auto"
-                  style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
-                    objectFit: 'contain',
-                    mixBlendMode: 'multiply'
-                  }}
-                />
-              </div>
+              />
             </Link>
 
             {/* Desktop Navigation */}
