@@ -151,7 +151,7 @@ export default function Home() {
                 Light Up Your Holidays
               </h1>
               <p className="text-sm sm:text-base md:text-xl mb-4 md:mb-6 text-gray-100 leading-relaxed">
-                RVA Glow Co turns your home into a seasonal showstopper — full-service, fully custom, and completely hands-off for you. From crisp roofline accents to elegant tree and shrub highlights, we design, install, maintain, remove, and securely store your lights — all included.
+                RVA Glow Co turns your home into a seasonal showstopper — full-service, fully custom, and completely hands-off for you. From crisp roofline accents to elegant tree and shrub highlights, we design, install, service, and take down your lights — with optional storage available.
               </p>
               <div>
                 <Link

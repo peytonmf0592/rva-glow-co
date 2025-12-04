@@ -39,10 +39,6 @@ export default function ServicesPage() {
                   <span className="text-[#d4af37] text-xl mr-2">✓</span>
                   Safe takedown after holidays
                 </li>
-                <li className="flex items-center text-base">
-                  <span className="text-[#d4af37] text-xl mr-2">✓</span>
-                  Off-season storage
-                </li>
               </ul>
             </div>
           </div>
@@ -54,7 +50,7 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
             <p className="text-xl bg-gradient-to-r from-[#e8dcc8] to-white p-6 rounded-xl border-l-4 border-[#d4af37]">
-              Choose to either <span className="font-bold text-[#1a2845]">lease or own</span> your lights. No stress, no clutter, no hassle — just brilliant lights and total peace of mind.
+              Professional holiday lighting that's <span className="font-bold text-[#1a2845]">completely hands-off</span> for you. No stress, no clutter, no hassle — just brilliant lights and total peace of mind.
             </p>
           </div>
         </div>
@@ -197,7 +193,7 @@ export default function ServicesPage() {
                 { step: '1', title: 'Consultation', description: 'Free on-site assessment and custom design plan' },
                 { step: '2', title: 'Installation', description: 'Professional installation by certified technicians' },
                 { step: '3', title: 'Enjoyment', description: 'Sit back and enjoy your beautiful display' },
-                { step: '4', title: 'Removal', description: 'Complete removal and storage after the season' }
+                { step: '4', title: 'Removal', description: 'Complete removal after the season' }
               ].map((item, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#1a2845] to-[#8b4a3a] text-white rounded-full flex items-center justify-center text-2xl font-bold">

@@ -58,12 +58,12 @@ export default function Chatbot() {
 
     // Pricing questions
     if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
-      return "Our roofline lighting starts at $7-10 per linear foot for standard installations. Steeper roofs and complex designs vary based on pitch and accessibility. Every quote includes full installation, seasonal maintenance, takedown, and storage options. Want a free consultation for an exact quote?"
+      return "Our roofline lighting starts at $7-10 per linear foot for standard installations. Steeper roofs and complex designs vary based on pitch and accessibility. Every quote includes full installation, seasonal maintenance, and takedown. Want a free consultation for an exact quote?"
     }
 
-    // Lease vs Buy
-    if (lowerMessage.includes('lease') || lowerMessage.includes('buy') || lowerMessage.includes('own') || lowerMessage.includes('purchase')) {
-      return "Great question! LEASE: Same price yearly with fresh lights and storage included. BUY: Save ~40% in year 2 and beyond (labor only). Most customers choose buying for long-term savings. Both options include installation, service, takedown, and maintenance!"
+    // Purchase/Ownership questions
+    if (lowerMessage.includes('buy') || lowerMessage.includes('own') || lowerMessage.includes('purchase')) {
+      return "You'll own your lights after we install them! The installation price includes the lights, hardware, and professional installation. For year 2 and beyond, you'll save ~40% (labor only for reinstall and removal). All packages include installation, service, takedown, and maintenance!"
     }
 
     // Booking questions
@@ -78,7 +78,7 @@ export default function Chatbot() {
 
     // Process questions
     if (lowerMessage.includes('process') || lowerMessage.includes('work')) {
-      return "It's super easy! 1) You book a free consultation 2) We design your custom display 3) Our team installs everything 4) You enjoy the holidays stress-free 5) We handle takedown in January 6) Optional storage. No ladders, no hassle for you!"
+      return "It's super easy! 1) You book a free consultation 2) We design your custom display 3) Our team installs everything 4) You enjoy the holidays stress-free 5) We handle takedown in January. No ladders, no hassle for you!"
     }
 
     // Timing/Installation questions
@@ -98,7 +98,7 @@ export default function Chatbot() {
 
     // Storage questions
     if (lowerMessage.includes('storage') || lowerMessage.includes('store')) {
-      return "Storage is included with lease options and available as an add-on for purchased lights. We keep everything in climate-controlled storage, test lights before the next season, and organize by property. No garage clutter for you!"
+      return "After takedown, you'll have your lights to store as you wish. Many customers keep them in their garage or shed. The lights come with labeled bins for easy organization. We can discuss storage solutions that work best for you!"
     }
 
     // Greeting

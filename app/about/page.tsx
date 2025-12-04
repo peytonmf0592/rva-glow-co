@@ -40,10 +40,6 @@ export default function AboutPage() {
                     <span className="text-[#d4af37] text-2xl mr-3">✓</span>
                     Safe takedown after holidays
                   </li>
-                  <li className="flex items-center text-lg">
-                    <span className="text-[#d4af37] text-2xl mr-3">✓</span>
-                    Off-season storage
-                  </li>
                 </ul>
               </div>
             </div>
@@ -158,7 +154,7 @@ export default function AboutPage() {
             {/* Right Column - Company Description */}
             <div className="flex flex-col justify-center">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                RVA Glow Co. designs, installs, and cares for premium residential and commercial holiday lighting. We pair thoughtful design with commercial-grade materials and white-glove service — from custom consultation through installation, seasonal maintenance, takedown, and secure storage. Our team handles every detail so your property looks spectacular without you lifting a finger.
+                RVA Glow Co. designs, installs, and cares for premium residential and commercial holiday lighting. We pair thoughtful design with commercial-grade materials and white-glove service — from custom consultation through installation, seasonal maintenance, and takedown. Our team handles every detail so your property looks spectacular without you lifting a finger.
               </p>
 
               {/* Core Services List */}
@@ -179,11 +175,7 @@ export default function AboutPage() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#1a2845] mr-3 mt-1">▸</span>
-                    <span className="text-gray-700">Takedown & Secure Storage</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#1a2845] mr-3 mt-1">▸</span>
-                    <span className="text-gray-700">Flexible Lease or Own Options</span>
+                    <span className="text-gray-700">Professional Takedown</span>
                   </li>
                 </ul>
               </div>

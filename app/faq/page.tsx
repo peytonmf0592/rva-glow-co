@@ -35,7 +35,7 @@ export default function FAQ() {
     },
     {
       question: "What's included in your service?",
-      answer: "Everything: professional-grade lights, installation, seasonal maintenance, takedown, and storage options.",
+      answer: "Everything: professional-grade lights, installation, seasonal maintenance, and takedown.",
       details: ["Commercial C9 LED bulbs", "Heavy-duty SPT-1 wiring", "Timer and all hardware", "Mid-season service calls", "Safe removal in January"]
     },
     {
@@ -47,11 +47,6 @@ export default function FAQ() {
       question: "Do you service my lights during the season?",
       answer: "Yes, all packages include complimentary service calls for any issues.",
       details: ["48-hour response time", "Replace burned bulbs", "Fix weather-related issues", "Adjust timers as needed"]
-    },
-    {
-      question: "Should I lease or buy my lights?",
-      answer: "Leasing keeps the same price yearly with fresh lights; buying saves money after year one.",
-      details: ["Lease: Same price each year, we store lights", "Buy: ~40% less in year 2 (labor only)", "Most customers prefer buying for long-term savings"]
     }
   ]
 
@@ -181,8 +176,7 @@ export default function FAQ() {
             "All materials (bulbs, wire, clips, timer)",
             "Professional installation",
             "Service calls during the season",
-            "Safe removal in January",
-            "Storage (lease model) or available as add-on"
+            "Safe removal in January"
           ]
         },
         {
@@ -248,26 +242,16 @@ export default function FAQ() {
       ]
     },
     {
-      title: "Storage & Off-Season",
+      title: "Takedown & Off-Season",
       items: [
-        {
-          question: "Do you store the lights?",
-          answer: "Storage included with lease option; available as add-on for purchased lights.",
-          details: [
-            "Climate-controlled storage facility",
-            "Lights tested before next season",
-            "Labeled and organized by property",
-            "Convenient - no garage clutter"
-          ]
-        },
         {
           question: "When do you take down the lights?",
           answer: "Removal typically happens the first two weeks of January.",
           details: [
             "Weather permitting for safety",
             "Flexible scheduling available",
-            "Lights carefully packed and labeled",
-            "Ready for next year's installation"
+            "Lights carefully packed and labeled for your storage",
+            "You keep your lights for future use"
           ]
         }
       ]
